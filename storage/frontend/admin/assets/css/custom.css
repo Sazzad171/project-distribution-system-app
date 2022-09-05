@@ -22,3 +22,6 @@ img {
     height: 40px;
     object-fit: cover;
 }
+.card .card-body {
+    padding: 20px;
+}
