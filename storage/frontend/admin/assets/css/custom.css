@@ -25,3 +25,6 @@ img {
 .card .card-body {
     padding: 20px;
 }
+th {
+    text-align: center;
+}

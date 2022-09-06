@@ -174,12 +174,12 @@
           <div class="page-title">
             <div class="row">
               <div class="col-6">
-                <h3>Register New Timeline</h3>
+                <h3>Teachers</h3>
               </div>
               <div class="col-6">
                 <ol class="breadcrumb">
                   <li class="breadcrumb-item"><a href="index.html"><i data-feather="home"></i></a></li>
-                  <li class="breadcrumb-item active">Register New Timeline</li>
+                  <li class="breadcrumb-item active">Teachers</li>
                 </ol>
               </div>
             </div>
@@ -188,53 +188,49 @@
         <!-- Container-fluid starts-->
         <div class="container-fluid">
 
-          <!-- register new project start -->
+          <!-- students table start -->
           <div class="card">
-            <div class="card-header">
-              <h5>Research Project Registration Form</h5>
-              <span>Fill out this form.</span>
+            <div class="card-header p-3">
+              <div class="row align-items-center">
+                <div class="col-md-8">
+                  <h6>All Teachers</h6>
+                </div>
+                <div class="col-md-4">
+                  <p class="text-md-end">
+                    <a href="./add-teachers.html" class="btn btn-primary">Add New Teachers</a>
+                  </p>
+                </div>
+              </div>
             </div>
             <div class="card-body">
-              <form class="" >
-                <div class="mb-3 row">
-                  <label class="col-sm-3 col-form-label">Current Semester</label>
-                  <div class="col-sm-9">
-                    <input class="form-control" type="text" name="currentSemester" placeholder="Enter current semester..">
-                  </div>
-                </div>
-                <div class="mb-3 row">
-                  <label class="col-sm-3 col-form-label">Start Date and time</label>
-                  <div class="col-sm-9">
-                    <input class="form-control digits" type="datetime-local" name="startDate" value="2018-01-19T18:45:00">
-                  </div>
-                </div>
-                <div class="mb-3 row">
-                  <label class="col-sm-3 col-form-label">End Date and time</label>
-                  <div class="col-sm-9">
-                    <input class="form-control digits" type="datetime-local" name="endDate" value="2018-01-19T18:45:00">
-                  </div>
-                </div>
-                <div class="mb-3 row">
-                  <label class="col-sm-3 col-form-label">Field/Area Name</label>
-                  <div class="col-sm-9">
-                    <input class="form-control" type="text" name="topicName1" placeholder="Enter field/area name..">
-                  </div>
-                </div>
-                <!-- dynamic new field -->
-                <div class="more-area-box"></div>
-
-                <div class="mb-3 row">
-                  <label class="col-sm-3 col-form-label">Add More Field/Area</label>
-                  <div class="col-sm-9">
-                    <button class="btn btn-primary add-field">Add New</button>
-                    <button class="btn btn-danger remove-field">Remove Last</button>
-                  </div>
-                </div>
-                <button class="btn btn-primary" type="submit">Submit form</button>
-              </form>
+              <!-- table -->
+              <div class="table-responsive">
+                <table class="table table-bordered">
+                  <thead class="table-primary">
+                    <tr>
+                      <th>Name</th>
+                      <th>Email</th>
+                      <th>Phone</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Sazzad</td>
+                      <td>sazzad@gmail.com</td>
+                      <td>345345345</td>
+                      <td class="text-end">
+                        <button class="btn btn-warning-gradien" type="button"><i class="fa fa-edit"></i></button>
+                        <button class="btn btn-danger-gradien" type="button"><i class="fa fa-trash"></i></button>
+                      </td>
+                    </tr>
+                    
+                  </tbody>
+                </table>
+              </div>
             </div>
           </div>
-          <!-- register new project end -->
+          <!-- students table end -->
 
         </div>
         <!-- Container-fluid Ends-->
@@ -278,13 +274,14 @@
 
   <!-- more area box js start -->
   <script>
-    $(".add-field").on("click", function(e) {
+    $(".add-field").on("click", function(e) {  
       e.preventDefault();
+      var index = Math.random().toFixed(2);
 			$(".more-area-box").append(`
         <div class="mb-3 row">
           <label class="col-sm-3 col-form-label">Another Field/Area Name</label>
           <div class="col-sm-9">
-            <input class="form-control" type="text" name="topicName" placeholder="Enter field/area name..">
+            <input class="form-control" type="text" name="topicName${index}" placeholder="Enter field/area name..">
           </div>
         </div>
       `);
