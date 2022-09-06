@@ -130,7 +130,7 @@
                 </li>
                 <li class="sidebar-list">
                   <a class="sidebar-link sidebar-title link-nav" href="#"><i
-                      data-feather="edit"> </i><span>Project Registration</span></a>
+                      data-feather="edit"> </i><span>Set New Timeline</span></a>
                 </li>
                 <li class="sidebar-list">
                   <a class="sidebar-link sidebar-title link-nav" href="#"><i
@@ -174,12 +174,12 @@
           <div class="page-title">
             <div class="row">
               <div class="col-6">
-                <h3>Register New Project</h3>
+                <h3>Register New Timeline</h3>
               </div>
               <div class="col-6">
                 <ol class="breadcrumb">
                   <li class="breadcrumb-item"><a href="index.html"><i data-feather="home"></i></a></li>
-                  <li class="breadcrumb-item active">Register New Project</li>
+                  <li class="breadcrumb-item active">Register New Timeline</li>
                 </ol>
               </div>
             </div>
@@ -191,48 +191,33 @@
           <!-- register new project start -->
           <div class="card">
             <div class="card-header">
-              <h5>Offer New Project Timeline</h5>
+              <h5>Research Project Registration Form</h5>
               <span>Fill out this form.</span>
             </div>
             <div class="card-body">
-              <form class="needs-validation" novalidate="">
-                <div class="row g-3">
-                  <div class="col-md-4 mb-2">
-                    <label class="form-label" for="validationCustom01">First name</label>
-                    <input class="form-control" id="validationCustom01" type="text" value="Mark" required="">
-                  </div>
-                  <div class="col-md-4 mb-2">
-                    <label class="form-label" for="validationCustom02">Last name</label>
-                    <input class="form-control" id="validationCustom02" type="text" value="Otto" required="">
+              <form class="" >
+                <div class="mb-3 row">
+                  <label class="col-sm-3 col-form-label">Current Semester</label>
+                  <div class="col-sm-9">
+                    <input class="form-control" type="text" name="currentSemester" placeholder="Enter current semester..">
                   </div>
                 </div>
-                <div class="row g-3">
-                  <div class="col-md-6">
-                    <label class="form-label" for="validationCustom03">City</label>
-                    <input class="form-control" id="validationCustom03" type="text" placeholder="City" required="">
-                    <div class="invalid-feedback">Please provide a valid city.</div>
-                  </div>
-                  <div class="col-md-3">
-                    <label class="form-label" for="validationCustom04">State</label>
-                    <select class="form-select" id="validationCustom04" required="">
-                      <option selected="" disabled="" value="">Choose...</option>
-                      <option>...</option>
-                    </select>
-                    <div class="invalid-feedback">Please select a valid state.</div>
-                  </div>
-                  <div class="col-md-3 mb-3">
-                    <label class="form-label" for="validationCustom05">Zip</label>
-                    <input class="form-control" id="validationCustom05" type="text" placeholder="Zip" required="">
-                    <div class="invalid-feedback">Please provide a valid zip.</div>
+                <div class="mb-3 row">
+                  <label class="col-sm-3 col-form-label">Start Date and time</label>
+                  <div class="col-sm-9">
+                    <input class="form-control digits" type="datetime-local" name="startDate" value="2018-01-19T18:45:00">
                   </div>
                 </div>
-                <div class="mb-3">
-                  <div class="form-check">
-                    <div class="checkbox p-0">
-                      <input class="form-check-input" id="invalidCheck" type="checkbox" required="">
-                      <label class="form-check-label" for="invalidCheck">Agree to terms and conditions</label>
-                    </div>
-                    <div class="invalid-feedback">You must agree before submitting.</div>
+                <div class="mb-3 row">
+                  <label class="col-sm-3 col-form-label">End Date and time</label>
+                  <div class="col-sm-9">
+                    <input class="form-control digits" type="datetime-local" name="endDate" value="2018-01-19T18:45:00">
+                  </div>
+                </div>
+                <div class="mb-3 row">
+                  <label class="col-sm-3 col-form-label">Field/Area Name</label>
+                  <div class="col-sm-9">
+                    <input class="form-control" type="text" name="topicName1" placeholder="Enter field/area name..">
                   </div>
                 </div>
                 <button class="btn btn-primary" type="submit">Submit form</button>
