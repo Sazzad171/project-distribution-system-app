@@ -174,12 +174,12 @@
           <div class="page-title">
             <div class="row">
               <div class="col-6">
-                <h3>Research/Project Register Records</h3>
+                <h3>Admin Settings</h3>
               </div>
               <div class="col-6">
                 <ol class="breadcrumb">
                   <li class="breadcrumb-item"><a href="index.html"><i data-feather="home"></i></a></li>
-                  <li class="breadcrumb-item active">Research/Project Register Records</li>
+                  <li class="breadcrumb-item active">Settings</li>
                 </ol>
               </div>
             </div>
@@ -188,53 +188,42 @@
         <!-- Container-fluid starts-->
         <div class="container-fluid">
 
-          <!-- students table start -->
+          <!-- register new project start -->
           <div class="card">
-            <div class="card-header p-3">
-              <div class="row align-items-center">
-                <div class="col-md-8">
-                  <h6>Previous Records</h6>
-                </div>
-                <div class="col-md-4">
-                  
+            <div class="card-header">
+              <div class="row">
+                <div class="col-md-12">
+                  <h5>Change Admin Password</h5>
+                  <span>Fill out this form to change password.</span>
                 </div>
               </div>
             </div>
             <div class="card-body">
-              <!-- table -->
-              <div class="table-responsive">
-                <table class="table table-bordered">
-                  <thead class="table-primary">
-                    <tr>
-                      <th>Project Name</th>
-                      <th>Student Name</th>
-                      <th>Student ID</th>
-                      <th>Assigned Teacher</th>
-                      <th>Registered Semester</th>
-                      <th>Status</th>
-                      <th>Action</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>Web</td>
-                      <td>Sazzad</td>
-                      <td>CSE34243</td>
-                      <td>Bulbul ahmed</td>
-                      <td>Fall-2021</td>
-                      <td>Assigned</td>
-                      <td class="text-end">
-                        <button class="btn btn-warning-gradien" type="button"><i class="fa fa-edit"></i></button>
-                        <button class="btn btn-danger-gradien" type="button"><i class="fa fa-trash"></i></button>
-                      </td>
-                    </tr>
-                    
-                  </tbody>
-                </table>
-              </div>
+              <form class="" >
+                <div class="mb-3 row">
+                  <label class="col-sm-3 col-form-label">Current Password</label>
+                  <div class="col-sm-9">
+                    <input class="form-control" type="password" name="name" placeholder="Enter current password..">
+                  </div>
+                </div>
+                <div class="mb-3 row">
+                  <label class="col-sm-3 col-form-label">New Password</label>
+                  <div class="col-sm-9">
+                    <input class="form-control" type="password" name="email" placeholder="Enter new password..">
+                  </div>
+                </div>
+                <div class="mb-3 row">
+                  <label class="col-sm-3 col-form-label">Confirm New Password</label>
+                  <div class="col-sm-9">
+                    <input class="form-control" type="password" name="phone" placeholder="Confirm new password..">
+                  </div>
+                </div>
+                
+                <button class="btn btn-primary" type="submit">Submit form</button>
+              </form>
             </div>
           </div>
-          <!-- students table end -->
+          <!-- register new project end -->
 
         </div>
         <!-- Container-fluid Ends-->
