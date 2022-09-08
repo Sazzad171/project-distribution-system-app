@@ -15,27 +15,27 @@
     rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
   <!-- ico-font-->
-  <link rel="stylesheet" type="text/css" href="./assets/css/vendors/icofont.css">
+  <link rel="stylesheet" type="text/css" href="{{ asset('public/assets/css/vendors/icofont.css') }}">
   <!-- Themify icon-->
-  <link rel="stylesheet" type="text/css" href="./assets/css/vendors/themify.css">
+  <link rel="stylesheet" type="text/css" href="{{ asset('public/assets/css/vendors/themify.css') }}">
   <!-- Flag icon-->
-  <link rel="stylesheet" type="text/css" href="./assets/css/vendors/flag-icon.css">
+  <link rel="stylesheet" type="text/css" href="{{ asset('public/assets/css/vendors/flag-icon.css') }}">
   <!-- Feather icon-->
-  <link rel="stylesheet" type="text/css" href="./assets/css/vendors/feather-icon.css">
+  <link rel="stylesheet" type="text/css" href="{{ asset('public/assets/css/vendors/feather-icon.css') }}">
   <!-- Plugins css start-->
-  <link rel="stylesheet" type="text/css" href="./assets/css/vendors/scrollbar.css">
-  <link rel="stylesheet" type="text/css" href="./assets/css/vendors/animate.css">
-  <link rel="stylesheet" type="text/css" href="./assets/css/vendors/chartist.css">
-  <link rel="stylesheet" type="text/css" href="./assets/css/vendors/date-picker.css">
+  <link rel="stylesheet" type="text/css" href="{{ asset('public/assets/css/vendors/scrollbar.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ asset('public/assets/css/vendors/animate.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ asset('public/assets/css/vendors/chartist.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ asset('public/assets/css/vendors/date-picker.css') }}">
   <!-- Plugins css Ends-->
   <!-- Bootstrap css-->
-  <link rel="stylesheet" type="text/css" href="./assets/css/vendors/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="{{ asset('public/assets/css/vendors/bootstrap.css') }}">
   <!-- App css-->
-  <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
-  <link id="color" rel="stylesheet" href="./assets/css/color-1.css" media="screen">
+  <link rel="stylesheet" type="text/css" href="{{ asset('public/assets/css/style.css') }}">
+  <link id="color" rel="stylesheet" href="{{ asset('public/assets/css/color-1.css') }}" media="screen">
   <!-- Responsive css-->
-  <link rel="stylesheet" type="text/css" href="./assets/css/responsive.css">
-  <link rel="stylesheet" type="text/css" href="./assets/css/custom.css">
+  <link rel="stylesheet" type="text/css" href="{{ asset('public/assets/css/responsive.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ asset('public/assets/css/custom.css') }}">
 
   {{-- dynamic css --}}
     @yield('css')
@@ -66,7 +66,7 @@
       <div class="header-wrapper row m-0">
         <div class="header-logo-wrapper col-auto p-0">
           <div class="logo-wrapper"><a href="index.html"><img class="img-fluid main-logo"
-                src="./assets/images/logo/logo.png" alt=""></a></div>
+                src="{{ asset('public/assets/images/logo/logo.png') }}" alt=""></a></div>
           <div class="toggle-sidebar"><i class="status_toggle middle sidebar-toggle" data-feather="align-center"></i>
           </div>
         </div>
@@ -80,15 +80,15 @@
             <li class="maximize"><a class="text-dark" href="#!" onclick="javascript:toggleFullScreen()"><i
                   data-feather="maximize"></i></a></li>
             <li class="profile-nav onhover-dropdown p-0 me-0">
-              <div class="media profile-media"><img class="user-img b-r-10" src="./assets/images/user/user.png" alt="">
+              <div class="media profile-media"><img class="user-img b-r-10" src="{{ asset('public/assets/images/user/user.png') }}" alt="">
                 <div class="media-body"><span>John Doe</span>
                   <p class="mb-0 font-roboto">Admin <i class="middle fa fa-angle-down"></i></p>
                 </div>
               </div>
               <ul class="profile-dropdown onhover-show-div">
-                <li><a href="#"><i data-feather="user"></i><span>Account </span></a></li>
-                <li><a href="#"><i data-feather="settings"></i><span>Settings</span></a></li>
-                <li><a href="#"><i data-feather="log-in"> </i><span>Log out</span></a></li>
+                <li><a href="{{ route('myProfile') }}"><i data-feather="user"></i><span>Account </span></a></li>
+                <li><a href="{{ route('settings') }}"><i data-feather="settings"></i><span>Settings</span></a></li>
+                <li><a href="{{ route('logout') }}"><i data-feather="log-in"> </i><span>Log out</span></a></li>
               </ul>
             </li>
           </ul>
@@ -105,13 +105,13 @@
         <div>
           <div class="logo-wrapper">
             <a href="index.html">
-              <img class="img-fluid for-light main-logo" src="./assets/images/logo/logo.png" alt="">
-                <img class="img-fluid for-dark main-logo" src="./assets/images/logo/logo_dark.png" alt=""></a>
+              <img class="img-fluid for-light main-logo" src="{{ asset('public/assets/images/logo/logo.png') }}" alt="">
+                <img class="img-fluid for-dark main-logo" src="{{ asset('public/assets/images/logo/logo_dark.png') }}" alt=""></a>
             <div class="back-btn"><i class="fa fa-angle-left"></i></div>
             <div class="toggle-sidebar"><i class="status_toggle middle sidebar-toggle" data-feather="grid"> </i></div>
           </div>
           <div class="logo-icon-wrapper">
-            <a href="index.html"><img class="img-fluid" src="./assets/images/logo/logo-icon.png" alt=""></a>
+            <a href="index.html"><img class="img-fluid" src="{{ asset('public/assets/images/logo/logo-icon.png') }}" alt=""></a>
           </div>
           <nav class="sidebar-main">
             <div class="left-arrow" id="left-arrow"><i data-feather="arrow-left"></i></div>
@@ -129,28 +129,16 @@
                   </div>
                 </li>
                 <li class="sidebar-list">
-                  <a class="sidebar-link sidebar-title link-nav active" href="./index.html"><i
+                  <a class="sidebar-link sidebar-title link-nav active" href="{{ route('dashboard') }}"><i
                       data-feather="home"> </i><span>Dashboard</span></a>
                 </li>
                 <li class="sidebar-list">
-                  <a class="sidebar-link sidebar-title link-nav" href="#"><i
-                      data-feather="edit"> </i><span>Set New Timeline</span></a>
+                  <a class="sidebar-link sidebar-title link-nav" href="{{ route('registerMyProject') }}"><i
+                      data-feather="edit"> </i><span>Register My Project</span></a>
                 </li>
                 <li class="sidebar-list">
-                  <a class="sidebar-link sidebar-title link-nav" href="#"><i
-                      data-feather="box"> </i><span>Register Records</span></a>
-                </li>
-                <li class="sidebar-list">
-                  <a class="sidebar-link sidebar-title link-nav" href="#"><i
-                      data-feather="users"> </i><span>Students</span></a>
-                </li>
-                <li class="sidebar-list">
-                  <a class="sidebar-link sidebar-title link-nav" href="#"><i
-                      data-feather="user"> </i><span>Teachers</span></a>
-                </li>
-                <li class="sidebar-list">
-                  <a class="sidebar-link sidebar-title link-nav" href="#"><i
-                      data-feather="archive"> </i><span>Prev. Project Status</span></a>
+                  <a class="sidebar-link sidebar-title link-nav" href="{{ route('settings') }}"><i
+                      data-feather="settings"> </i><span>Settings</span></a>
                 </li>
                 <!-- <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="#"><i
                       data-feather="users"></i><span>Clients</span></a>

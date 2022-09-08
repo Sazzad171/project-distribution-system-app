@@ -15,4 +15,20 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('dashboard');
-});
+})->name('dashboard');
+
+Route::get('/register-my-project', function () {
+    return view('registerMyProject');
+})->name('registerMyProject');
+
+Route::get('/my-profile', function () {
+    return view('myProfile');
+})->name('myProfile');
+
+Route::get('/settings', function () {
+    return view('settings');
+})->name('settings');
+
+Route::get('/logout', function () {
+    return view('settings');
+})->name('logout');
