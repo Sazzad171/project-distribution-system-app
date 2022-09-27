@@ -129,7 +129,7 @@
                   </div>
                 </li>
                 <li class="sidebar-list">
-                  <a class="sidebar-link sidebar-title link-nav active" href="./index.html"><i
+                  <a class="sidebar-link sidebar-title link-nav active" href="{{ route('dashboard') }}"><i
                       data-feather="home"> </i><span>Dashboard</span></a>
                 </li>
                 <li class="sidebar-list">
@@ -141,7 +141,7 @@
                       data-feather="box"> </i><span>Register Records</span></a>
                 </li>
                 <li class="sidebar-list">
-                  <a class="sidebar-link sidebar-title link-nav" href="#"><i
+                  <a class="sidebar-link sidebar-title link-nav" href="{{ route('student.list') }}"><i
                       data-feather="users"> </i><span>Students</span></a>
                 </li>
                 <li class="sidebar-list">
