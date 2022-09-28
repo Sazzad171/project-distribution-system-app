@@ -34,8 +34,8 @@
             </div>
             <div class="col-md-4">
               <p class="text-md-end">
-                <a href="./add-student.html" class="btn btn-primary">Add New Students</a>
-              </p>
+                <a href="{{ route('student.create') }}" class="btn btn-primary">Add New Students</a>
+              </p> 
             </div>
           </div>
         </div>

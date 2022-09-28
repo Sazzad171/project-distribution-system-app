@@ -41,29 +41,48 @@
           </div>
         </div>
         <div class="card-body">
-          <form class="" >
+          <form method="POST" action="{{ route('student.store') }}">
+            @csrf
             <div class="mb-3 row">
               <label class="col-sm-3 col-form-label">Student Name</label>
               <div class="col-sm-9">
-                <input class="form-control" type="text" name="name" placeholder="Enter Name..">
+                <input class="form-control" type="text" name="std_name" value="{{ old('std_name') }}" placeholder="Enter Name..">
+                @error('std_name')
+                    <p class="text-danger">{{ $message }}</p>
+                @enderror
               </div>
             </div>
             <div class="mb-3 row">
               <label class="col-sm-3 col-form-label">Student email</label>
               <div class="col-sm-9">
-                <input class="form-control" type="email" name="email" placeholder="Enter email..">
+                <input class="form-control" type="email" name="std_email" value="{{ old('std_email') }}" placeholder="Enter email..">
+                @error('std_email')
+                    <p class="text-danger">{{ $message }}</p>
+                @enderror
               </div>
             </div>
             <div class="mb-3 row">
               <label class="col-sm-3 col-form-label">Student phone</label>
               <div class="col-sm-9">
-                <input class="form-control" type="text" name="phone" placeholder="Enter phone..">
+                <input class="form-control" type="number" name="std_phone" value="{{ old('std_phone') }}" placeholder="Enter phone..">
+                @error('std_phone')
+                    <p class="text-danger">{{ $message }}</p>
+                @enderror
               </div>
             </div>
-            <div class="mb-3 row">
+            {{-- <div class="mb-3 row">
               <label class="col-sm-3 col-form-label">Student Intake Semester</label>
               <div class="col-sm-9">
                 <input class="form-control" type="text" name="intakeSemester" placeholder="Enter intake semester..">
+              </div>
+            </div> --}}
+            <div class="mb-3 row">
+              <label class="col-sm-3 col-form-label">Password</label>
+              <div class="col-sm-9">
+                <input class="form-control" type="password" name="password" value="{{ old('password') }}" placeholder="Enter student password..">
+                @error('password')
+                    <p class="text-danger">{{ $message }}</p>
+                @enderror
               </div>
             </div>
             
