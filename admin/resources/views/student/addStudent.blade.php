@@ -6,7 +6,7 @@
 @endsection
 
 @section('main-content')
-<div class="page-body">
+  <div class="page-body">
     <div class="container-fluid">
       <div class="page-title">
         <div class="row">

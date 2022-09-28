@@ -53,21 +53,33 @@
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>Sazzad</td>
-                  <td>sazzad@gmail.com</td>
-                  <td>Summer - 2022</td>
-                  <td class="text-center">
-                    <span class="badge badge-light-success"><i class="me-2" data-feather="check"></i>Done</span>
-                    <span class="badge badge-light-warning"><i class="me-2" data-feather="rotate-cw"></i>Pending</span>
-                    <span class="badge badge-light-info"><i class="me-2" data-feather="clock"></i>In progress</span>
-                  </td>
-                  <td class="text-end">
-                    <button class="btn btn-warning-gradien" type="button"><i class="fa fa-edit"></i></button>
-                    <button class="btn btn-danger-gradien" type="button"><i class="fa fa-trash"></i></button>
-                  </td>
-                </tr>
-                
+                @unless (count($students) === 0)
+
+                  @foreach ($students as $student)
+                    <tr>
+                      <td>{{ $student->std_name }}</td>
+                      <td>{{ $student->std_email }}</td>
+                      <td>Summer - 2022</td>
+                      <td class="text-center">
+                        <span class="badge badge-light-success"><i class="me-2" data-feather="check"></i>Done</span>
+                        <span class="badge badge-light-warning"><i class="me-2" data-feather="rotate-cw"></i>Pending</span>
+                        <span class="badge badge-light-info"><i class="me-2" data-feather="clock"></i>In progress</span>
+                      </td>
+                      <td class="text-end">
+                        <a href="{{ route('student.edit', $student->std_id) }}" class="btn btn-warning-gradien" type="button"><i class="fa fa-edit"></i></a>
+                        <a href="{{ route('student.delete', $student->std_id) }}" class="btn btn-danger-gradien" type="button"><i class="fa fa-trash"></i></a>
+                      </td>
+                    </tr>
+                  @endforeach
+
+                @else
+                  <tr>
+                    <td colspan="5">
+                      <p class="text-center">No student found!</p>
+                    </td>
+                  </tr>
+
+                @endunless
               </tbody>
             </table>
           </div>
