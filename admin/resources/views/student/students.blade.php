@@ -41,7 +41,7 @@
         </div>
         <div class="card-body">
           <!-- table -->
-          <div class="table-responsive">
+          <div class="table-responsive mb-4">
             <table class="table table-bordered">
               <thead class="table-primary">
                 <tr>
@@ -83,6 +83,23 @@
               </tbody>
             </table>
           </div>
+
+          {{-- pagination --}}
+          @if ($students->lastPage() > 1 )
+            <ul class="pagination justify-content-center">
+                <li class="page-item  {{ $students->currentPage() == 1 ? ' disabled' : '' }}">
+                    <a class="page-link" href="{{ $students->url(1) }}">Previous</a>
+                </li>
+                @for ($i = 1; $i <= $students->lastPage(); $i++)
+                    <li class="page-item {{ $students->currentPage() == $i ? ' active' : '' }}">
+                        <a class="page-link" href="{{ $students->url($i) }}">{{ $i }}</a>
+                    </li>
+                @endfor
+                <li class="page-item {{ $students->currentPage() == $students->lastPage() ? ' disabled' : '' }}">
+                    <a class="page-link" href="{{ $students->url($students->currentPage() + 1) }}">Next</a>
+                </li>
+            </ul>
+        @endif
         </div>
       </div>
       <!-- students table end -->

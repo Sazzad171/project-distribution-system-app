@@ -37,6 +37,8 @@
   <link rel="stylesheet" type="text/css" href="{{ asset('public/assets/css/responsive.css') }}">
   <link rel="stylesheet" type="text/css" href="{{ asset('public/assets/css/custom.css') }}">
 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
   {{-- dynamic css --}}
     @yield('css')
 

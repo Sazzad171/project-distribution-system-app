@@ -31,9 +31,18 @@
 <!-- Plugins JS Ends-->
 <!-- Theme js-->
 <script src="{{ asset('public/assets/js/script.js') }}"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <!-- <script src="../assets/js/theme-customizer/customizer.js"></script> -->
 <!-- login js-->
 <!-- Plugin used-->
+
+{{-- show message --}}
+@if (session()->has('message'))
+    <script>
+        toastr.success('{{ session('message') }}')
+    </script>
+@endif
 
 {{-- dynamic js --}}
 @yield('js')

@@ -11,14 +11,14 @@ class StudentController extends Controller
 {
     // get all students
     public function index() {
-        $students = Student::where('std_status', 'active')->orderBy('created_at', 'desc')->paginate(10);
+        $students = Student::where('std_status', 'active')->orderBy('created_at', 'desc')->paginate(20);
         
         return view('student.students', ['students' => $students]);
     }
 
+
     // create student form
     public function create() {
-
         return view('student.addStudent');
     }
 
@@ -44,6 +44,7 @@ class StudentController extends Controller
         return redirect('/student');
     }
 
+
     // show update form
     public function edit($id) {
         $studentDetails = Student::where('std_id', $id)->first();
@@ -67,16 +68,19 @@ class StudentController extends Controller
         $student->update($formFields);
 
         // show message
-        Session::flash('message', 'Student Edited Successfully');
+        Session::flash('message', 'Student Edited Successfully!');
 
         return redirect('/student');
     }
+
 
     // inactive any student
     public function delete(Request $request ,Student $student) {
         $field['std_status'] = 'inactive';
 
         $student->update($field);
+
+        Session:flash('message', 'Student deactivated sucessfully!');
 
         return redirect('/student');
     }
