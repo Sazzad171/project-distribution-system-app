@@ -75,7 +75,7 @@ class StudentController extends Controller
 
 
     // inactive any student
-    public function delete(Request $request ,Student $student) {
+    public function delete(Student $student) {
         $field['std_status'] = 'inactive';
 
         $student->update($field);
