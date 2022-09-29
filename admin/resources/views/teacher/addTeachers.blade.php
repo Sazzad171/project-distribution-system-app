@@ -41,27 +41,46 @@
           </div>
         </div>
         <div class="card-body">
-          <form class="" >
+          <form method="POST" action="{{ route('teacher.store') }}">
+            @csrf
             <div class="mb-3 row">
-              <label class="col-sm-3 col-form-label">Teachers Name</label>
+              <label class="col-sm-3 col-form-label">Teacher Name</label>
               <div class="col-sm-9">
-                <input class="form-control" type="text" name="name" placeholder="Enter Name..">
+                <input class="form-control" type="text" name="tchr_name" value="{{ old('tchr_name') }}" placeholder="Enter Name..">
+                @error('tchr_name')
+                    <p class="text-danger">{{ $message }}</p>
+                @enderror
               </div>
             </div>
             <div class="mb-3 row">
-              <label class="col-sm-3 col-form-label">Teachers email</label>
+              <label class="col-sm-3 col-form-label">Teacher email</label>
               <div class="col-sm-9">
-                <input class="form-control" type="email" name="email" placeholder="Enter email..">
+                <input class="form-control" type="email" name="tchr_email" value="{{ old('tchr_email') }}" placeholder="Enter email..">
+                @error('tchr_email')
+                    <p class="text-danger">{{ $message }}</p>
+                @enderror
               </div>
             </div>
             <div class="mb-3 row">
-              <label class="col-sm-3 col-form-label">Teachers phone</label>
+              <label class="col-sm-3 col-form-label">Teacher phone</label>
               <div class="col-sm-9">
-                <input class="form-control" type="text" name="phone" placeholder="Enter phone..">
+                <input class="form-control" type="number" name="tchr_phone" value="{{ old('tchr_phone') }}" placeholder="Enter phone..">
+                @error('tchr_phone')
+                    <p class="text-danger">{{ $message }}</p>
+                @enderror
+              </div>
+            </div>
+            <div class="mb-3 row">
+              <label class="col-sm-3 col-form-label">Teacher new password</label>
+              <div class="col-sm-9">
+                <input class="form-control" type="password" name="tchr_password" value="{{ old('tchr_password') }}" placeholder="Enter new password..">
+                @error('tchr_password')
+                    <p class="text-danger">{{ $message }}</p>
+                @enderror
               </div>
             </div>
             
-            <button class="btn btn-primary" type="submit">Submit form</button>
+            <button class="btn btn-primary" type="submit">Add new teacher</button>
           </form>
         </div>
       </div>

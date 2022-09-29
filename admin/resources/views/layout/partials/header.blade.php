@@ -147,7 +147,7 @@
                       data-feather="users"> </i><span>Students</span></a>
                 </li>
                 <li class="sidebar-list">
-                  <a class="sidebar-link sidebar-title link-nav" href="#"><i
+                  <a class="sidebar-link sidebar-title link-nav" href="{{ route('teacher.list') }}"><i
                       data-feather="user"> </i><span>Teachers</span></a>
                 </li>
                 <li class="sidebar-list">
