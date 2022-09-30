@@ -43,4 +43,46 @@ class TeacherController extends Controller
 
         return redirect('/teacher');
     }
+
+
+    // show update teacher form
+    public function edit($id) {
+        $teacherDetails = Teacher::where('tchr_id', $id)->first();
+
+        return view('teacher.editTeacher', ['teacherDetails' => $teacherDetails]);
+    }
+
+    // update edited teacher info
+    public function update(Request $request, Teacher $teacher) {
+        // validation
+        $formFields = $request->validate([
+            'tchr_name' => 'required',
+            'tchr_phone' => 'required'
+        ]);
+
+        // hash password
+        if ($request->tchr_password) {
+            $formFields['tchr_password'] = bcrypt($request->tchr_password);
+        }
+
+        // store at DB
+        $teacher->update($formFields);
+
+        // show message
+        Session::flash('message', 'Teacher Edited Successfully!');
+
+        return redirect('/teacher');
+    }
+
+
+    // inactive any teacher status
+    public function delete(Teacher $teacher) {
+        $updateStatus['status'] = 'inactive';
+
+        $teacher->update($updateStatus);
+
+        Session::flash('message', 'Teacher removed successfully!');
+
+        return redirect('/teacher');
+    }
 }

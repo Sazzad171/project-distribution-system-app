@@ -99,7 +99,7 @@
                     <a class="page-link" href="{{ $students->url($students->currentPage() + 1) }}">Next</a>
                 </li>
             </ul>
-        @endif
+          @endif
         </div>
       </div>
       <!-- students table end -->

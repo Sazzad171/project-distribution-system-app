@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.1.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 29, 2022 at 09:49 AM
--- Server version: 10.4.24-MariaDB
--- PHP Version: 7.4.29
+-- Generation Time: Sep 30, 2022 at 08:53 PM
+-- Server version: 10.4.18-MariaDB
+-- PHP Version: 7.4.16
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,6 +20,49 @@ SET time_zone = "+00:00";
 --
 -- Database: `ju_project`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `field`
+--
+
+CREATE TABLE `field` (
+  `fld_id` int(11) NOT NULL,
+  `fld_name` varchar(200) DEFAULT NULL,
+  `fld_status` varchar(20) NOT NULL DEFAULT 'active',
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `field`
+--
+
+INSERT INTO `field` (`fld_id`, `fld_name`, `fld_status`, `created_at`) VALUES
+(1, 'Data Science and ML', 'active', '2022-09-30 18:50:56'),
+(2, 'Software Eng', 'active', '2022-09-30 18:51:42');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `semester`
+--
+
+CREATE TABLE `semester` (
+  `sem_id` int(11) NOT NULL,
+  `sem_name` varchar(20) DEFAULT NULL,
+  `sem_year` int(10) DEFAULT NULL,
+  `sem_status` varchar(50) NOT NULL DEFAULT 'active',
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `semester`
+--
+
+INSERT INTO `semester` (`sem_id`, `sem_name`, `sem_year`, `sem_status`, `created_at`) VALUES
+(1, 'Fall', 2022, 'active', '2022-09-30 08:13:23'),
+(2, 'Summer', 2021, 'active', '2022-09-30 08:43:48');
 
 -- --------------------------------------------------------
 
@@ -46,9 +89,9 @@ CREATE TABLE `student` (
 --
 
 INSERT INTO `student` (`std_id`, `std_name`, `std_email`, `std_phone`, `password`, `email_verified_at`, `remember_token`, `created_at`, `updated_at`, `std_status`, `fk_teacher_id`) VALUES
-(4, 'Sajjad', 'mail@mail.com', '0167895556', '$2y$10$O2SKG83Pn.pI8UEQDqmqauLx.5md2oIj1qcxdSC8Q8rL3t5FsNc8K', NULL, NULL, '2022-09-28 06:59:11', NULL, 'inactive', 1),
-(5, 'Gausul Azam', 'gausul@mail.com', '01655489', '$2y$10$SX6SPEQS62aOb8jpUv8vKOlGEIxtUjThm2zo5u.dOaa.MxT2bwBhm', NULL, NULL, '2022-09-28 08:33:51', NULL, 'active', 1),
-(16, 'Tushi', 'fsaf@gs.dd', '0167945453', '$2y$10$owvpV/I59MRAB4M/Xo/g8eyt/F/XGeeCuHyI6sL4a7SLMn75E/B7m', NULL, NULL, '2022-09-28 10:04:01', NULL, 'active', 1);
+(4, 'Sajjad', 'mail@mail.com', '0167895556', '$2y$10$40JWpNoEL4DlABxutbys8eO5Bv/zpL3/Ei.ObQUY4tX32LxHL4VPK', NULL, NULL, '2022-09-28 06:59:11', NULL, 'active', 1),
+(5, 'Gausul Asam', 'gausul@mail.com', '01655489', '$2y$10$SX6SPEQS62aOb8jpUv8vKOlGEIxtUjThm2zo5u.dOaa.MxT2bwBhm', NULL, NULL, '2022-09-28 08:33:51', NULL, 'active', 1),
+(16, 'Tushi', 'fsaf@gs.dd', '0167945453', '$2y$10$owvpV/I59MRAB4M/Xo/g8eyt/F/XGeeCuHyI6sL4a7SLMn75E/B7m', NULL, NULL, '2022-09-28 10:04:01', NULL, 'inactive', 1);
 
 -- --------------------------------------------------------
 
@@ -75,11 +118,23 @@ CREATE TABLE `teacher` (
 
 INSERT INTO `teacher` (`tchr_id`, `tchr_name`, `tchr_email`, `tchr_phone`, `tchr_password`, `email_verified_at`, `remember_token`, `created_at`, `updated_at`, `status`) VALUES
 (1, 'test', 'test@email.com', '0165878999', '$2y$10$kYKjlwcXjLiUBy7TaSimKugo/BmTZHgOxwwPlWnJJtQoCzs0cGgk.', NULL, NULL, '2022-09-29 06:04:30', '2022-09-29 06:04:30', 'active'),
-(2, 'test', 'test@mail.com', '012545877', '$2y$10$o5rjixZNjPpQu2oenCgKVuuz2Bs2NwdbtQjTxaUak.S6nT2ytdVwa', NULL, NULL, '2022-09-29 06:11:25', '2022-09-29 06:11:25', 'active');
+(2, 'test ok', 'test@mail.com', '012545877', '$2y$10$gZFvA/MTX9hmg20vy0udOeJJ0OBVCFSkn74zBbLPjJm5yOuOqFumm', NULL, NULL, '2022-09-29 06:11:25', '2022-09-29 06:11:25', 'active');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `field`
+--
+ALTER TABLE `field`
+  ADD PRIMARY KEY (`fld_id`);
+
+--
+-- Indexes for table `semester`
+--
+ALTER TABLE `semester`
+  ADD PRIMARY KEY (`sem_id`);
 
 --
 -- Indexes for table `student`
@@ -96,6 +151,18 @@ ALTER TABLE `teacher`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `field`
+--
+ALTER TABLE `field`
+  MODIFY `fld_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `semester`
+--
+ALTER TABLE `semester`
+  MODIFY `sem_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `student`

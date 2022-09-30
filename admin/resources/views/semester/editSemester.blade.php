@@ -11,12 +11,12 @@
       <div class="page-title">
         <div class="row">
           <div class="col-6">
-            <h3>Edit Teacher</h3>
+            <h3>Edit Semester</h3>
           </div>
           <div class="col-6">
             <ol class="breadcrumb">
               <li class="breadcrumb-item"><a href="index.html"><i data-feather="home"></i></a></li>
-              <li class="breadcrumb-item active">Edit Teacher</li>
+              <li class="breadcrumb-item active">Edit Semester</li>
             </ol>
           </div>
         </div>
@@ -30,7 +30,7 @@
         <div class="card-header">
           <div class="row">
             <div class="col-md-8">
-              <h5>Edit Teacher Form</h5>
+              <h5>Edit Semester Form</h5>
               <span>Fill out this form.</span>
             </div>
             <div class="col-md-4">
@@ -41,43 +41,28 @@
           </div>
         </div>
         <div class="card-body">
-          <form method="POST" action="{{ route('teacher.update', $teacherDetails->tchr_id) }}">
+          <form method="POST" action="{{ route('semester.update', $semesterDetails->sem_id) }}">
             @csrf
             <div class="mb-3 row">
-              <label class="col-sm-3 col-form-label">Teacher Name</label>
+              <label class="col-sm-3 col-form-label">Semester Name</label>
               <div class="col-sm-9">
-                <input class="form-control" type="text" name="tchr_name" value="{{ $teacherDetails->tchr_name }}" placeholder="Enter Name..">
-                @error('tchr_name')
+                <input class="form-control" type="text" name="sem_name" value="{{ $semesterDetails->sem_name }}" placeholder="Enter Semester Name..">
+                @error('sem_name')
                     <p class="text-danger">{{ $message }}</p>
                 @enderror
               </div>
             </div>
             <div class="mb-3 row">
-              <label class="col-sm-3 col-form-label">Teacher email</label>
+              <label class="col-sm-3 col-form-label">Semester Year</label>
               <div class="col-sm-9">
-                <input class="form-control" type="email" name="tchr_email" value="{{ $teacherDetails->tchr_email }}" placeholder="You can't update email" readonly>
-              </div>
-            </div>
-            <div class="mb-3 row">
-              <label class="col-sm-3 col-form-label">Teacher phone</label>
-              <div class="col-sm-9">
-                <input class="form-control" type="number" name="tchr_phone" value="{{ $teacherDetails->tchr_phone }}" placeholder="Enter phone..">
-                @error('tchr_phone')
-                    <p class="text-danger">{{ $message }}</p>
-                @enderror
-              </div>
-            </div>
-            <div class="mb-3 row">
-              <label class="col-sm-3 col-form-label">Password</label>
-              <div class="col-sm-9">
-                <input class="form-control" type="password" name="tchr_password" placeholder="Enter teacher new password (if need)..">
-                @error('tchr_password')
+                <input class="form-control" type="number" min="1900" max="2099" name="sem_year" value="{{ $semesterDetails->sem_year }}" placeholder="Enter year..">
+                @error('sem_year')
                     <p class="text-danger">{{ $message }}</p>
                 @enderror
               </div>
             </div>
             
-            <button class="btn btn-primary" type="submit">Edit Teacher Info</button>
+            <button class="btn btn-primary" type="submit">Edit Info</button>
           </form>
         </div>
       </div>

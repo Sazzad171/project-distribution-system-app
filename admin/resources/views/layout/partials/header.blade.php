@@ -151,6 +151,14 @@
                       data-feather="user"> </i><span>Teachers</span></a>
                 </li>
                 <li class="sidebar-list">
+                  <a class="sidebar-link sidebar-title link-nav" href="{{ route('semester.list') }}"><i
+                      data-feather="user"> </i><span>Semester</span></a>
+                </li>
+                <li class="sidebar-list">
+                  <a class="sidebar-link sidebar-title link-nav" href="{{ route('field.list') }}"><i
+                      data-feather="box"> </i><span>Field/Areas</span></a>
+                </li>
+                <li class="sidebar-list">
                   <a class="sidebar-link sidebar-title link-nav" href="#"><i
                       data-feather="archive"> </i><span>Prev. Project Status</span></a>
                 </li>

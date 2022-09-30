@@ -57,12 +57,13 @@ class StudentController extends Controller
         // validation
         $formFields = $request->validate([
             'std_name' => 'required',
-            'std_phone' => 'required',
-            'password' => ''
+            'std_phone' => 'required'
         ]);
 
         // hash password
-        $formFields['password'] = bcrypt($formFields['password']);
+        if ($request->password) {
+            $formFields['password'] = bcrypt($request->password);
+        }
 
         // store at DB
         $student->update($formFields);
@@ -80,7 +81,7 @@ class StudentController extends Controller
 
         $student->update($field);
 
-        Session:flash('message', 'Student deactivated sucessfully!');
+        Session::flash('message', 'Student deactivated sucessfully!');
 
         return redirect('/student');
     }
