@@ -28,6 +28,7 @@ class SemesterController extends Controller
             'sem_name' => 'required',
             'sem_year' => 'required'
         ]);
+        $formFields['sem_title'] = $formFields['sem_name'] . ' - ' . $formFields['sem_year'];
 
         // store at DB
         Semester::create($formFields);
@@ -53,6 +54,7 @@ class SemesterController extends Controller
             'sem_name' => 'required',
             'sem_year' => 'required'
         ]);
+        $formFields['sem_title'] = $formFields['sem_name'] . ' - ' . $formFields['sem_year'];
 
         // store at DB
         $semester->update($formFields);

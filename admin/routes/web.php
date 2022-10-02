@@ -5,6 +5,7 @@ use App\Http\Controllers\StudentController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\SemesterController;
 use App\Http\Controllers\FieldController;
+use App\Http\Controllers\TimelineController;
 
 // dashboard
 Route::get('/', function () {
@@ -61,4 +62,17 @@ Route::group(['prefix' => 'field', 'as' => 'field.'], function () {
     Route::post('/update/{field}', [FieldController::class, 'update'])->name('update');
 
     Route::get('/delete/{field}', [FieldController::class, 'delete'])->name('delete');
+});
+
+// register timeline
+Route::group(['prefix' => 'timeline', 'as' => 'timeline.'], function () {
+    Route::get('/', [TimelineController::class, 'index'])->name('list');
+
+    Route::get('/create', [TimelineController::class, 'create'])->name('create');
+    Route::post('/store', [TimelineController::class, 'store'])->name('store');
+
+    Route::get('/edit/{id}', [TimelineController::class, 'edit'])->name('edit');
+    Route::post('/update/{timeline}', [TimelineController::class, 'update'])->name('update');
+
+    Route::get('/delete/{timeline}', [TimelineController::class, 'delete'])->name('delete');
 });

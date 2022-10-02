@@ -33,63 +33,61 @@
               <h5>Research Project Registration Form</h5>
               <span>Fill out this form.</span>
             </div>
-            <div class="col-sm-4">
-              <p class="text-sm-end">
-                <a href="./add-new-area.html" class="btn btn-success">Add New Field/Area</a>
-              </p>
-            </div>
           </div>
           
         </div>
         <div class="card-body">
-          <form class="" >
+          <form method="POST" action="{{ route('timeline.store') }}">
+            @csrf
             <div class="mb-3 row">
               <label class="col-sm-3 col-form-label">Current Semester</label>
               <div class="col-sm-9">
-                <input class="form-control" type="text" name="currentSemester" placeholder="Enter current semester..">
+                <select name="tl_semester" class="form-control">
+                  <option value="">Select a semester</option>
+                  @foreach ($semesters as $semester)
+                    <option value="{{ $semester->sem_id }}">{{ $semester->sem_title }}</option>
+                  @endforeach
+                </select>
+                @error('tl_semester')
+                    <p class="text-danger">{{ $message }}</p>
+                @enderror
               </div>
             </div>
             <div class="mb-3 row">
               <label class="col-sm-3 col-form-label">Start Date and time</label>
               <div class="col-sm-9">
-                <input class="form-control digits" type="datetime-local" name="startDate" value="2018-01-19T18:45:00">
+                <input class="form-control digits" type="datetime-local" name="tl_start" value="{{ old('tl_start') }}">
+                @error('tl_start')
+                    <p class="text-danger">{{ $message }}</p>
+                @enderror
               </div>
             </div>
             <div class="mb-3 row">
               <label class="col-sm-3 col-form-label">End Date and time</label>
               <div class="col-sm-9">
-                <input class="form-control digits" type="datetime-local" name="endDate" value="2018-01-19T18:45:00">
+                <input class="form-control digits" type="datetime-local" name="tl_end" value="{{ old('tl_end') }}">
+                @error('tl_end')
+                    <p class="text-danger">{{ $message }}</p>
+                @enderror
               </div>
             </div>
             <div class="mb-3 row">
               <label class="col-sm-3 col-form-label">Select All Field/Area</label>
               <div class="col-sm-9">
                 <div class="animate-chk">
-                  <label for="areaName1" class="me-3">
-                    <input class="checkbox_animated" id="areaName1" name="areaName[]" type="checkbox"> 
-                    Option 1
-                  </label>
-                  <label for="areaName2" class="me-3">
-                    <input class="checkbox_animated" id="areaName2" name="areaName[]" type="checkbox"> 
-                    Option 2
-                  </label>
-                  <label for="areaName3" class="me-3">
-                    <input class="checkbox_animated" id="areaName3" name="areaName[]" type="checkbox"> 
-                    Option 3
-                  </label>
+                  @foreach ($fields as $field)
+                    <label for="field{{ $field->fld_id }}" class="me-3">
+                      <input class="checkbox_animated" id="field{{ $field->fld_id }}" name="tl_field[]" type="checkbox" value="{{ $field->fld_id }}"> 
+                      {{ $field->fld_name }}
+                    </label>
+                  @endforeach
                 </div>
+                @error('tl_field')
+                    <p class="text-danger">{{ $message }}</p>
+                @enderror
               </div>
             </div>
-            <!-- dynamic new field -->
-            <!-- <div class="more-area-box"></div> -->
 
-            <!-- <div class="mb-3 row">
-              <label class="col-sm-3 col-form-label">Add More Field/Area</label>
-              <div class="col-sm-9">
-                <button class="btn btn-primary add-field">Add New</button>
-                <button class="btn btn-danger remove-field">Remove Last</button>
-              </div>
-            </div> -->
             <button class="btn btn-primary" type="submit">Submit form</button>
           </form>
         </div>

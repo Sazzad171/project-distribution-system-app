@@ -9,7 +9,7 @@ class Semester extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['sem_name', 'sem_year', 'sem_status'];
+    protected $fillable = ['sem_name', 'sem_year', 'sem_title', 'sem_status'];
 
     protected $table = 'semester';
     protected $primaryKey = 'sem_id';

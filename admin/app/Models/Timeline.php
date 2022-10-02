@@ -1,0 +1,17 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class Timeline extends Model
+{
+    use HasFactory;
+
+    protected $fillable = ['tl_start', 'tl_end', 'fk_sem_id', 'fk_fld_id', 'tl_status'];
+
+    protected $table = 'timeline';
+    protected $primaryKey = 'tl_id';
+    public $timestamps = false;
+}

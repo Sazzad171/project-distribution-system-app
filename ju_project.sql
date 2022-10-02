@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 30, 2022 at 08:53 PM
+-- Generation Time: Oct 02, 2022 at 08:50 PM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 7.4.16
 
@@ -52,6 +52,7 @@ CREATE TABLE `semester` (
   `sem_id` int(11) NOT NULL,
   `sem_name` varchar(20) DEFAULT NULL,
   `sem_year` int(10) DEFAULT NULL,
+  `sem_title` varchar(50) DEFAULT NULL,
   `sem_status` varchar(50) NOT NULL DEFAULT 'active',
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -60,9 +61,10 @@ CREATE TABLE `semester` (
 -- Dumping data for table `semester`
 --
 
-INSERT INTO `semester` (`sem_id`, `sem_name`, `sem_year`, `sem_status`, `created_at`) VALUES
-(1, 'Fall', 2022, 'active', '2022-09-30 08:13:23'),
-(2, 'Summer', 2021, 'active', '2022-09-30 08:43:48');
+INSERT INTO `semester` (`sem_id`, `sem_name`, `sem_year`, `sem_title`, `sem_status`, `created_at`) VALUES
+(1, 'Fall', 2022, 'Fall - 2022', 'active', '2022-09-30 08:13:23'),
+(2, 'Summer', 2021, 'Summer - 2021', 'active', '2022-09-30 08:43:48'),
+(3, 'Spring', 2022, 'Spring - 2022', 'active', '2022-10-02 09:39:50');
 
 -- --------------------------------------------------------
 
@@ -120,6 +122,29 @@ INSERT INTO `teacher` (`tchr_id`, `tchr_name`, `tchr_email`, `tchr_phone`, `tchr
 (1, 'test', 'test@email.com', '0165878999', '$2y$10$kYKjlwcXjLiUBy7TaSimKugo/BmTZHgOxwwPlWnJJtQoCzs0cGgk.', NULL, NULL, '2022-09-29 06:04:30', '2022-09-29 06:04:30', 'active'),
 (2, 'test ok', 'test@mail.com', '012545877', '$2y$10$gZFvA/MTX9hmg20vy0udOeJJ0OBVCFSkn74zBbLPjJm5yOuOqFumm', NULL, NULL, '2022-09-29 06:11:25', '2022-09-29 06:11:25', 'active');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `timeline`
+--
+
+CREATE TABLE `timeline` (
+  `tl_id` int(11) NOT NULL,
+  `tl_start` timestamp NULL DEFAULT NULL,
+  `tl_end` timestamp NULL DEFAULT NULL,
+  `fk_sem_id` int(11) DEFAULT NULL,
+  `fk_fld_id` varchar(255) DEFAULT NULL,
+  `tl_status` varchar(20) NOT NULL DEFAULT 'active',
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `timeline`
+--
+
+INSERT INTO `timeline` (`tl_id`, `tl_start`, `tl_end`, `fk_sem_id`, `fk_fld_id`, `tl_status`, `created_at`) VALUES
+(3, '2022-10-03 18:45:00', '2022-10-04 18:45:00', 2, '[\"2\"]', 'active', '2022-10-02 18:49:06');
+
 --
 -- Indexes for dumped tables
 --
@@ -149,6 +174,12 @@ ALTER TABLE `teacher`
   ADD PRIMARY KEY (`tchr_id`);
 
 --
+-- Indexes for table `timeline`
+--
+ALTER TABLE `timeline`
+  ADD PRIMARY KEY (`tl_id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -162,7 +193,7 @@ ALTER TABLE `field`
 -- AUTO_INCREMENT for table `semester`
 --
 ALTER TABLE `semester`
-  MODIFY `sem_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `sem_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `student`
@@ -175,6 +206,12 @@ ALTER TABLE `student`
 --
 ALTER TABLE `teacher`
   MODIFY `tchr_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `timeline`
+--
+ALTER TABLE `timeline`
+  MODIFY `tl_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

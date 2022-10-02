@@ -135,13 +135,13 @@
                       data-feather="home"> </i><span>Dashboard</span></a>
                 </li>
                 <li class="sidebar-list">
-                  <a class="sidebar-link sidebar-title link-nav" href="#"><i
-                      data-feather="edit"> </i><span>Set New Timeline</span></a>
+                  <a class="sidebar-link sidebar-title link-nav" href="{{ route('timeline.list') }}"><i
+                      data-feather="calendar"> </i><span>Registration Timeline</span></a>
                 </li>
-                <li class="sidebar-list">
+                {{-- <li class="sidebar-list">
                   <a class="sidebar-link sidebar-title link-nav" href="#"><i
                       data-feather="box"> </i><span>Register Records</span></a>
-                </li>
+                </li> --}}
                 <li class="sidebar-list">
                   <a class="sidebar-link sidebar-title link-nav" href="{{ route('student.list') }}"><i
                       data-feather="users"> </i><span>Students</span></a>
@@ -152,7 +152,7 @@
                 </li>
                 <li class="sidebar-list">
                   <a class="sidebar-link sidebar-title link-nav" href="{{ route('semester.list') }}"><i
-                      data-feather="user"> </i><span>Semester</span></a>
+                      data-feather="inbox"> </i><span>Semester</span></a>
                 </li>
                 <li class="sidebar-list">
                   <a class="sidebar-link sidebar-title link-nav" href="{{ route('field.list') }}"><i
