@@ -45,4 +45,16 @@ class TimelineController extends Controller
 
         return redirect('timeline')->with('message', 'Registration timeline created successfully!');
     }
+
+
+    // show edit timeline form
+    public function edit($id) {
+        $timelineDetails = Timeline::where('tl_id', $id)->first();
+
+        $semesters = Semester::where('sem_status', 'active')->orderBy('created_at', 'desc')->get();
+        
+        $fields = Field::where('fld_status', 'active')->orderBy('created_at', 'desc')->get();
+        
+        return view('timeline.editTimeline', ['timelineDetails' => $timelineDetails, 'semesters' => $semesters, 'fields' => $fields]);
+    }
 }
