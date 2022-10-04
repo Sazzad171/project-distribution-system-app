@@ -14,4 +14,9 @@ class Timeline extends Model
     protected $table = 'timeline';
     protected $primaryKey = 'tl_id';
     public $timestamps = false;
+
+    // relationship with semester
+    public function semester() {
+        return $this->hasOne(Semester::class, 'sem_id');
+    }
 }
