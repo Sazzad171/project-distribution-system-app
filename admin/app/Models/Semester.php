@@ -17,6 +17,6 @@ class Semester extends Model
 
     // relationship with timeline
     public function timeline() {
-        return $this->belongsTo(Timeline::class, 'tl_id');
+        return $this->belongsTo(Semester::class);
     }
 }

@@ -74,5 +74,5 @@ Route::group(['prefix' => 'timeline', 'as' => 'timeline.'], function () {
     Route::get('/edit/{id}', [TimelineController::class, 'edit'])->name('edit');
     Route::post('/update/{timeline}', [TimelineController::class, 'update'])->name('update');
 
-    Route::get('/delete/{timeline}', [TimelineController::class, 'delete'])->name('delete');
+    // Route::get('/delete/{timeline}', [TimelineController::class, 'delete'])->name('delete');
 });

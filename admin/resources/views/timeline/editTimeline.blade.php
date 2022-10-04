@@ -45,7 +45,7 @@
                 <select name="tl_semester" class="form-control">
                   <option value="">Select a semester</option>
                   @foreach ($semesters as $semester)
-                    @if ($semester->sem_id === $timelineDetails->tl_id) {
+                    @if ($semester->sem_id === $timelineDetails->fk_sem_id) {
                         <option value="{{ $semester->sem_id }}" selected>{{ $semester->sem_title }}</option>
                     }
                     @else {

@@ -57,7 +57,7 @@
 
                   @foreach ($timelines as $timeline)
                     <tr>
-                      <td>{{ $timeline->fk_sem_id }}</td>
+                      <td>{{ $timeline->semester->sem_title }}</td>
                       <td>{{ $timeline->tl_start }}</td>
                       <td>{{ $timeline->tl_end }}</td>
                       <td class="text-center">

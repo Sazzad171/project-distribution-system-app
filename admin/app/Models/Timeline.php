@@ -17,6 +17,6 @@ class Timeline extends Model
 
     // relationship with semester
     public function semester() {
-        return $this->hasOne(Semester::class, 'sem_id');
+        return $this->hasOne(Semester::class, 'sem_id', 'fk_sem_id');
     }
 }

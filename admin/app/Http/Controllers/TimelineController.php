@@ -11,7 +11,10 @@ class TimelineController extends Controller
 {
     //show all timeline
     public function index() {
-        $timelines = Timeline::where('tl_status', 'active')->orderBy('created_at', 'desc')->paginate(20);
+        // $semester = Timeline::find(5)->semester;dd($semester);
+        $timelines = Timeline::with('semester')->where('tl_status', 'active')->orderBy('created_at', 'desc')->paginate(20);
+
+        // $timelines = Timeline::where('tl_status', 'active')->orderBy('created_at', 'desc')->paginate(20);
 
         return view('timeline.timelines', ['timelines' => $timelines]);
     }
@@ -56,5 +59,23 @@ class TimelineController extends Controller
         $fields = Field::where('fld_status', 'active')->orderBy('created_at', 'desc')->get();
         
         return view('timeline.editTimeline', ['timelineDetails' => $timelineDetails, 'semesters' => $semesters, 'fields' => $fields]);
+    }
+
+    // store updated timeline data to db
+    public function update(Request $request, Timeline $timeline) {
+        $formFields = $request->validate([
+            'tl_semester' => 'required',
+            'tl_start' => 'required',
+            'tl_end' => 'required',
+            'tl_field' => 'required'
+        ]);
+
+        $formFields['fk_sem_id'] = $formFields['tl_semester'];
+        $formFields['tl_field'] = $request->input('tl_field');
+        $formFields['fk_fld_id'] = json_encode($formFields['tl_field']);
+
+        $timeline->update($formFields);
+
+        return redirect('/timeline')->with('message', 'Timeline Updated Successfully!');
     }
 }
