@@ -9,7 +9,7 @@ class Timeline extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['tl_start', 'tl_end', 'fk_sem_id', 'fk_fld_id', 'tl_status'];
+    protected $fillable = ['tl_start', 'tl_end', 'fk_sem_id', 'tl_status'];
 
     protected $table = 'timeline';
     protected $primaryKey = 'tl_id';

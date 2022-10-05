@@ -84,7 +84,11 @@
                   @foreach ($fields as $field)
                     <label for="field{{ $field->fld_id }}" class="me-3">
                       <input class="checkbox_animated" id="field{{ $field->fld_id }}" name="tl_field[]" type="checkbox" 
-                        value="{{ $field->fld_id }}"> 
+                        value="{{ $field->fld_id }}" 
+                        @foreach ($registeredFields as $regFldItem)
+                          {{ $timelineDetails->tl_id === $regFldItem->fk_timeline_id && $field->fld_id === $regFldItem->fk_fld_id ? 'checked' : '' }}
+                        @endforeach
+                      >
                       {{ $field->fld_name }}
                     </label>
                   @endforeach

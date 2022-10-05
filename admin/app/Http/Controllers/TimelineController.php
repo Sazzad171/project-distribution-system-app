@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Field;
+use App\Models\RegisteredFields;
 use App\Models\Semester;
 use App\Models\Timeline;
 use Illuminate\Http\Request;
@@ -38,13 +39,22 @@ class TimelineController extends Controller
             'tl_field' => 'required'
         ]);
 
-        $formFields['fk_sem_id'] = $formFields['tl_semester'];
-        $formFields['tl_field'] = $request->input('tl_field');
-        $formFields['fk_fld_id'] = json_encode($formFields['tl_field']);
-
-        //store in db
-        Timeline::create($formFields);
+        $timeline = new Timeline();
+        $timeline->fk_sem_id = $formFields['tl_semester'];
+        $timeline->tl_start = $formFields['tl_start'];
+        $timeline->tl_end = $formFields['tl_end'];
+        // $timeline->fk_fld_id = json_encode($request->input('tl_field'));
         
+        // store in timeline db
+        $timeline->save();
+
+        // for take area-fields data
+        foreach ($formFields['tl_field'] as $fld_item) {
+            $registeredField = new RegisteredFields();
+            $registeredField->fk_timeline_id = $timeline->tl_id;
+            $registeredField->fk_fld_id = $fld_item;
+            $registeredField->save();
+        }
 
         return redirect('timeline')->with('message', 'Registration timeline created successfully!');
     }
@@ -54,11 +64,16 @@ class TimelineController extends Controller
     public function edit($id) {
         $timelineDetails = Timeline::where('tl_id', $id)->first();
 
+        // get all semester
         $semesters = Semester::where('sem_status', 'active')->orderBy('created_at', 'desc')->get();
         
+        // get all fields
         $fields = Field::where('fld_status', 'active')->orderBy('created_at', 'desc')->get();
+
+        // get all registered fields
+        $registeredFields = RegisteredFields::all();
         
-        return view('timeline.editTimeline', ['timelineDetails' => $timelineDetails, 'semesters' => $semesters, 'fields' => $fields]);
+        return view('timeline.editTimeline', compact('timelineDetails', 'semesters', 'fields', 'registeredFields'));
     }
 
     // store updated timeline data to db
@@ -70,12 +85,21 @@ class TimelineController extends Controller
             'tl_field' => 'required'
         ]);
 
-        $formFields['fk_sem_id'] = $formFields['tl_semester'];
-        $formFields['tl_field'] = $request->input('tl_field');
-        $formFields['fk_fld_id'] = json_encode($formFields['tl_field']);
+        $timeline->fk_sem_id = $formFields['tl_semester'];
+        $timeline->tl_start = $formFields['tl_start'];
+        $timeline->tl_end = $formFields['tl_end'];
+        
+        // store in timeline db
+        $timeline->save();
 
-        $timeline->update($formFields);
+        // for take area-fields data
+        foreach ($formFields['tl_field'] as $fld_item) {
+            $registeredField = new RegisteredFields();
+            $registeredField->fk_timeline_id = $timeline->tl_id;
+            $registeredField->fk_fld_id = $fld_item;
+            $registeredField->save();
+        }
 
-        return redirect('/timeline')->with('message', 'Timeline Updated Successfully!');
+        return redirect('/timeline')->with('message', 'Registration timeline Updated Successfully!');
     }
 }
