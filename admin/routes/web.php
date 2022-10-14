@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\TeacherController;
@@ -8,9 +9,7 @@ use App\Http\Controllers\FieldController;
 use App\Http\Controllers\TimelineController;
 
 // dashboard
-Route::get('/', function () {
-    return view('dashboard');
-})->name('dashboard');
+Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 
 // student
 Route::group(['prefix' => 'student', 'as' => 'student.'], function () {

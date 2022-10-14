@@ -65,7 +65,7 @@
                             <line x1="23" y1="11" x2="17" y2="11"></line>
                         </svg></div>
                         <div class="media-body"><span>Total Teachers</span>
-                        <h4 class="mt-1 counter">10</h4><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                        <h4 class="mt-1 counter">{{ $teachers }}</h4><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                             viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                             stroke-linejoin="round" class="feather feather-user-plus icon-bg">
                             <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
@@ -91,7 +91,7 @@
                             <line x1="23" y1="11" x2="17" y2="11"></line>
                         </svg></div>
                         <div class="media-body"><span>Total Students</span>
-                        <h4 class="mt-1 counter">10</h4><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                        <h4 class="mt-1 counter">{{ $students }}</h4><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                             viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                             stroke-linejoin="round" class="feather feather-user-plus icon-bg">
                             <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
