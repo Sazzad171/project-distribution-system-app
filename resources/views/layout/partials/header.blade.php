@@ -133,10 +133,6 @@
                       data-feather="home"> </i><span>Dashboard</span></a>
                 </li>
                 <li class="sidebar-list">
-                  <a class="sidebar-link sidebar-title link-nav" href="{{ route('registerMyProject') }}"><i
-                      data-feather="edit"> </i><span>Register My Project</span></a>
-                </li>
-                <li class="sidebar-list">
                   <a class="sidebar-link sidebar-title link-nav" href="{{ route('settings') }}"><i
                       data-feather="settings"> </i><span>Settings</span></a>
                 </li>
