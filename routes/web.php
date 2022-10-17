@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\RegisterMyProjectController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,13 +15,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('dashboard');
-})->name('dashboard');
+// dashboard
+Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 
-Route::get('/register-my-project', function () {
-    return view('registerMyProject');
-})->name('registerMyProject');
+// register my project
+Route::get('/register-my-project', [RegisterMyProjectController::class, 'index'])->name('registerMyProject');
 
 Route::get('/my-profile', function () {
     return view('myProfile');

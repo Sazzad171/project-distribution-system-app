@@ -36,19 +36,25 @@
           </div>
         </div>
         <div class="card-body">
+          {{-- check current registration is on or not --}}
+          @if ($timelineActiveData !== null)
           <form class="" >
             <div class="mb-3 row">
               <label class="col-sm-3 col-form-label">Select Field/Area of 1</label>
               <div class="col-sm-9">
                 <select class="form-select" name="myProjArea">
-                  <option>1</option>
-                  <option>2</option>
+                  <option>Select Field/Area</option>
+                  <option value="">1</option>
                 </select>
               </div>
             </div>
             
             <button class="btn btn-primary" type="submit">Submit form</button>
           </form>
+
+          @else
+          <p class="text-center text-danger">No registration timeline is available!</p>
+          @endif
         </div>
       </div>
       <!-- register new project end -->

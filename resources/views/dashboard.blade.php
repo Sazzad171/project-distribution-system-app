@@ -33,21 +33,26 @@
                         <div class="col-md-12 mb-2">
                             <h5 class="border-bottom pb-3">Current Opening Registration</h5>
                         </div>
+                        {{-- {{dd($timelineActiveData)  }} --}}
+                        @if ($timelineActiveData !== null) 
                         <div class="col-md-4 mb-1">
                             <h6 class="text-success">Start Date:</h6>
-                            <p class="text-secondary">20 Nov 2022</p>
+                            <p class="text-secondary">{{ \Carbon\Carbon::parse($timelineActiveData->tl_start)->format('j F Y h:i:s A') }}</p>
                         </div>
                         <div class="col-md-4 mb-1">
                             <h6 class="text-danger">End Date:</h6>
-                            <p class="text-secondary">20 Nov 2022</p>
+                            <p class="text-secondary">{{ \Carbon\Carbon::parse($timelineActiveData->tl_end)->format('j F Y h:i:s A') }}</p>
                         </div>
                         <div class="col-md-4 mb-1">
                             <h6 class="text-primary">Semester</h6>
                             <p class="text-secondary">Fall - 22</p>
                         </div>
+
+                        @else
                         <div class="col-md-12 mb-2">
                             <h6 class="text-center text-danger pt-2">There is No Opening Registration Currently!</h6>
                         </div>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -63,10 +68,15 @@
                                     <h5 class="border-bottom pb-3">Register My Project/Research</h5>
                                 </div>
                                 <div class="col-md-12 mb-2">
+                                    @if ($timelineActiveData !== null)
                                     <p class="text-center">
                                         <a href="{{ route('registerMyProject') }}" class="btn btn-primary">Register</a>
                                     </p>
-                                    <h6 class="text-center text-success pt-2">You are already registered!</h6>
+                                    @else 
+                                    <p class="text-center text-danger pt-2">There is No Opening Registration Currently!</p>
+                                    {{-- @else --}}
+                                    <p class="text-center text-success pt-2">You are already registered!</p>
+                                    @endif
                                 </div>
                             </div>
                         </div>
