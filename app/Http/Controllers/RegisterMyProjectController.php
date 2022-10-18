@@ -12,7 +12,8 @@ class RegisterMyProjectController extends Controller
         date_default_timezone_set('Asia/Dhaka');
 
         // get timeline data
-        $timelineActiveData = Timeline::where('tl_status', 'active')
+        $timelineActiveData = Timeline::with('semester')
+            ->where('tl_status', 'active')
             ->where('tl_start', '<', date('Y-m-d H:i:s'))
             ->where('tl_end', '>', date('Y-m-d H:i:s'))
             ->first();
