@@ -12,4 +12,9 @@ class Field extends Model
     protected $table = 'field';
     protected $primaryKey = 'fld_id';
     public $timestamps = false;
+
+    // relationship with registered_fields
+    public function registeredFields() {
+        return $this->hasMany(registeredFields::class, 'fk_fld_id', 'fld_id');
+    }
 }

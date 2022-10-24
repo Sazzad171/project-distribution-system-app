@@ -40,16 +40,16 @@
           @if ($timelineActiveData !== null)
           <form class="" >
             <div class="mb-3 row">
-              <label class="col-md-2 col-form-label">Select Field/Area of 1</label>
-              <div class="col-md-4">
+              <label class="col-md-4 col-form-label mb-3">Select Field/Area of 1</label>
+              <div class="col-md-6 mb-3">
                 <select class="form-select" name="myProjArea">
                   <option>Select Field/Area</option>
                   <option value="">1</option>
                 </select>
               </div>
 
-              <label class="col-md-2 col-form-label">Select Field/Area of 1</label>
-              <div class="col-md-4">
+              <label class="col-md-4 col-form-label mb-3">Select Field/Area of 1</label>
+              <div class="col-md-6 mb-3">
                 <select class="form-select" name="myProjArea">
                   <option>Select Field/Area</option>
                   <option value="">1</option>

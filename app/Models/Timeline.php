@@ -17,4 +17,9 @@ class Timeline extends Model
     public function semester() {
         return $this->hasOne(Semester::class, 'sem_id', 'fk_sem_id');
     }
+
+    // relationship with registered_fields
+    public function registeredFields() {
+        return $this->belongsTo(Timeline::class);
+    }
 }
