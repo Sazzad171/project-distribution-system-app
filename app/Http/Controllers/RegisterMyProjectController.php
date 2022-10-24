@@ -13,19 +13,22 @@ class RegisterMyProjectController extends Controller
         date_default_timezone_set('Asia/Dhaka');
 
         // get timeline data
-        // $timelineActiveData = Timeline::with('semester', 'registeredFields')
-        //     ->where('tl_status', 'active')
-        //     ->where('tl_start', '<', date('Y-m-d H:i:s'))
-        //     ->where('tl_end', '>', date('Y-m-d H:i:s'))
-        //     ->first();
-
-        $timelineActiveData = RegisteredFields::with('timeline', 'field')
-        // ->where('timeline.tl_status', 'active')
-        // ->where('timeline.tl_start', '<', date('Y-m-d H:i:s'))
-        // ->where('timeline.tl_end', '>', date('Y-m-d H:i:s'))
+        $timelineActiveData = RegisteredFields::with([
+            'timeline' => function($q) {
+                $q->where('timeline.tl_status', 'active');
+                $q->where('timeline.tl_start', '<', date('Y-m-d H:i:s'));
+                $q->where('timeline.tl_end', '>', date('Y-m-d H:i:s'));
+            }, 
+            'field'
+        ])
         ->get();
 
-        dd($timelineActiveData);
+        foreach($timelineActiveData as $item) {
+            if ($item->timeline !== null) {
+                $timelineItem = $item;
+            }
+        }
+        dd($timelineItem);
 
         return view('registerMyProject', ['timelineActiveData' => $timelineActiveData]);
     }
