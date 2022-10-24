@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\StudentRegistration;
 use App\Models\Timeline;
 use Illuminate\Http\Request;
 
@@ -17,8 +18,10 @@ class DashboardController extends Controller
             ->where('tl_end', '>', date('Y-m-d H:i:s'))
             ->first();
 
+        // check this user is registered or not
+        $studentRegistrationStatus = StudentRegistration::where('fk_std_id', '1')->get();
         
 
-        return view('dashboard', ['timelineActiveData' => $timelineActiveData]);
+        return view('dashboard', compact('timelineActiveData', 'studentRegistrationStatus'));
     }
 }

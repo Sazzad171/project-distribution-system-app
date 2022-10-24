@@ -21,6 +21,9 @@ Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 // register my project
 Route::get('/register-my-project', [RegisterMyProjectController::class, 'index'])->name('registerMyProject');
 
+// student project registration
+Route::post('/student-registration', [RegisterMyProjectController::class, 'store'])->name('stdRegistration');
+
 Route::get('/my-profile', function () {
     return view('myProfile');
 })->name('myProfile');

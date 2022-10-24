@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 15, 2022 at 07:54 PM
+-- Generation Time: Oct 24, 2022 at 08:46 PM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 7.4.16
 
@@ -96,7 +96,13 @@ INSERT INTO `registered_fields` (`reg_fld_id`, `fk_timeline_id`, `fk_fld_id`, `c
 (10, 10, 1, '2022-10-05 08:56:37'),
 (11, 11, 3, '2022-10-14 16:55:00'),
 (12, 11, 2, '2022-10-14 16:55:00'),
-(13, 11, 1, '2022-10-14 16:55:00');
+(13, 11, 1, '2022-10-14 16:55:00'),
+(14, 13, 3, '2022-10-17 16:18:50'),
+(15, 13, 2, '2022-10-17 16:18:50'),
+(16, 13, 1, '2022-10-17 16:18:50'),
+(17, 10, 3, '2022-10-24 17:55:37'),
+(18, 10, 2, '2022-10-24 17:55:37'),
+(19, 10, 1, '2022-10-24 17:55:37');
 
 -- --------------------------------------------------------
 
@@ -121,6 +127,43 @@ INSERT INTO `semester` (`sem_id`, `sem_name`, `sem_year`, `sem_title`, `sem_stat
 (1, 'Fall', 2022, 'Fall - 2022', 'active', '2022-09-30 08:13:23'),
 (2, 'Summer', 2021, 'Summer - 2021', 'active', '2022-09-30 08:43:48'),
 (3, 'Spring', 2022, 'Spring - 2022', 'active', '2022-10-02 09:39:50');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `std_registration`
+--
+
+CREATE TABLE `std_registration` (
+  `std_reg_id` int(11) NOT NULL,
+  `field1` varchar(255) DEFAULT NULL,
+  `field2` varchar(255) DEFAULT NULL,
+  `field3` varchar(255) DEFAULT NULL,
+  `field4` varchar(255) DEFAULT NULL,
+  `field5` varchar(255) DEFAULT NULL,
+  `field6` varchar(255) DEFAULT NULL,
+  `field7` varchar(255) DEFAULT NULL,
+  `field8` varchar(255) DEFAULT NULL,
+  `field9` varchar(255) DEFAULT NULL,
+  `field10` varchar(255) DEFAULT NULL,
+  `field11` varchar(255) DEFAULT NULL,
+  `field12` varchar(255) DEFAULT NULL,
+  `field13` varchar(255) DEFAULT NULL,
+  `field14` varchar(255) DEFAULT NULL,
+  `field15` varchar(255) DEFAULT NULL,
+  `fk_std_id` int(20) DEFAULT NULL,
+  `fk_tl_id` int(20) DEFAULT NULL,
+  `fk_sem_id` int(11) DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `std_reg_status` varchar(20) NOT NULL DEFAULT 'active'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `std_registration`
+--
+
+INSERT INTO `std_registration` (`std_reg_id`, `field1`, `field2`, `field3`, `field4`, `field5`, `field6`, `field7`, `field8`, `field9`, `field10`, `field11`, `field12`, `field13`, `field14`, `field15`, `fk_std_id`, `fk_tl_id`, `fk_sem_id`, `created_at`, `std_reg_status`) VALUES
+(6, 'Software Eng', 'Data Science and ML', 'Image Processing', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 10, 1, '2022-10-24 18:44:53', 'active');
 
 -- --------------------------------------------------------
 
@@ -198,9 +241,9 @@ CREATE TABLE `timeline` (
 --
 
 INSERT INTO `timeline` (`tl_id`, `tl_start`, `tl_end`, `fk_sem_id`, `tl_status`, `created_at`) VALUES
-(10, '2022-10-10 07:40:00', '2022-10-20 07:40:00', 1, 'active', '2022-10-05 07:41:00'),
-(11, '2022-10-24 08:35:00', '2022-10-25 08:35:00', 2, 'active', '2022-10-05 08:35:44'),
-(12, '2022-10-10 07:40:00', '2022-10-20 07:40:00', 3, 'active', '2022-10-05 08:55:18');
+(10, '2022-10-10 07:40:00', '2022-10-26 16:13:55', 1, 'active', '2022-10-05 07:41:00'),
+(11, '2022-10-24 08:35:00', '2022-09-25 08:35:00', 2, 'active', '2022-10-05 08:35:44'),
+(12, '2022-10-10 07:40:00', '2022-09-20 07:40:00', 3, 'active', '2022-10-05 08:55:18');
 
 --
 -- Indexes for dumped tables
@@ -229,6 +272,12 @@ ALTER TABLE `registered_fields`
 --
 ALTER TABLE `semester`
   ADD PRIMARY KEY (`sem_id`);
+
+--
+-- Indexes for table `std_registration`
+--
+ALTER TABLE `std_registration`
+  ADD PRIMARY KEY (`std_reg_id`);
 
 --
 -- Indexes for table `student`
@@ -268,13 +317,19 @@ ALTER TABLE `field`
 -- AUTO_INCREMENT for table `registered_fields`
 --
 ALTER TABLE `registered_fields`
-  MODIFY `reg_fld_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `reg_fld_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `semester`
 --
 ALTER TABLE `semester`
   MODIFY `sem_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `std_registration`
+--
+ALTER TABLE `std_registration`
+  MODIFY `std_reg_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `student`
@@ -292,7 +347,7 @@ ALTER TABLE `teacher`
 -- AUTO_INCREMENT for table `timeline`
 --
 ALTER TABLE `timeline`
-  MODIFY `tl_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `tl_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

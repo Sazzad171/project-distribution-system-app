@@ -27,6 +27,7 @@ class StudentController extends Controller
         // validation
         $formFields = $request->validate([
             'std_name' => 'required',
+            'std_varsity_id' => ['required', Rule::unique('student', 'std_varsity_id')],
             'std_email' => ['required', 'email', Rule::unique('student', 'std_email')],
             'std_phone' => 'required',
             'password' => 'required|min:6'

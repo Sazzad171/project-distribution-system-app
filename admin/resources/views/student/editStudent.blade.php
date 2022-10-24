@@ -53,6 +53,15 @@
               </div>
             </div>
             <div class="mb-3 row">
+              <label class="col-sm-3 col-form-label">Student ID</label>
+              <div class="col-sm-9">
+                <input class="form-control" type="text" name="std_varsity_id" value="{{ $studentDetails->std_varsity_id }}" placeholder="Enter ID..">
+                @error('std_varsity_id')
+                    <p class="text-danger">{{ $message }}</p>
+                @enderror
+              </div>
+            </div>
+            <div class="mb-3 row">
               <label class="col-sm-3 col-form-label">Student email</label>
               <div class="col-sm-9">
                 <input class="form-control" type="email" name="std_email" value="{{ $studentDetails->std_email }}" placeholder="Enter email.." readonly>

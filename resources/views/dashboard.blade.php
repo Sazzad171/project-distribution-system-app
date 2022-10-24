@@ -68,15 +68,19 @@
                                     <h5 class="border-bottom pb-3">Register My Project/Research</h5>
                                 </div>
                                 <div class="col-md-12 mb-2">
+                                    @unless ( count($studentRegistrationStatus) !== 0)
+
                                     @if ($timelineActiveData !== null)
                                     <p class="text-center">
                                         <a href="{{ route('registerMyProject') }}" class="btn btn-primary">Register</a>
                                     </p>
                                     @else 
                                     <p class="text-center text-danger pt-2">There is No Opening Registration Currently!</p>
-                                    {{-- @else --}}
-                                    <p class="text-center text-success pt-2">You are already registered!</p>
                                     @endif
+
+                                    @else
+                                    <p class="text-center text-success pt-2">You are already registered!</p>
+                                    @endunless
                                 </div>
                             </div>
                         </div>

@@ -46,6 +46,7 @@
               <thead class="table-primary">
                 <tr>
                   <th>Name</th>
+                  <th>ID</th>
                   <th>Email</th>
                   <th>Intake Semester</th>
                   <th>Research/Project Status</th>
@@ -58,6 +59,7 @@
                   @foreach ($students as $student)
                     <tr>
                       <td>{{ $student->std_name }}</td>
+                      <td>{{ $student->std_varsity_id }}</td>
                       <td>{{ $student->std_email }}</td>
                       <td>Summer - 2022</td>
                       <td class="text-center">

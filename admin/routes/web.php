@@ -6,6 +6,7 @@ use App\Http\Controllers\StudentController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\SemesterController;
 use App\Http\Controllers\FieldController;
+use App\Http\Controllers\PendingRegisteredStudents;
 use App\Http\Controllers\TimelineController;
 use App\Http\Controllers\UserController;
 
@@ -85,5 +86,11 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/update/{timeline}', [TimelineController::class, 'update'])->name('update');
 
         // Route::get('/delete/{timeline}', [TimelineController::class, 'delete'])->name('delete');
+    });
+
+    // pending registered students & assign supervisor
+    Route::group(['prefix' => 'registered-students', 'as' => 'registeredStudents.'], function () {
+        Route::get('/pending-list', [PendingRegisteredStudents::class, 'index'])->name('pendingList');
+        
     });
 });

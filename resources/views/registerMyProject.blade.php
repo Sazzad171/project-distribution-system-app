@@ -36,25 +36,32 @@
           </div>
         </div>
         <div class="card-body">
-          {{-- check current registration is on or not --}}
-          @if ($timelineActiveData !== null)
-          <form class="" >
-            <div class="mb-3 row">
-              <label class="col-md-4 col-form-label mb-3">Select Field/Area of 1</label>
-              <div class="col-md-6 mb-3">
-                <select class="form-select" name="myProjArea">
-                  <option>Select Field/Area</option>
-                  <option value="">1</option>
-                </select>
-              </div>
+          {{-- check if previously registered or not --}}
+          @unless ( count($studentRegistrationStatus) !== 0 )
 
-              <label class="col-md-4 col-form-label mb-3">Select Field/Area of 1</label>
+          {{-- check current registration is on or not --}}
+          @if ($currentTimelineData !== null)
+          <form class="" action="{{ route('stdRegistration') }}" method="POST">
+            @csrf
+
+            {{-- hidden input for semester and timeline --}}
+            <input type="hidden" name="fk_tl_id" value="{{ $timelineItem[0]->timeline->tl_id }}">
+            <input type="hidden" name="fk_sem_id" value="{{ $timelineItem[0]->timeline->fk_sem_id }}">
+
+            <div class="mb-3 row">
+
+              @foreach ($fieldItems as $parentItems)
+              <label class="col-md-4 col-form-label mb-3">Select Field/Area of {{ $loop->index+1 }}</label>
               <div class="col-md-6 mb-3">
-                <select class="form-select" name="myProjArea">
+                <select class="form-select" name="field{{ $loop->index+1 }}">
                   <option>Select Field/Area</option>
-                  <option value="">1</option>
+                  @foreach ($fieldItems as $item)
+                  <option value="{{ $item->fld_name }}">{{ $item->fld_name }}</option>
+                  @endforeach
                 </select>
               </div>
+              @endforeach
+
             </div>
             
             <button class="btn btn-primary" type="submit">Submit form</button>
@@ -63,6 +70,11 @@
           @else
           <p class="text-center text-danger">No registration timeline is available!</p>
           @endif
+
+          {{-- if you already registered --}}
+          @else
+          <p class="text-center text-danger">You are already registered, Thank you!</p>
+          @endunless
         </div>
       </div>
       <!-- register new project end -->
