@@ -6,7 +6,7 @@ use App\Http\Controllers\StudentController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\SemesterController;
 use App\Http\Controllers\FieldController;
-use App\Http\Controllers\PendingRegisteredStudents;
+use App\Http\Controllers\PendingRegisteredStudentsController;
 use App\Http\Controllers\TimelineController;
 use App\Http\Controllers\UserController;
 
@@ -90,9 +90,9 @@ Route::group(['middleware' => 'auth'], function () {
 
     // pending registered students & assign supervisor
     Route::group(['prefix' => 'pending-registered-students', 'as' => 'pendingRegisteredStudents.'], function () {
-        Route::get('/pending-list', [PendingRegisteredStudents::class, 'index'])->name('pendingRecords');
+        Route::get('/pending-list', [PendingRegisteredStudentsController::class, 'index'])->name('pendingRecords');
 
-        Route::get('/assign-supervisor', [PendingRegisteredStudents::class, 'assignSupervisor'])->name('assignSupervisor');
+        Route::get('/assign-supervisor', [PendingRegisteredStudentsController::class, 'assignSupervisor'])->name('assignSupervisor');
         
     });
 });

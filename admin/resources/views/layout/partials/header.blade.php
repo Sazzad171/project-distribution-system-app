@@ -141,7 +141,7 @@
                 </li>
                 <li class="sidebar-list">
                   <a class="sidebar-link sidebar-title link-nav" href="{{ route('pendingRegisteredStudents.pendingRecords') }}"><i
-                      data-feather="files"> </i><span>Pending Registerd Std.</span></a>
+                      data-feather="file"> </i><span>Pending Registerd Std.</span></a>
                 </li>
                 <li class="sidebar-list">
                   <a class="sidebar-link sidebar-title link-nav" href="{{ route('timeline.list') }}"><i

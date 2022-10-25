@@ -14,4 +14,9 @@ class Student extends Model
     protected $table = 'student';
     protected $primaryKey = 'std_id';
     public $timestamps = false;
+
+    // relationship with studentRegistration
+    public function studentRegistration() {
+        return $this->belongsTo(Student::class);
+    }
 }

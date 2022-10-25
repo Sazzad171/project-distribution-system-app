@@ -19,4 +19,9 @@ class Semester extends Model
     public function timeline() {
         return $this->belongsTo(Semester::class);
     }
+
+    // relationship with studentRegistration
+    public function studentRegistration() {
+        return $this->belongsTo(Semester::class);
+    }
 }
