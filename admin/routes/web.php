@@ -92,7 +92,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::group(['prefix' => 'pending-registered-students', 'as' => 'pendingRegisteredStudents.'], function () {
         Route::get('/pending-list', [PendingRegisteredStudentsController::class, 'index'])->name('pendingRecords');
 
-        Route::get('/assign-supervisor', [PendingRegisteredStudentsController::class, 'assignSupervisor'])->name('assignSupervisor');
+        Route::get('/assign-supervisor/{stdRegId}', [PendingRegisteredStudentsController::class, 'assignSupervisor'])->name('assignSupervisor');
+
+        Route::post('/new-project', [PendingRegisteredStudentsController::class, 'newProject'])->name('newProject');
         
     });
 });

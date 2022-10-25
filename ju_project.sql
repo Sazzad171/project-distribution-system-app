@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 24, 2022 at 08:46 PM
+-- Generation Time: Oct 25, 2022 at 09:02 PM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 7.4.16
 
@@ -131,6 +131,21 @@ INSERT INTO `semester` (`sem_id`, `sem_name`, `sem_year`, `sem_title`, `sem_stat
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `std_project`
+--
+
+CREATE TABLE `std_project` (
+  `std_proj_id` int(11) NOT NULL,
+  `std_proj_name` varchar(255) DEFAULT NULL,
+  `fk_std_id` int(20) DEFAULT NULL,
+  `fk_teacher_id` int(20) DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `status` varchar(50) DEFAULT 'active'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `std_registration`
 --
 
@@ -173,6 +188,7 @@ INSERT INTO `std_registration` (`std_reg_id`, `field1`, `field2`, `field3`, `fie
 
 CREATE TABLE `student` (
   `std_id` int(11) NOT NULL,
+  `std_varsity_id` varchar(255) DEFAULT NULL,
   `std_name` varchar(30) DEFAULT NULL,
   `std_email` varchar(50) DEFAULT NULL,
   `std_phone` varchar(15) DEFAULT NULL,
@@ -189,10 +205,11 @@ CREATE TABLE `student` (
 -- Dumping data for table `student`
 --
 
-INSERT INTO `student` (`std_id`, `std_name`, `std_email`, `std_phone`, `password`, `email_verified_at`, `remember_token`, `created_at`, `updated_at`, `std_status`, `fk_teacher_id`) VALUES
-(4, 'Sajjad', 'mail@mail.com', '0167895556', '$2y$10$40JWpNoEL4DlABxutbys8eO5Bv/zpL3/Ei.ObQUY4tX32LxHL4VPK', NULL, NULL, '2022-09-28 06:59:11', NULL, 'active', 1),
-(5, 'Gausul Asam', 'gausul@mail.com', '01655489', '$2y$10$SX6SPEQS62aOb8jpUv8vKOlGEIxtUjThm2zo5u.dOaa.MxT2bwBhm', NULL, NULL, '2022-09-28 08:33:51', NULL, 'active', 1),
-(16, 'Tushi', 'fsaf@gs.dd', '0167945453', '$2y$10$owvpV/I59MRAB4M/Xo/g8eyt/F/XGeeCuHyI6sL4a7SLMn75E/B7m', NULL, NULL, '2022-09-28 10:04:01', NULL, 'active', 1);
+INSERT INTO `student` (`std_id`, `std_varsity_id`, `std_name`, `std_email`, `std_phone`, `password`, `email_verified_at`, `remember_token`, `created_at`, `updated_at`, `std_status`, `fk_teacher_id`) VALUES
+(1, 'cse234', 'Sajjad', 'mail@mail.com', '0167895556', '$2y$10$40JWpNoEL4DlABxutbys8eO5Bv/zpL3/Ei.ObQUY4tX32LxHL4VPK', NULL, NULL, '2022-09-28 06:59:11', NULL, 'active', 1),
+(5, NULL, 'Gausul Asam', 'gausul@mail.com', '01655489', '$2y$10$SX6SPEQS62aOb8jpUv8vKOlGEIxtUjThm2zo5u.dOaa.MxT2bwBhm', NULL, NULL, '2022-09-28 08:33:51', NULL, 'active', 1),
+(16, NULL, 'Tushi', 'fsaf@gs.dd', '0167945453', '$2y$10$owvpV/I59MRAB4M/Xo/g8eyt/F/XGeeCuHyI6sL4a7SLMn75E/B7m', NULL, NULL, '2022-09-28 10:04:01', NULL, 'active', 1),
+(17, 'cse100', 'Bristy', 'br@mail.com', '01679453331', '$2y$10$dm/3.6StjQACEshaIZlb9uGTmYuteS1WxVExmfTrtXUyEbtADBTSW', NULL, NULL, '2022-10-24 18:56:12', NULL, 'active', 1);
 
 -- --------------------------------------------------------
 
@@ -274,6 +291,12 @@ ALTER TABLE `semester`
   ADD PRIMARY KEY (`sem_id`);
 
 --
+-- Indexes for table `std_project`
+--
+ALTER TABLE `std_project`
+  ADD PRIMARY KEY (`std_proj_id`);
+
+--
 -- Indexes for table `std_registration`
 --
 ALTER TABLE `std_registration`
@@ -326,6 +349,12 @@ ALTER TABLE `semester`
   MODIFY `sem_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
+-- AUTO_INCREMENT for table `std_project`
+--
+ALTER TABLE `std_project`
+  MODIFY `std_proj_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `std_registration`
 --
 ALTER TABLE `std_registration`
@@ -335,7 +364,7 @@ ALTER TABLE `std_registration`
 -- AUTO_INCREMENT for table `student`
 --
 ALTER TABLE `student`
-  MODIFY `std_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `std_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `teacher`

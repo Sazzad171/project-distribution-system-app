@@ -50,13 +50,13 @@
                 </tr>
               </thead>
               <tbody>
-                @foreach ($studentRegistrationData as $studentRegistrationItem)
+                @foreach ($studentRegistrationData as $srItem)
                 <tr>
-                  <td>{{ $studentRegistrationItem->student->std_name }}</td>
-                  <td>{{ $studentRegistrationItem->student->varsity_id }}</td>
-                  <td>{{ $studentRegistrationItem->semester->sem_title }}</td>
+                  <td>{{ $srItem->student->std_name }}</td>
+                  <td>{{ $srItem->student->std_varsity_id }}</td>
+                  <td>{{ $srItem->semester->sem_title }}</td>
                   <td class="text-center">
-                    <a href="{{ route('pendingRegisteredStudents.assignSupervisor') }}" class="btn btn-primary-gradien" type="button">Assign Supervisor</a>
+                    <a href="{{ route('pendingRegisteredStudents.assignSupervisor', $srItem->std_reg_id) }}" class="btn btn-primary-gradien" type="button">Assign Supervisor</a>
                   </td>
                 </tr>
                 @endforeach
