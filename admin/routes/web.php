@@ -89,8 +89,10 @@ Route::group(['middleware' => 'auth'], function () {
     });
 
     // pending registered students & assign supervisor
-    Route::group(['prefix' => 'registered-students', 'as' => 'registeredStudents.'], function () {
-        Route::get('/pending-list', [PendingRegisteredStudents::class, 'index'])->name('pendingList');
+    Route::group(['prefix' => 'pending-registered-students', 'as' => 'pendingRegisteredStudents.'], function () {
+        Route::get('/pending-list', [PendingRegisteredStudents::class, 'index'])->name('pendingRecords');
+
+        Route::get('/assign-supervisor', [PendingRegisteredStudents::class, 'assignSupervisor'])->name('assignSupervisor');
         
     });
 });

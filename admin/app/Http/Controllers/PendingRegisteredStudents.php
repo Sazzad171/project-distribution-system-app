@@ -10,6 +10,12 @@ class PendingRegisteredStudents extends Controller
     public function index() {
         
 
-        return view('project-record.unassignedProjectRecord');
+        return view('pending-registered-students.pendingRegisteredStudent');
+    }
+
+    // assign supervisor form
+    public function assignSupervisor() {
+
+        return view('pending-registered-students.assign-supervisor');
     }
 }

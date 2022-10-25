@@ -11,12 +11,12 @@
       <div class="page-title">
         <div class="row">
           <div class="col-6">
-            <h3>Research/Project Register Records</h3>
+            <h3>Pending Registered Students</h3>
           </div>
           <div class="col-6">
             <ol class="breadcrumb">
-              <li class="breadcrumb-item"><a href="index.html"><i data-feather="home"></i></a></li>
-              <li class="breadcrumb-item active">Research/Project Register Records</li>
+              <li class="breadcrumb-item"><a href="{{ route('dashboard') }}"><i data-feather="home"></i></a></li>
+              <li class="breadcrumb-item active">Pending Registered Students</li>
             </ol>
           </div>
         </div>
@@ -30,7 +30,7 @@
         <div class="card-header p-3">
           <div class="row align-items-center">
             <div class="col-md-8">
-              <h6>Previous Records</h6>
+              <h6>All Pending Records</h6>
             </div>
             <div class="col-md-4">
               
@@ -43,26 +43,19 @@
             <table class="table table-bordered">
               <thead class="table-primary">
                 <tr>
-                  <th>Project Name</th>
                   <th>Student Name</th>
                   <th>Student ID</th>
-                  <th>Assigned Teacher</th>
-                  <th>Registered Semester</th>
-                  <th>Status</th>
+                  <th>Semester</th>
                   <th>Action</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td>Web</td>
-                  <td>Sazzad</td>
-                  <td>CSE34243</td>
-                  <td>Bulbul ahmed</td>
-                  <td>Fall-2021</td>
-                  <td>Assigned</td>
+                  <td>sazzad</td>
+                  <td>cse23</td>
+                  <td>Fall - 2022</td>
                   <td class="text-end">
-                    <button class="btn btn-warning-gradien" type="button"><i class="fa fa-edit"></i></button>
-                    <button class="btn btn-danger-gradien" type="button"><i class="fa fa-trash"></i></button>
+                    <a href="{{ route('pendingRegisteredStudents.assignSupervisor') }}" class="btn btn-primary-gradien" type="button">Assign Supervisor</a>
                   </td>
                 </tr>
                 

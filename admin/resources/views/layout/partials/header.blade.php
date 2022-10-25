@@ -140,8 +140,8 @@
                       data-feather="home"> </i><span>Dashboard</span></a>
                 </li>
                 <li class="sidebar-list">
-                  <a class="sidebar-link sidebar-title link-nav" href="{{ route('registeredStudents.pendingList') }}"><i
-                      data-feather="files"> </i><span>Pending Registerd Students</span></a>
+                  <a class="sidebar-link sidebar-title link-nav" href="{{ route('pendingRegisteredStudents.pendingRecords') }}"><i
+                      data-feather="files"> </i><span>Pending Registerd Std.</span></a>
                 </li>
                 <li class="sidebar-list">
                   <a class="sidebar-link sidebar-title link-nav" href="{{ route('timeline.list') }}"><i
