@@ -14,4 +14,9 @@ class Teacher extends Model
     protected $table = 'teacher';
     protected $primaryKey = 'tchr_id';
     public $timestamps = false;
+
+    // relationship with student_project
+    public function studentProject() {
+        return $this->belongsTo(Teacher::class);
+    }
 }

@@ -19,4 +19,9 @@ class Student extends Model
     public function studentRegistration() {
         return $this->belongsTo(Student::class);
     }
+
+    // relationship with student_project
+    public function studentProject() {
+        return $this->belongsTo(Student::class);
+    }
 }

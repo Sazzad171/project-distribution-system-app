@@ -38,12 +38,14 @@ class PendingRegisteredStudentsController extends Controller
         $formFields = $request->validate([
             'assigned_supervisor' => 'required',
             'studentId' => 'required',
-            'stdRegId' => 'required'
+            'stdRegId' => 'required',
+            'sem_id' => 'required'
         ]);
 
         $std_project = new StudentProject();
         $std_project->fk_std_id = $formFields['studentId'];
         $std_project->fk_teacher_id = $formFields['assigned_supervisor'];
+        $std_project->fk_sem_id = $formFields['sem_id'];
 
         // store data on student project table
         $std_project->save();

@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.1.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 26, 2022 at 08:21 AM
--- Server version: 10.4.24-MariaDB
--- PHP Version: 7.4.29
+-- Generation Time: Oct 26, 2022 at 08:18 PM
+-- Server version: 10.4.18-MariaDB
+-- PHP Version: 7.4.16
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -139,6 +139,7 @@ CREATE TABLE `std_project` (
   `std_proj_name` varchar(255) DEFAULT NULL,
   `fk_std_id` int(20) DEFAULT NULL,
   `fk_teacher_id` int(20) DEFAULT NULL,
+  `fk_sem_id` int(20) DEFAULT NULL,
   `public_project` varchar(50) NOT NULL DEFAULT 'no',
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `status` varchar(50) DEFAULT 'active'
@@ -148,8 +149,8 @@ CREATE TABLE `std_project` (
 -- Dumping data for table `std_project`
 --
 
-INSERT INTO `std_project` (`std_proj_id`, `std_proj_name`, `fk_std_id`, `fk_teacher_id`, `public_project`, `created_at`, `status`) VALUES
-(5, NULL, 1, 2, 'no', '2022-10-26 05:53:31', 'active');
+INSERT INTO `std_project` (`std_proj_id`, `std_proj_name`, `fk_std_id`, `fk_teacher_id`, `fk_sem_id`, `public_project`, `created_at`, `status`) VALUES
+(6, NULL, 1, 2, 1, 'no', '2022-10-26 16:16:32', 'active');
 
 -- --------------------------------------------------------
 
@@ -360,7 +361,7 @@ ALTER TABLE `semester`
 -- AUTO_INCREMENT for table `std_project`
 --
 ALTER TABLE `std_project`
-  MODIFY `std_proj_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `std_proj_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `std_registration`

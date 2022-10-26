@@ -9,9 +9,24 @@ class StudentProject extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['std_proj_name', 'fk_std_id', 'fk_teacher_id', 'status'];
+    protected $fillable = ['std_proj_name', 'fk_std_id', 'fk_teacher_id', '	fk_sem_id', 'public_project', 'status'];
 
     protected $table = 'std_project';
     protected $primaryKey = 'std_proj_id';
     public $timestamps = false;
+
+    // relationship with student(one)
+    public function student() {
+        return $this->hasOne(Student::class, 'std_id', 'fk_std_id');
+    }
+
+    // relationship with teacher(one)
+    public function teacher() {
+        return $this->hasOne(Teacher::class, 'tchr_id', 'fk_teacher_id');
+    }
+
+    // relationship with semester(one)
+    public function semester() {
+        return $this->hasOne(Semester::class, 'sem_id', 'fk_sem_id');
+    }
 }

@@ -169,7 +169,7 @@
                 </li>
                 <li class="sidebar-list">
                   <a class="sidebar-link sidebar-title link-nav" href="{{ route('studentProjects.list') }}"><i
-                      data-feather="archive"> </i><span>Previous Projects</span></a>
+                      data-feather="archive"> </i><span>Students Projects</span></a>
                 </li>
                 <!-- <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="#"><i
                       data-feather="users"></i><span>Clients</span></a>

@@ -103,5 +103,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::group(['prefix' => 'student-projects', 'as' => 'studentProjects.'], function () {
         Route::get('/', [StudentProjectsController::class, 'index'])->name('list');
         
+        Route::get('/details/{projId}', [StudentProjectsController::class, 'details'])->name('details');
+
     });
 });

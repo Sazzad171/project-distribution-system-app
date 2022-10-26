@@ -74,6 +74,7 @@
             {{-- hidden input --}}
             <input type="hidden" name="studentId" value="{{ $studentRegistrationData->student->std_id }}">
             <input type="hidden" name="stdRegId" value="{{ $studentRegistrationData->std_reg_id }}">
+            <input type="hidden" name="sem_id" value="{{ $studentRegistrationData->semester->sem_id }}">
 
             <div class="mb-3 row">
               <label class="col-sm-3 col-form-label">Select Teacher</label>
