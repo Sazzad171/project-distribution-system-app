@@ -14,7 +14,7 @@ class StudentRegistration extends Model
         'fk_std_id', 'fk_tl_id', 'fk_sem_id', 'std_reg_status'];
 
     protected $table = 'std_registration';
-    protected $primaryKey = 'std_reg_id ';
+    protected $primaryKey = 'std_reg_id';
     public $timestamps = false;
 
     // relationship with student
