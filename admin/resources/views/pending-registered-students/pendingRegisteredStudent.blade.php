@@ -50,6 +50,7 @@
                 </tr>
               </thead>
               <tbody>
+                @unless ( count($studentRegistrationData) === 0 )
                 @foreach ($studentRegistrationData as $srItem)
                 <tr>
                   <td>{{ $srItem->student->std_name }}</td>
@@ -60,6 +61,14 @@
                   </td>
                 </tr>
                 @endforeach
+
+                @else
+                <tr>
+                  <td colspan="4">
+                    <p class="text-center">No Students are Pending</p>
+                  </td>
+                </tr>
+                @endunless
               </tbody>
             </table>
           </div>

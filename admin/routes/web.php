@@ -7,6 +7,7 @@ use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\SemesterController;
 use App\Http\Controllers\FieldController;
 use App\Http\Controllers\PendingRegisteredStudentsController;
+use App\Http\Controllers\StudentProjectsController;
 use App\Http\Controllers\TimelineController;
 use App\Http\Controllers\UserController;
 
@@ -95,6 +96,12 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/assign-supervisor/{stdRegId}', [PendingRegisteredStudentsController::class, 'assignSupervisor'])->name('assignSupervisor');
 
         Route::post('/new-project', [PendingRegisteredStudentsController::class, 'newProject'])->name('newProject');
+        
+    });
+
+    // student project
+    Route::group(['prefix' => 'student-projects', 'as' => 'studentProjects.'], function () {
+        Route::get('/', [StudentProjectsController::class, 'index'])->name('list');
         
     });
 });

@@ -168,8 +168,8 @@
                       data-feather="box"> </i><span>Field/Areas</span></a>
                 </li>
                 <li class="sidebar-list">
-                  <a class="sidebar-link sidebar-title link-nav" href="#"><i
-                      data-feather="archive"> </i><span>Prev. Project Status</span></a>
+                  <a class="sidebar-link sidebar-title link-nav" href="{{ route('studentProjects.list') }}"><i
+                      data-feather="archive"> </i><span>Previous Projects</span></a>
                 </li>
                 <!-- <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="#"><i
                       data-feather="users"></i><span>Clients</span></a>
