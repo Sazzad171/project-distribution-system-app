@@ -16,7 +16,7 @@
               </div>
               <div class="col-6">
                 <ol class="breadcrumb">
-                  <li class="breadcrumb-item"><a href="index.html"><i data-feather="home"></i></a></li>
+                  <li class="breadcrumb-item"><a href="{{ route('dashboard') }}"><i data-feather="home"></i></a></li>
                   <li class="breadcrumb-item active">Dashboard</li>
                 </ol>
               </div>
@@ -29,23 +29,30 @@
             <!-- current openings registration start -->
             <div class="card">
                 <div class="card-body">
-                <div class="row">
-                    <div class="col-md-12 mb-2">
-                    <h5 class="border-bottom pb-3">Current Opening Registration</h5>
+                    <div class="row">
+                        <div class="col-md-12 mb-2">
+                            <h5 class="border-bottom pb-3">Current Opening Registration</h5>
+                        </div>
+
+                        @unless ( count($currentTimelineData) === 0 )
+                        @foreach ( $currentTimelineData as $ctItem )
+                        <div class="col-md-4 mb-1">
+                            <h6 class="text-success">Start Date:</h6>
+                            <p class="text-secondary">{{ $ctItem->tl_start }}</p>
+                        </div>
+                        <div class="col-md-4 mb-1">
+                            <h6 class="text-danger">End Date:</h6>
+                            <p class="text-secondary">{{ $ctItem->tl_end }}</p>
+                        </div>
+                        <div class="col-md-4 mb-1">
+                            <h6 class="text-primary">Semester</h6>
+                            <p class="text-secondary">{{ $ctItem->semester->sem_title }}</p>
+                        </div>
+                        @endforeach
+                        @else
+                        <p class="text-center text-danger">No Current Registration Timeline is Running</p>
+                        @endunless
                     </div>
-                    <div class="col-md-4 mb-1">
-                    <h6 class="text-success">Start Date:</h6>
-                    <p class="text-secondary">20 Nov 2022</p>
-                    </div>
-                    <div class="col-md-4 mb-1">
-                    <h6 class="text-danger">End Date:</h6>
-                    <p class="text-secondary">20 Nov 2022</p>
-                    </div>
-                    <div class="col-md-4 mb-1">
-                    <h6 class="text-primary">Semester</h6>
-                    <p class="text-secondary">Fall - 22</p>
-                    </div>
-                </div>
                 </div>
             </div>
             <!-- current openings registration end -->

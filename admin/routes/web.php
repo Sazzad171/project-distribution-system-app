@@ -7,6 +7,7 @@ use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\SemesterController;
 use App\Http\Controllers\FieldController;
 use App\Http\Controllers\PendingRegisteredStudentsController;
+use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\StudentProjectsController;
 use App\Http\Controllers\TimelineController;
 use App\Http\Controllers\UserController;
@@ -105,5 +106,12 @@ Route::group(['middleware' => 'auth'], function () {
         
         Route::get('/details/{projId}', [StudentProjectsController::class, 'details'])->name('details');
 
+    });
+
+    // settings
+    Route::group(['prefix' => 'settings', 'as' => 'settings.'], function () {
+        Route::get('/', [SettingsController::class, 'index'])->name('index');
+
+        Route::post('/update-password', [SettingsController::class, 'store'])->name('updatePassword');
     });
 });
