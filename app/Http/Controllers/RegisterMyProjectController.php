@@ -6,6 +6,7 @@ use App\Models\RegisteredFields;
 use App\Models\StudentRegistration;
 use Illuminate\Http\Request;
 use App\Models\Timeline;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
 class RegisterMyProjectController extends Controller
@@ -56,11 +57,13 @@ class RegisterMyProjectController extends Controller
 
     // store my project field data
     public function store(Request $request) {
+        $user_id = Auth::User()->id; 
+
         // validation
         $formFields = $request->validate([
             'field1' => 'required'
         ]);
-        $formFields['fk_std_id'] = 1;
+        $formFields['fk_std_id'] = $user_id;
         $formFields['fk_tl_id'] = $request->fk_tl_id;
         $formFields['fk_sem_id'] = $request->fk_sem_id;
         $formFields['field2'] = $request->field2;

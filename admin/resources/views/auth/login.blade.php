@@ -33,7 +33,7 @@
         <div class="col-12 p-0">    
           <div class="login-card">
             <div>
-              <div><a class="logo" href="#"><img class="img-fluid for-light" src="../assets/images/logo/login.png" alt="looginpage"><img class="img-fluid for-dark" src="../assets/images/logo/logo_dark.png" alt="looginpage"></a></div>
+              <div><a class="logo" href="#"><img class="img-fluid for-light" src="{{ asset('public/assets/images/logo/logo.png') }}" alt="looginpage"><img class="img-fluid for-dark" src="{{ asset('public/assets/images/logo/logo.png') }}" alt="looginpage"></a></div>
               <div class="login-main"> 
                 <form class="theme-form" method="POST" action="{{ route('authenticate') }}">
                   @csrf
@@ -75,22 +75,23 @@
           </div>
         </div>
       </div>
-      <!-- latest jquery-->
-      <script src="../assets/js/jquery-3.5.1.min.js"></script>
-      <!-- Bootstrap js-->
-      <script src="../assets/js/bootstrap/bootstrap.bundle.min.js"></script>
-      <!-- feather icon js-->
-      <script src="../assets/js/icons/feather-icon/feather.min.js"></script>
-      <script src="../assets/js/icons/feather-icon/feather-icon.js"></script>
-      <!-- scrollbar js-->
-      <!-- Sidebar jquery-->
-      <script src="../assets/js/config.js"></script>
-      <!-- Plugins JS start-->
-      <!-- Plugins JS Ends-->
-      <!-- Theme js-->
-      <script src="../assets/js/script.js"></script>
-      <!-- login js-->
-      <!-- Plugin used-->
     </div>
+
+    <!-- latest jquery-->
+    <script src="../assets/js/jquery-3.5.1.min.js"></script>
+    <!-- Bootstrap js-->
+    <script src="../assets/js/bootstrap/bootstrap.bundle.min.js"></script>
+    <!-- feather icon js-->
+    <script src="../assets/js/icons/feather-icon/feather.min.js"></script>
+    <script src="../assets/js/icons/feather-icon/feather-icon.js"></script>
+    <!-- scrollbar js-->
+    <!-- Sidebar jquery-->
+    <script src="../assets/js/config.js"></script>
+    <!-- Plugins JS start-->
+    <!-- Plugins JS Ends-->
+    <!-- Theme js-->
+    <script src="../assets/js/script.js"></script>
+    <!-- login js-->
+    <!-- Plugin used-->
   </body>
 </html>

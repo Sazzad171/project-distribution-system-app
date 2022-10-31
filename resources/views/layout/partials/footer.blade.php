@@ -35,6 +35,16 @@
 <!-- login js-->
 <!-- Plugin used-->
 
+{{-- toast --}}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+{{-- show message --}}
+@if (session()->has('message'))
+    <script>
+        toastr.success('{{ session('message') }}')
+    </script>
+@endif
+
 {{-- dynamic js --}}
 @yield('js')
 

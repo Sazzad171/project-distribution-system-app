@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\RegisterMyProjectController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,23 +16,29 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// dashboard
-Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+// login show
+Route::get('/login', [UserController::class, 'login'])->name('login')->middleware('guest');
 
-// register my project
-Route::get('/register-my-project', [RegisterMyProjectController::class, 'index'])->name('registerMyProject');
+// login attempt
+Route::post('user/authenticate', [UserController::class, 'authenticate'])->name('authenticate')->middleware('guest');
 
-// student project registration
-Route::post('/student-registration', [RegisterMyProjectController::class, 'store'])->name('stdRegistration');
+Route::group(['middleware' => 'auth'], function () {
+    // dashboard
+    Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 
-Route::get('/my-profile', function () {
-    return view('myProfile');
-})->name('myProfile');
+    // register my project
+    Route::get('/register-my-project', [RegisterMyProjectController::class, 'index'])->name('registerMyProject');
 
-Route::get('/settings', function () {
-    return view('settings');
-})->name('settings');
+    // student project registration
+    Route::post('/student-registration', [RegisterMyProjectController::class, 'store'])->name('stdRegistration');
 
-Route::get('/logout', function () {
-    return view('settings');
-})->name('logout');
+    Route::get('/my-profile', function () {
+        return view('myProfile');
+    })->name('myProfile');
+
+    Route::get('/settings', function () {
+        return view('settings');
+    })->name('settings');
+
+    Route::post('/logout', [UserController::class, 'logout'])->name('logout');
+});
