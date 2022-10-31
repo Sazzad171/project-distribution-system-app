@@ -48,7 +48,7 @@
                   <th>Name</th>
                   <th>ID</th>
                   <th>Email</th>
-                  <th>Intake Semester</th>
+                  <th>Reg. Status</th>
                   <th>Research/Project Status</th>
                   <th>Action</th>
                 </tr>
@@ -61,11 +61,11 @@
                       <td>{{ $student->std_name }}</td>
                       <td>{{ $student->std_varsity_id }}</td>
                       <td>{{ $student->std_email }}</td>
-                      <td>Summer - 2022</td>
+                      <td>Done</td>
                       <td class="text-center">
-                        <span class="badge badge-light-success"><i class="me-2" data-feather="check"></i>Done</span>
+                        {{-- <span class="badge badge-light-success"><i class="me-2" data-feather="check"></i>Done</span>
                         <span class="badge badge-light-warning"><i class="me-2" data-feather="rotate-cw"></i>Pending</span>
-                        <span class="badge badge-light-info"><i class="me-2" data-feather="clock"></i>In progress</span>
+                        <span class="badge badge-light-info"><i class="me-2" data-feather="clock"></i>In progress</span> --}}
                       </td>
                       <td class="text-end">
                         <a href="{{ route('student.edit', $student->std_id) }}" class="btn btn-warning-gradien" type="button"><i class="fa fa-edit"></i></a>

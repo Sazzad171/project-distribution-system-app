@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 26, 2022 at 08:18 PM
+-- Generation Time: Oct 31, 2022 at 05:19 AM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 7.4.16
 
@@ -44,7 +44,7 @@ CREATE TABLE `admin-user` (
 --
 
 INSERT INTO `admin-user` (`id`, `name`, `email`, `password`, `remember_token`, `created_at`, `updated_at`, `status`, `email_verified_at`) VALUES
-(1, 'admin', 'admin@gmail.com', '$2y$10$AhlrCEGaa9svbL.cqiZ9CejGsj6zb1HScUaHiocZauHPzzXPAu1/G', '', '2022-10-15 11:01:59', '2022-10-15 11:03:44', 'active', NULL);
+(1, 'admin', 'admin@gmail.com', '$2y$10$k.1Qf1CzvUXxnQzGhy67AepI7GaITFzZJEp74rJXjfcjJ0hU0zGY6', '', '2022-10-15 11:01:59', '2022-10-30 21:44:46', 'active', NULL);
 
 -- --------------------------------------------------------
 
@@ -202,6 +202,8 @@ CREATE TABLE `student` (
   `std_email` varchar(50) DEFAULT NULL,
   `std_phone` varchar(15) DEFAULT NULL,
   `password` varchar(255) DEFAULT NULL,
+  `fk_std_project` int(20) DEFAULT NULL,
+  `fk_std_registration` int(20) DEFAULT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
   `remember_token` varchar(255) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT current_timestamp(),
@@ -214,11 +216,11 @@ CREATE TABLE `student` (
 -- Dumping data for table `student`
 --
 
-INSERT INTO `student` (`std_id`, `std_varsity_id`, `std_name`, `std_email`, `std_phone`, `password`, `email_verified_at`, `remember_token`, `created_at`, `updated_at`, `std_status`, `fk_teacher_id`) VALUES
-(1, 'cse234', 'Sajjad', 'mail@mail.com', '0167895556', '$2y$10$40JWpNoEL4DlABxutbys8eO5Bv/zpL3/Ei.ObQUY4tX32LxHL4VPK', NULL, NULL, '2022-09-28 06:59:11', NULL, 'active', 1),
-(5, NULL, 'Gausul Asam', 'gausul@mail.com', '01655489', '$2y$10$SX6SPEQS62aOb8jpUv8vKOlGEIxtUjThm2zo5u.dOaa.MxT2bwBhm', NULL, NULL, '2022-09-28 08:33:51', NULL, 'active', 1),
-(16, NULL, 'Tushi', 'fsaf@gs.dd', '0167945453', '$2y$10$owvpV/I59MRAB4M/Xo/g8eyt/F/XGeeCuHyI6sL4a7SLMn75E/B7m', NULL, NULL, '2022-09-28 10:04:01', NULL, 'active', 1),
-(17, 'cse100', 'Bristy', 'br@mail.com', '01679453331', '$2y$10$dm/3.6StjQACEshaIZlb9uGTmYuteS1WxVExmfTrtXUyEbtADBTSW', NULL, NULL, '2022-10-24 18:56:12', NULL, 'active', 1);
+INSERT INTO `student` (`std_id`, `std_varsity_id`, `std_name`, `std_email`, `std_phone`, `password`, `fk_std_project`, `fk_std_registration`, `email_verified_at`, `remember_token`, `created_at`, `updated_at`, `std_status`, `fk_teacher_id`) VALUES
+(1, 'cse234', 'Sajjad', 'mail@mail.com', '0167895556', '$2y$10$40JWpNoEL4DlABxutbys8eO5Bv/zpL3/Ei.ObQUY4tX32LxHL4VPK', NULL, NULL, NULL, NULL, '2022-09-28 06:59:11', NULL, 'active', 1),
+(5, NULL, 'Gausul Asam', 'gausul@mail.com', '01655489', '$2y$10$SX6SPEQS62aOb8jpUv8vKOlGEIxtUjThm2zo5u.dOaa.MxT2bwBhm', NULL, NULL, NULL, NULL, '2022-09-28 08:33:51', NULL, 'active', 1),
+(16, NULL, 'Tushi', 'fsaf@gs.dd', '0167945453', '$2y$10$owvpV/I59MRAB4M/Xo/g8eyt/F/XGeeCuHyI6sL4a7SLMn75E/B7m', NULL, NULL, NULL, NULL, '2022-09-28 10:04:01', NULL, 'inactive', 1),
+(17, 'cse100', 'Bristy', 'br@mail.com', '01679453331', '$2y$10$dm/3.6StjQACEshaIZlb9uGTmYuteS1WxVExmfTrtXUyEbtADBTSW', NULL, NULL, NULL, NULL, '2022-10-24 18:56:12', NULL, 'active', 1);
 
 -- --------------------------------------------------------
 

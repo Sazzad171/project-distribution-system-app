@@ -38,11 +38,11 @@
                         @foreach ( $currentTimelineData as $ctItem )
                         <div class="col-md-4 mb-1">
                             <h6 class="text-success">Start Date:</h6>
-                            <p class="text-secondary">{{ $ctItem->tl_start }}</p>
+                            <p class="text-secondary">{{ \Carbon\Carbon::parse($ctItem->tl_start)->format('j F Y h:i:s A') }}</p>
                         </div>
                         <div class="col-md-4 mb-1">
                             <h6 class="text-danger">End Date:</h6>
-                            <p class="text-secondary">{{ $ctItem->tl_end }}</p>
+                            <p class="text-secondary">{{ \Carbon\Carbon::parse($ctItem->tl_end)->format('j F Y h:i:s A') }}</p>
                         </div>
                         <div class="col-md-4 mb-1">
                             <h6 class="text-primary">Semester</h6>

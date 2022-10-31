@@ -25,12 +25,12 @@ class SettingsController extends Controller
         // current user
         $user = Auth::user();
 
-        // check current password is valid & new password matched
+        // check current password is valid
         if ( Hash::check( $request->currentPassword, $user->password) ) {
 
             $user_id = Auth::User()->id;                       
-            $obj_user = User::find($user_id);
-            $obj_user->password = Hash::make($request['password']);
+            $obj_user = User::find($user_id)->first();
+            $obj_user->password = Hash::make($request['confirmNewPassword']);
             $obj_user->save(); 
             
             return redirect('/')->with('message' ,'Password Updated Successfully!');
