@@ -6,6 +6,7 @@ use App\Models\RegisteredFields;
 use App\Models\StudentRegistration;
 use Illuminate\Http\Request;
 use App\Models\Timeline;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
@@ -49,28 +50,49 @@ class RegisterMyProjectController extends Controller
             $fieldItems = array_unique($fieldItems, SORT_REGULAR);
         }
 
+        // get current user
+        $user_id = Auth::User()->std_id; 
+
         // check this user is registered or not
-        $studentRegistrationStatus = StudentRegistration::where('fk_std_id', '1')->get();
+        $studentRegistrationStatus = StudentRegistration::where('fk_std_id', $user_id)->get();
 
         return view('registerMyProject', compact('currentTimelineData', 'timelineItem', 'fieldItems', 'studentRegistrationStatus'));
     }
 
     // store my project field data
     public function store(Request $request) {
-        $user_id = Auth::User()->id; 
+        $user_id = Auth::User()->std_id;
 
         // validation
         $formFields = $request->validate([
             'field1' => 'required'
         ]);
-        $formFields['fk_std_id'] = $user_id;
-        $formFields['fk_tl_id'] = $request->fk_tl_id;
-        $formFields['fk_sem_id'] = $request->fk_sem_id;
-        $formFields['field2'] = $request->field2;
-        $formFields['field3'] = $request->field3;
-        $formFields['field4'] = $request->field4;
+        $std_registration = new StudentRegistration();
+        $std_registration->fk_std_id = $user_id;
+        $std_registration->fk_tl_id = $request->fk_tl_id;
+        $std_registration->fk_sem_id = $request->fk_sem_id;
+        $std_registration->field1 = $formFields['field1'];
+        $std_registration->field2 = $request->field2;
+        $std_registration->field3 = $request->field3;
+        $std_registration->field4 = $request->field4;
+        $std_registration->field5 = $request->field5;
+        $std_registration->field6 = $request->field6;
+        $std_registration->field7 = $request->field7;
+        $std_registration->field8 = $request->field8;
+        $std_registration->field9 = $request->field9;
+        $std_registration->field10 = $request->field10;
+        $std_registration->field11 = $request->field11;
+        $std_registration->field12 = $request->field12;
+        $std_registration->field13 = $request->field13;
+        $std_registration->field14 = $request->field14;
+        $std_registration->field15 = $request->field15;
 
-        StudentRegistration::create($formFields);
+        $std_registration->save();
+
+        // store student registration id to student table also
+        $obj_user = User::where('std_id', $user_id)->first();
+        $obj_user->fk_std_registration = $std_registration->std_reg_id;
+        $obj_user->save();
 
         Session::flash('message', 'Project Registration Sucessfully Done!');
 

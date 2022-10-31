@@ -32,10 +32,6 @@ Route::group(['middleware' => 'auth'], function () {
     // student project registration
     Route::post('/student-registration', [RegisterMyProjectController::class, 'store'])->name('stdRegistration');
 
-    Route::get('/my-profile', function () {
-        return view('myProfile');
-    })->name('myProfile');
-
     Route::get('/settings', function () {
         return view('settings');
     })->name('settings');

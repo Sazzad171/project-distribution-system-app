@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Student;
 use App\Models\StudentProject;
 use App\Models\StudentRegistration;
 use App\Models\Teacher;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PendingRegisteredStudentsController extends Controller
 {
@@ -56,8 +58,13 @@ class PendingRegisteredStudentsController extends Controller
             ->first();
 
         $stdRegItem->std_reg_status = 'done';
-
         $stdRegItem->save();
+
+        // save project id on student table
+        $student = Student::where('std_id', $std_project->fk_std_id)->first();
+        $student->fk_std_project = $std_project->std_proj_id;
+        $student->fk_teacher_id = $formFields['assigned_supervisor'];
+        $student->save();
         
         return redirect('/pending-registered-students/pending-list');
     }
