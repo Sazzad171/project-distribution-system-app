@@ -61,9 +61,9 @@ class TeacherController extends Controller
         ]);
 
         // hash password
-        if ($request->tchr_password) {
-            $formFields['tchr_password'] = bcrypt($request->tchr_password);
-        }
+        // if ($request->tchr_password) {
+        //     $formFields['tchr_password'] = bcrypt($request->tchr_password);
+        // }
 
         // store at DB
         $teacher->update($formFields);

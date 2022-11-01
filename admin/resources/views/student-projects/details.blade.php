@@ -70,6 +70,13 @@
             </div>
 
             <div class="col-md-3 mb-3 mb-md-2">
+              <p><b>Project Status:</b> </p>
+            </div>
+            <div class="col-md-9 mb-3 mb-md-2">
+              <p>{{ $project->status }}</p>
+            </div>
+
+            <div class="col-md-3 mb-3 mb-md-2">
               <p><b>Public project:</b> </p>
             </div>
             <div class="col-md-9 mb-3 mb-md-2">

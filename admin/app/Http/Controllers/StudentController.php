@@ -61,13 +61,14 @@ class StudentController extends Controller
         // validation
         $formFields = $request->validate([
             'std_name' => 'required',
-            'std_phone' => 'required'
+            'std_phone' => 'required',
+            'std_varsity_id' => 'required'
         ]);
 
         // hash password
-        if ($request->password) {
-            $formFields['password'] = bcrypt($request->password);
-        }
+        // if ($request->password) {
+        //     $formFields['password'] = bcrypt($request->password);
+        // }
 
         // store at DB
         $student->update($formFields);

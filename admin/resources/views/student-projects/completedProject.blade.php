@@ -48,6 +48,7 @@
                   <th>Assigned Teacher</th>
                   <th>Registered Semester</th>
                   <th>Public project</th>
+                  <th>Project Status</th>
                   <th>Action</th>
                 </tr>
               </thead>
@@ -59,9 +60,10 @@
                   <td>{{ $spItem->teacher->tchr_name }}</td>
                   <td>{{ $spItem->semester->sem_title }}</td>
                   <td>{{ $spItem->public_project }}</td>
+                  <td>{{ $spItem->status }}</td>
                   <td class="text-end">
                     <a href="{{ route('studentProjects.details', $spItem->std_proj_id) }}" class="btn btn-primary-gradien" type="button"><i class="fa fa-eye"></i></a>
-                    <a href="#" class="btn btn-warning-gradien" type="button"><i class="fa fa-edit"></i></a>
+                    {{-- <a href="#" class="btn btn-warning-gradien" type="button"><i class="fa fa-edit"></i></a> --}}
                   </td>
                 </tr>
                 @endforeach

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 01, 2022 at 05:21 AM
+-- Generation Time: Nov 01, 2022 at 07:50 PM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 7.4.16
 
@@ -66,7 +66,9 @@ CREATE TABLE `field` (
 INSERT INTO `field` (`fld_id`, `fld_name`, `fld_status`, `created_at`) VALUES
 (1, 'Data Science and ML', 'active', '2022-09-30 18:50:56'),
 (2, 'Software Eng', 'active', '2022-09-30 18:51:42'),
-(3, 'Image Processing', 'active', '2022-10-14 16:49:00');
+(3, 'Image Processing', 'active', '2022-10-14 16:49:00'),
+(4, 'Software Testing', 'active', '2022-11-01 16:56:50'),
+(5, 'ML', 'active', '2022-11-01 16:57:08');
 
 -- --------------------------------------------------------
 
@@ -102,7 +104,12 @@ INSERT INTO `registered_fields` (`reg_fld_id`, `fk_timeline_id`, `fk_fld_id`, `c
 (16, 13, 1, '2022-10-17 16:18:50'),
 (17, 10, 3, '2022-10-24 17:55:37'),
 (18, 10, 2, '2022-10-24 17:55:37'),
-(19, 10, 1, '2022-10-24 17:55:37');
+(19, 10, 1, '2022-10-24 17:55:37'),
+(20, 15, 5, '2022-11-01 17:25:26'),
+(21, 15, 4, '2022-11-01 17:25:26'),
+(22, 15, 3, '2022-11-01 17:25:26'),
+(23, 15, 2, '2022-11-01 17:25:26'),
+(24, 15, 1, '2022-11-01 17:25:26');
 
 -- --------------------------------------------------------
 
@@ -125,8 +132,9 @@ CREATE TABLE `semester` (
 
 INSERT INTO `semester` (`sem_id`, `sem_name`, `sem_year`, `sem_title`, `sem_status`, `created_at`) VALUES
 (1, 'Fall', 2022, 'Fall - 2022', 'active', '2022-09-30 08:13:23'),
-(2, 'Summer', 2021, 'Summer - 2021', 'active', '2022-09-30 08:43:48'),
-(3, 'Spring', 2022, 'Spring - 2022', 'active', '2022-10-02 09:39:50');
+(2, 'Summer', 2022, 'Summer - 2022', 'active', '2022-09-30 08:43:48'),
+(3, 'Spring', 2022, 'Spring - 2022', 'active', '2022-10-02 09:39:50'),
+(4, 'Spring', 2023, 'Spring - 2023', 'active', '2022-11-01 16:56:06');
 
 -- --------------------------------------------------------
 
@@ -142,7 +150,7 @@ CREATE TABLE `std_project` (
   `fk_sem_id` int(20) DEFAULT NULL,
   `public_project` varchar(50) NOT NULL DEFAULT 'no',
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `status` varchar(50) DEFAULT 'active'
+  `status` varchar(50) DEFAULT 'Assigned'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -150,8 +158,9 @@ CREATE TABLE `std_project` (
 --
 
 INSERT INTO `std_project` (`std_proj_id`, `std_proj_name`, `fk_std_id`, `fk_teacher_id`, `fk_sem_id`, `public_project`, `created_at`, `status`) VALUES
-(6, NULL, 1, 2, 1, 'no', '2022-10-26 16:16:32', 'active'),
-(7, NULL, 17, 2, 1, 'no', '2022-10-31 19:09:43', 'active');
+(6, NULL, 1, 2, 1, 'no', '2022-10-26 16:16:32', 'Assigned'),
+(7, NULL, 17, 2, 1, 'no', '2022-10-31 19:09:43', 'Assigned'),
+(8, NULL, 19, 3, 4, 'no', '2022-11-01 18:41:00', 'Assigned');
 
 -- --------------------------------------------------------
 
@@ -189,7 +198,8 @@ CREATE TABLE `std_registration` (
 
 INSERT INTO `std_registration` (`std_reg_id`, `field1`, `field2`, `field3`, `field4`, `field5`, `field6`, `field7`, `field8`, `field9`, `field10`, `field11`, `field12`, `field13`, `field14`, `field15`, `fk_std_id`, `fk_tl_id`, `fk_sem_id`, `created_at`, `std_reg_status`) VALUES
 (6, 'Software Eng', 'Data Science and ML', 'Image Processing', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 10, 1, '2022-10-24 18:44:53', 'done'),
-(20, 'Select Field/Area', 'Select Field/Area', 'Select Field/Area', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 17, 10, 1, '2022-10-31 18:51:47', 'done');
+(20, 'Select Field/Area', 'Select Field/Area', 'Select Field/Area', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 17, 10, 1, '2022-10-31 18:51:47', 'done'),
+(21, 'Software Eng', 'Software Testing', 'Data Science and ML', 'Image Processing', 'Select Field/Area', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 19, 15, 4, '2022-11-01 17:51:57', 'done');
 
 -- --------------------------------------------------------
 
@@ -211,7 +221,7 @@ CREATE TABLE `student` (
   `created_at` timestamp NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NULL DEFAULT NULL,
   `std_status` varchar(20) DEFAULT 'active',
-  `fk_teacher_id` int(11) NOT NULL DEFAULT 1
+  `fk_teacher_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -220,9 +230,10 @@ CREATE TABLE `student` (
 
 INSERT INTO `student` (`std_id`, `std_varsity_id`, `std_name`, `std_email`, `std_phone`, `password`, `fk_std_project`, `fk_std_registration`, `email_verified_at`, `remember_token`, `created_at`, `updated_at`, `std_status`, `fk_teacher_id`) VALUES
 (1, 'cse234', 'Sajjad', 'mail@mail.com', '0167895556', '$2y$10$k.1Qf1CzvUXxnQzGhy67AepI7GaITFzZJEp74rJXjfcjJ0hU0zGY6', 6, 6, NULL, NULL, '2022-09-28 06:59:11', '2022-10-31 12:41:15', 'active', 1),
-(5, NULL, 'Gausul Asam', 'gausul@mail.com', '01655489', '$2y$10$k.1Qf1CzvUXxnQzGhy67AepI7GaITFzZJEp74rJXjfcjJ0hU0zGY6', NULL, NULL, NULL, NULL, '2022-09-28 08:33:51', NULL, 'inactive', 1),
+(5, 'cse200', 'Gausul Asam', 'gausul@mail.com', '016554893433', '$2y$10$k.1Qf1CzvUXxnQzGhy67AepI7GaITFzZJEp74rJXjfcjJ0hU0zGY6', NULL, NULL, NULL, NULL, '2022-09-28 08:33:51', NULL, 'active', 1),
 (16, NULL, 'Tushi', 'fsaf@gs.dd', '0167945453', '$2y$10$k.1Qf1CzvUXxnQzGhy67AepI7GaITFzZJEp74rJXjfcjJ0hU0zGY6', NULL, NULL, NULL, NULL, '2022-09-28 10:04:01', NULL, 'inactive', 1),
-(17, 'cse100', 'Bristy', 'br@mail.com', '01679453331', '$2y$10$k.1Qf1CzvUXxnQzGhy67AepI7GaITFzZJEp74rJXjfcjJ0hU0zGY6', 7, 20, NULL, NULL, '2022-10-24 18:56:12', '2022-10-31 12:51:48', 'active', 1);
+(17, 'cse100', 'Bristy', 'br@mail.com', '01679453331', '$2y$10$k.1Qf1CzvUXxnQzGhy67AepI7GaITFzZJEp74rJXjfcjJ0hU0zGY6', 7, 20, NULL, NULL, '2022-10-24 18:56:12', '2022-10-31 12:51:48', 'active', 1),
+(19, 'asds201', 'Saikat', 'saikat@gmail.com', '0167434343', '$2y$10$jI1DYhws42yCI3tVV9CRzueVZPEATrucVFZdJP37nBoOpYC/dQ6Vi', 8, 21, NULL, NULL, '2022-11-01 16:38:04', '2022-11-01 11:51:57', 'active', 3);
 
 -- --------------------------------------------------------
 
@@ -249,7 +260,8 @@ CREATE TABLE `teacher` (
 
 INSERT INTO `teacher` (`tchr_id`, `tchr_name`, `tchr_email`, `tchr_phone`, `tchr_password`, `email_verified_at`, `remember_token`, `created_at`, `updated_at`, `status`) VALUES
 (1, 'test', 'test@email.com', '0165878999', '$2y$10$kYKjlwcXjLiUBy7TaSimKugo/BmTZHgOxwwPlWnJJtQoCzs0cGgk.', NULL, NULL, '2022-09-29 06:04:30', '2022-09-29 06:04:30', 'active'),
-(2, 'test ok', 'test@mail.com', '012545877', '$2y$10$gZFvA/MTX9hmg20vy0udOeJJ0OBVCFSkn74zBbLPjJm5yOuOqFumm', NULL, NULL, '2022-09-29 06:11:25', '2022-09-29 06:11:25', 'active');
+(2, 'test ok', 'test@mail.com', '012545877', '$2y$10$gZFvA/MTX9hmg20vy0udOeJJ0OBVCFSkn74zBbLPjJm5yOuOqFumm', NULL, NULL, '2022-09-29 06:11:25', '2022-09-29 06:11:25', 'active'),
+(3, 'Liton Jude Rozario', 'liton@gmail.com', '01844353245', '$2y$10$dxqwnAICnsHYo0vXvsSnHePLI1t1pYLyjhdFoaTc7K02qf4HSlFHq', NULL, NULL, '2022-11-01 16:46:53', '2022-11-01 16:46:53', 'active');
 
 -- --------------------------------------------------------
 
@@ -271,9 +283,10 @@ CREATE TABLE `timeline` (
 --
 
 INSERT INTO `timeline` (`tl_id`, `tl_start`, `tl_end`, `fk_sem_id`, `tl_status`, `created_at`) VALUES
-(10, '2022-10-10 07:40:00', '2022-11-26 16:13:55', 1, 'active', '2022-10-05 07:41:00'),
+(10, '2022-10-10 07:40:00', '2022-10-26 16:13:55', 1, 'active', '2022-10-05 07:41:00'),
 (11, '2022-10-24 08:35:00', '2022-09-25 08:35:00', 2, 'active', '2022-10-05 08:35:44'),
-(12, '2022-10-10 07:40:00', '2022-09-20 07:40:00', 3, 'active', '2022-10-05 08:55:18');
+(12, '2022-10-10 07:40:00', '2022-09-20 07:40:00', 3, 'active', '2022-10-05 08:55:18'),
+(15, '2022-11-01 17:24:00', '2022-11-10 17:25:00', 4, 'active', '2022-11-01 17:25:25');
 
 --
 -- Indexes for dumped tables
@@ -347,49 +360,49 @@ ALTER TABLE `admin-user`
 -- AUTO_INCREMENT for table `field`
 --
 ALTER TABLE `field`
-  MODIFY `fld_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `fld_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `registered_fields`
 --
 ALTER TABLE `registered_fields`
-  MODIFY `reg_fld_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `reg_fld_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `semester`
 --
 ALTER TABLE `semester`
-  MODIFY `sem_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `sem_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `std_project`
 --
 ALTER TABLE `std_project`
-  MODIFY `std_proj_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `std_proj_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `std_registration`
 --
 ALTER TABLE `std_registration`
-  MODIFY `std_reg_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `std_reg_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `student`
 --
 ALTER TABLE `student`
-  MODIFY `std_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `std_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `teacher`
 --
 ALTER TABLE `teacher`
-  MODIFY `tchr_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `tchr_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `timeline`
 --
 ALTER TABLE `timeline`
-  MODIFY `tl_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `tl_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

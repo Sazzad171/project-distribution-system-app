@@ -82,7 +82,7 @@
                 <input class="form-control" type="text" name="intakeSemester" placeholder="Enter intake semester..">
               </div>
             </div> --}}
-            <div class="mb-3 row">
+            {{-- <div class="mb-3 row">
               <label class="col-sm-3 col-form-label">Password</label>
               <div class="col-sm-9">
                 <input class="form-control" type="password" name="password" placeholder="Enter student password..">
@@ -90,7 +90,7 @@
                     <p class="text-danger">{{ $message }}</p>
                 @enderror
               </div>
-            </div>
+            </div> --}}
             
             <button class="btn btn-primary" type="submit">Edit Info</button>
           </form>

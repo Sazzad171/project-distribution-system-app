@@ -138,14 +138,6 @@
                   <a class="sidebar-link sidebar-title link-nav active" href="{{ route('dashboard') }}"><i
                       data-feather="home"> </i><span>Dashboard</span></a>
                 </li>
-                <li class="sidebar-list">
-                  <a class="sidebar-link sidebar-title link-nav" href="{{ route('pendingRegisteredStudents.pendingRecords') }}"><i
-                      data-feather="file"> </i><span>Pending Registerd Std.</span></a>
-                </li>
-                <li class="sidebar-list">
-                  <a class="sidebar-link sidebar-title link-nav" href="{{ route('timeline.list') }}"><i
-                      data-feather="calendar"> </i><span>Registration Timeline</span></a>
-                </li>
                 {{-- <li class="sidebar-list">
                   <a class="sidebar-link sidebar-title link-nav" href="#"><i
                       data-feather="box"> </i><span>Register Records</span></a>
@@ -165,6 +157,14 @@
                 <li class="sidebar-list">
                   <a class="sidebar-link sidebar-title link-nav" href="{{ route('field.list') }}"><i
                       data-feather="box"> </i><span>Field/Areas</span></a>
+                </li>
+                <li class="sidebar-list">
+                  <a class="sidebar-link sidebar-title link-nav" href="{{ route('timeline.list') }}"><i
+                      data-feather="calendar"> </i><span>Registration Timeline</span></a>
+                </li>
+                <li class="sidebar-list">
+                  <a class="sidebar-link sidebar-title link-nav" href="{{ route('pendingRegisteredStudents.pendingRecords') }}"><i
+                      data-feather="file"> </i><span>Pending Registerd Std.</span></a>
                 </li>
                 <li class="sidebar-list">
                   <a class="sidebar-link sidebar-title link-nav" href="{{ route('studentProjects.list') }}"><i

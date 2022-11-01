@@ -67,7 +67,7 @@
                 @enderror
               </div>
             </div>
-            <div class="mb-3 row">
+            {{-- <div class="mb-3 row">
               <label class="col-sm-3 col-form-label">Password</label>
               <div class="col-sm-9">
                 <input class="form-control" type="password" name="tchr_password" placeholder="Enter teacher new password (if need)..">
@@ -75,7 +75,7 @@
                     <p class="text-danger">{{ $message }}</p>
                 @enderror
               </div>
-            </div>
+            </div> --}}
             
             <button class="btn btn-primary" type="submit">Edit Teacher Info</button>
           </form>
