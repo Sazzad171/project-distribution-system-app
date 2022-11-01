@@ -11,7 +11,10 @@ class StudentController extends Controller
 {
     // get all students
     public function index() {
-        $students = Student::where('std_status', 'active')->orderBy('created_at', 'desc')->paginate(20);
+        $students = Student::with('studentRegistration', 'studentProject')
+            ->where('std_status', 'active')
+            ->orderBy('created_at', 'desc')
+            ->paginate(20);
         
         return view('student.students', ['students' => $students]);
     }

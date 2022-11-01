@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 31, 2022 at 05:19 AM
+-- Generation Time: Nov 01, 2022 at 05:21 AM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 7.4.16
 
@@ -44,7 +44,7 @@ CREATE TABLE `admin-user` (
 --
 
 INSERT INTO `admin-user` (`id`, `name`, `email`, `password`, `remember_token`, `created_at`, `updated_at`, `status`, `email_verified_at`) VALUES
-(1, 'admin', 'admin@gmail.com', '$2y$10$k.1Qf1CzvUXxnQzGhy67AepI7GaITFzZJEp74rJXjfcjJ0hU0zGY6', '', '2022-10-15 11:01:59', '2022-10-30 21:44:46', 'active', NULL);
+(2, 'admin', 'admin@gmail.com', '$2y$10$k.1Qf1CzvUXxnQzGhy67AepI7GaITFzZJEp74rJXjfcjJ0hU0zGY6', '', '2022-10-15 11:01:59', '2022-10-31 18:54:30', 'active', NULL);
 
 -- --------------------------------------------------------
 
@@ -150,7 +150,8 @@ CREATE TABLE `std_project` (
 --
 
 INSERT INTO `std_project` (`std_proj_id`, `std_proj_name`, `fk_std_id`, `fk_teacher_id`, `fk_sem_id`, `public_project`, `created_at`, `status`) VALUES
-(6, NULL, 1, 2, 1, 'no', '2022-10-26 16:16:32', 'active');
+(6, NULL, 1, 2, 1, 'no', '2022-10-26 16:16:32', 'active'),
+(7, NULL, 17, 2, 1, 'no', '2022-10-31 19:09:43', 'active');
 
 -- --------------------------------------------------------
 
@@ -187,7 +188,8 @@ CREATE TABLE `std_registration` (
 --
 
 INSERT INTO `std_registration` (`std_reg_id`, `field1`, `field2`, `field3`, `field4`, `field5`, `field6`, `field7`, `field8`, `field9`, `field10`, `field11`, `field12`, `field13`, `field14`, `field15`, `fk_std_id`, `fk_tl_id`, `fk_sem_id`, `created_at`, `std_reg_status`) VALUES
-(6, 'Software Eng', 'Data Science and ML', 'Image Processing', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 10, 1, '2022-10-24 18:44:53', 'done');
+(6, 'Software Eng', 'Data Science and ML', 'Image Processing', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 10, 1, '2022-10-24 18:44:53', 'done'),
+(20, 'Select Field/Area', 'Select Field/Area', 'Select Field/Area', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 17, 10, 1, '2022-10-31 18:51:47', 'done');
 
 -- --------------------------------------------------------
 
@@ -217,10 +219,10 @@ CREATE TABLE `student` (
 --
 
 INSERT INTO `student` (`std_id`, `std_varsity_id`, `std_name`, `std_email`, `std_phone`, `password`, `fk_std_project`, `fk_std_registration`, `email_verified_at`, `remember_token`, `created_at`, `updated_at`, `std_status`, `fk_teacher_id`) VALUES
-(1, 'cse234', 'Sajjad', 'mail@mail.com', '0167895556', '$2y$10$40JWpNoEL4DlABxutbys8eO5Bv/zpL3/Ei.ObQUY4tX32LxHL4VPK', NULL, NULL, NULL, NULL, '2022-09-28 06:59:11', NULL, 'active', 1),
-(5, NULL, 'Gausul Asam', 'gausul@mail.com', '01655489', '$2y$10$SX6SPEQS62aOb8jpUv8vKOlGEIxtUjThm2zo5u.dOaa.MxT2bwBhm', NULL, NULL, NULL, NULL, '2022-09-28 08:33:51', NULL, 'active', 1),
-(16, NULL, 'Tushi', 'fsaf@gs.dd', '0167945453', '$2y$10$owvpV/I59MRAB4M/Xo/g8eyt/F/XGeeCuHyI6sL4a7SLMn75E/B7m', NULL, NULL, NULL, NULL, '2022-09-28 10:04:01', NULL, 'inactive', 1),
-(17, 'cse100', 'Bristy', 'br@mail.com', '01679453331', '$2y$10$dm/3.6StjQACEshaIZlb9uGTmYuteS1WxVExmfTrtXUyEbtADBTSW', NULL, NULL, NULL, NULL, '2022-10-24 18:56:12', NULL, 'active', 1);
+(1, 'cse234', 'Sajjad', 'mail@mail.com', '0167895556', '$2y$10$k.1Qf1CzvUXxnQzGhy67AepI7GaITFzZJEp74rJXjfcjJ0hU0zGY6', 6, 6, NULL, NULL, '2022-09-28 06:59:11', '2022-10-31 12:41:15', 'active', 1),
+(5, NULL, 'Gausul Asam', 'gausul@mail.com', '01655489', '$2y$10$k.1Qf1CzvUXxnQzGhy67AepI7GaITFzZJEp74rJXjfcjJ0hU0zGY6', NULL, NULL, NULL, NULL, '2022-09-28 08:33:51', NULL, 'inactive', 1),
+(16, NULL, 'Tushi', 'fsaf@gs.dd', '0167945453', '$2y$10$k.1Qf1CzvUXxnQzGhy67AepI7GaITFzZJEp74rJXjfcjJ0hU0zGY6', NULL, NULL, NULL, NULL, '2022-09-28 10:04:01', NULL, 'inactive', 1),
+(17, 'cse100', 'Bristy', 'br@mail.com', '01679453331', '$2y$10$k.1Qf1CzvUXxnQzGhy67AepI7GaITFzZJEp74rJXjfcjJ0hU0zGY6', 7, 20, NULL, NULL, '2022-10-24 18:56:12', '2022-10-31 12:51:48', 'active', 1);
 
 -- --------------------------------------------------------
 
@@ -269,7 +271,7 @@ CREATE TABLE `timeline` (
 --
 
 INSERT INTO `timeline` (`tl_id`, `tl_start`, `tl_end`, `fk_sem_id`, `tl_status`, `created_at`) VALUES
-(10, '2022-10-10 07:40:00', '2022-10-26 16:13:55', 1, 'active', '2022-10-05 07:41:00'),
+(10, '2022-10-10 07:40:00', '2022-11-26 16:13:55', 1, 'active', '2022-10-05 07:41:00'),
 (11, '2022-10-24 08:35:00', '2022-09-25 08:35:00', 2, 'active', '2022-10-05 08:35:44'),
 (12, '2022-10-10 07:40:00', '2022-09-20 07:40:00', 3, 'active', '2022-10-05 08:55:18');
 
@@ -339,7 +341,7 @@ ALTER TABLE `timeline`
 -- AUTO_INCREMENT for table `admin-user`
 --
 ALTER TABLE `admin-user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `field`
@@ -363,19 +365,19 @@ ALTER TABLE `semester`
 -- AUTO_INCREMENT for table `std_project`
 --
 ALTER TABLE `std_project`
-  MODIFY `std_proj_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `std_proj_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `std_registration`
 --
 ALTER TABLE `std_registration`
-  MODIFY `std_reg_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `std_reg_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `student`
 --
 ALTER TABLE `student`
-  MODIFY `std_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `std_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `teacher`
@@ -387,7 +389,7 @@ ALTER TABLE `teacher`
 -- AUTO_INCREMENT for table `timeline`
 --
 ALTER TABLE `timeline`
-  MODIFY `tl_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `tl_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

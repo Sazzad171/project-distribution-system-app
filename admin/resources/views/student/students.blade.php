@@ -61,11 +61,12 @@
                       <td>{{ $student->std_name }}</td>
                       <td>{{ $student->std_varsity_id }}</td>
                       <td>{{ $student->std_email }}</td>
-                      <td>Done</td>
+                      <td>{{ $student->studentRegistration->std_reg_status }}</td>
                       <td class="text-center">
                         {{-- <span class="badge badge-light-success"><i class="me-2" data-feather="check"></i>Done</span>
                         <span class="badge badge-light-warning"><i class="me-2" data-feather="rotate-cw"></i>Pending</span>
                         <span class="badge badge-light-info"><i class="me-2" data-feather="clock"></i>In progress</span> --}}
+                        {{ $student->studentProject->status }}
                       </td>
                       <td class="text-end">
                         <a href="{{ route('student.edit', $student->std_id) }}" class="btn btn-warning-gradien" type="button"><i class="fa fa-edit"></i></a>
@@ -87,7 +88,7 @@
           </div>
 
           {{-- pagination --}}
-          @if ($students->lastPage() > 1 )
+          {{-- @if ($students->lastPage() > 1 )
             <ul class="pagination justify-content-center">
                 <li class="page-item  {{ $students->currentPage() == 1 ? ' disabled' : '' }}">
                     <a class="page-link" href="{{ $students->url(1) }}">Previous</a>
@@ -101,7 +102,7 @@
                     <a class="page-link" href="{{ $students->url($students->currentPage() + 1) }}">Next</a>
                 </li>
             </ul>
-          @endif
+          @endif --}}
         </div>
       </div>
       <!-- students table end -->

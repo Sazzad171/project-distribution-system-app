@@ -17,13 +17,11 @@ class Student extends Model
 
     // relationship with studentRegistration
     public function studentRegistration() {
-        return $this->belongsTo(Student::class);
-
-        // return $this->hasOne(Student::class, 'std_id', 'fk_std_id');
+        return $this->hasOne(StudentRegistration::class, 'std_reg_id', 'fk_std_registration');
     }
 
     // relationship with student_project
     public function studentProject() {
-        return $this->belongsTo(Student::class);
+        return $this->hasOne(StudentProject::class, 'std_proj_id', 'fk_std_project');
     }
 }
