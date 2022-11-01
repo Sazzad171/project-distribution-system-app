@@ -35,7 +35,7 @@
             </div>
             <div class="col-md-4">
               <p class="text-md-end">
-                <button class="btn btn-success">Upload CSV</button>
+                {{-- <button class="btn btn-success">Upload CSV</button> --}}
               </p>
             </div>
           </div>

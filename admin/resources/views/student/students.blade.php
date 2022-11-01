@@ -61,12 +61,18 @@
                       <td>{{ $student->std_name }}</td>
                       <td>{{ $student->std_varsity_id }}</td>
                       <td>{{ $student->std_email }}</td>
-                      <td>{{ $student->studentRegistration->std_reg_status }}</td>
+                      <td>
+                        @unless ( $student->studentRegistration === null )
+                        {{ $student->studentRegistration->std_reg_status }}
+                        @endunless
+                      </td>
                       <td class="text-center">
                         {{-- <span class="badge badge-light-success"><i class="me-2" data-feather="check"></i>Done</span>
                         <span class="badge badge-light-warning"><i class="me-2" data-feather="rotate-cw"></i>Pending</span>
                         <span class="badge badge-light-info"><i class="me-2" data-feather="clock"></i>In progress</span> --}}
+                        @unless ( $student->studentProject === null )
                         {{ $student->studentProject->status }}
+                        @endunless
                       </td>
                       <td class="text-end">
                         <a href="{{ route('student.edit', $student->std_id) }}" class="btn btn-warning-gradien" type="button"><i class="fa fa-edit"></i></a>
