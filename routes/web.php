@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\MyProjectController;
 use App\Http\Controllers\RegisterMyProjectController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -31,6 +32,9 @@ Route::group(['middleware' => 'auth'], function () {
 
     // student project registration
     Route::post('/student-registration', [RegisterMyProjectController::class, 'store'])->name('stdRegistration');
+
+    // my project
+    Route::get('/my-projct', [MyProjectController::class, 'index'])->name('myProject');
 
     Route::get('/settings', function () {
         return view('settings');

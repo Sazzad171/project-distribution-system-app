@@ -70,6 +70,20 @@
                   </div>
                   <p class="mt-4 mb-0 text-center">Don't have account?<a class="ms-2" href="sign-up.html">Create Account</a></p> --}}
                 </form>
+
+                {{-- other signin links --}}
+                <div class="row mt-4">
+                  <div class="col-md-6">
+                    <p>
+                      <a href="admin">Login as Admin</a>
+                    </p>
+                  </div>
+                  <div class="col-md-6">
+                    <p class="text-md-end">
+                      <a href="teacher">Login as Teacher</a>
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

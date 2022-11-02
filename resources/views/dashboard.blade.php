@@ -95,13 +95,21 @@
                                 </div>
                                 <div class="col-md-12 mb-2">
                                     <p>
-                                        <b>Project Name:</b> Research on video editing
+                                        <b>Project Name:</b> 
+                                        @unless ( $projectDetails->std_proj_name === null )
+                                        {{ $projectDetails->std_proj_name }}
+                                        @else
+                                        Not Updated
+                                        @endunless
                                     </p>
                                     <p>
-                                        <b>Supervisor Name:</b> Md. Asad
+                                        <b>Supervisor Name:</b> {{ $projectDetails->teacher->tchr_name }}
                                     </p>
                                     <p>
-                                        <b>Registered Semester:</b> Fall - 22
+                                        <b>Registered Semester:</b> {{ $projectDetails->semester->sem_title }}
+                                    </p>
+                                    <p>
+                                        <b>Project Status:</b> {{ $projectDetails->status }}
                                     </p>
                                 </div>
                             </div>

@@ -140,7 +140,7 @@
                       data-feather="home"> </i><span>Dashboard</span></a>
                 </li>
                 <li class="sidebar-list">
-                  <a class="sidebar-link sidebar-title link-nav" href="{{ route('settings') }}"><i
+                  <a class="sidebar-link sidebar-title link-nav" href="{{ route('myProject') }}"><i
                       data-feather="file"> </i><span>My Project</span></a>
                 </li>
                 <li class="sidebar-list">

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\StudentProjects;
 use App\Models\StudentRegistration;
 use App\Models\Timeline;
 use Illuminate\Http\Request;
@@ -24,7 +25,11 @@ class DashboardController extends Controller
         // check this user is registered or not
         $studentRegistrationStatus = StudentRegistration::where('fk_std_id', $userId)->get();
         
+        // project data of this student
+        $projectDetails = StudentProjects::where('fk_std_id', $userId)
+            ->with('teacher', 'semester')
+            ->first();
 
-        return view('dashboard', compact('timelineActiveData', 'studentRegistrationStatus'));
+        return view('dashboard', compact('timelineActiveData', 'studentRegistrationStatus', 'projectDetails'));
     }
 }
