@@ -71,19 +71,19 @@
                                         <div class="mb-3 row">
                                             <label class="col-sm-3 col-form-label">My Name</label>
                                             <div class="col-sm-9">
-                                              <input class="form-control" type="text" value="" name="stdName" placeholder="My name..">
+                                              <input class="form-control" type="text" value="{{ $student->std_name }}" name="stdName" placeholder="My name..">
                                             </div>
                                         </div>
                                         <div class="mb-3 row">
                                             <label class="col-sm-3 col-form-label">My Contact No.</label>
                                             <div class="col-sm-9">
-                                              <input class="form-control" type="number" value="" name="stdPhone" placeholder="My contact no..">
+                                              <input class="form-control" type="number" value="{{ $student->std_phone }}" name="stdPhone" placeholder="My contact no..">
                                             </div>
                                         </div>
                                         <div class="mb-3 row">
                                             <label class="col-sm-3 col-form-label">Project Name</label>
                                             <div class="col-sm-9">
-                                              <input class="form-control" type="text" value="" name="projectName" placeholder="My project name..">
+                                              <input class="form-control" type="text" value="{{ $projectDetails->std_proj_name }}" name="projectName" placeholder="My project name..">
                                             </div>
                                         </div>
                                         <button class="btn btn-primary">Update</button>

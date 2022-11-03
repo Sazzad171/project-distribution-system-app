@@ -144,6 +144,10 @@
                       data-feather="file"> </i><span>My Project</span></a>
                 </li>
                 <li class="sidebar-list">
+                  <a class="sidebar-link sidebar-title link-nav" href=""><i
+                      data-feather="users"> </i><span>Contact Supervisor</span></a>
+                </li>
+                <li class="sidebar-list">
                   <a class="sidebar-link sidebar-title link-nav" href="{{ route('settings') }}"><i
                       data-feather="settings"> </i><span>Settings</span></a>
                 </li>

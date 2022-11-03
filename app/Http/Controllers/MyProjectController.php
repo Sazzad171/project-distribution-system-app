@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Student;
 use App\Models\StudentProjects;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -16,7 +17,10 @@ class MyProjectController extends Controller
             ->with('teacher', 'semester')
             ->first();
 
-        return view('myProject', compact('projectDetails'));
+        // student data
+        $student = Student::where('std_id', $userId)->first();
+
+        return view('myProject', compact('projectDetails', 'student'));
     }
 
     // update student info
@@ -25,15 +29,19 @@ class MyProjectController extends Controller
         $formFields = $request->validate([
             'stdName' => 'required'
         ]);
-        $formFields['stdPhone'] = $request->stdPhone;
-        $formFields['projectName'] = $request->projectName;
-        dd($formFields);
 
         // student table
         $userId = Auth::User()->std_id;
+        $student = Student::where('std_id', $userId)->first();
+        $student->std_name = $formFields['stdName'];
+        $student->std_phone = $request->stdPhone;
+        $student->save();
 
         // project table
+        $stdProject = StudentProjects::where('fk_std_id', $userId)->first();
+        $stdProject->std_proj_name = $request->projectName;
+        $stdProject->save();
 
-        return redirect('my-project');
+        return redirect('my-project')->with('message', 'Your data updated successfully!');
     }
 }

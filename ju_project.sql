@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.0
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 01, 2022 at 07:50 PM
--- Server version: 10.4.18-MariaDB
--- PHP Version: 7.4.16
+-- Generation Time: Nov 03, 2022 at 08:40 AM
+-- Server version: 10.4.24-MariaDB
+-- PHP Version: 7.4.29
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -160,7 +160,7 @@ CREATE TABLE `std_project` (
 INSERT INTO `std_project` (`std_proj_id`, `std_proj_name`, `fk_std_id`, `fk_teacher_id`, `fk_sem_id`, `public_project`, `created_at`, `status`) VALUES
 (6, NULL, 1, 2, 1, 'no', '2022-10-26 16:16:32', 'Assigned'),
 (7, NULL, 17, 2, 1, 'no', '2022-10-31 19:09:43', 'Assigned'),
-(8, NULL, 19, 3, 4, 'no', '2022-11-01 18:41:00', 'Assigned');
+(8, 'License detector', 19, 3, 4, 'no', '2022-11-01 18:41:00', 'Assigned');
 
 -- --------------------------------------------------------
 
@@ -233,7 +233,7 @@ INSERT INTO `student` (`std_id`, `std_varsity_id`, `std_name`, `std_email`, `std
 (5, 'cse200', 'Gausul Asam', 'gausul@mail.com', '016554893433', '$2y$10$k.1Qf1CzvUXxnQzGhy67AepI7GaITFzZJEp74rJXjfcjJ0hU0zGY6', NULL, NULL, NULL, NULL, '2022-09-28 08:33:51', NULL, 'active', 1),
 (16, NULL, 'Tushi', 'fsaf@gs.dd', '0167945453', '$2y$10$k.1Qf1CzvUXxnQzGhy67AepI7GaITFzZJEp74rJXjfcjJ0hU0zGY6', NULL, NULL, NULL, NULL, '2022-09-28 10:04:01', NULL, 'inactive', 1),
 (17, 'cse100', 'Bristy', 'br@mail.com', '01679453331', '$2y$10$k.1Qf1CzvUXxnQzGhy67AepI7GaITFzZJEp74rJXjfcjJ0hU0zGY6', 7, 20, NULL, NULL, '2022-10-24 18:56:12', '2022-10-31 12:51:48', 'active', 1),
-(19, 'asds201', 'Saikat', 'saikat@gmail.com', '0167434343', '$2y$10$jI1DYhws42yCI3tVV9CRzueVZPEATrucVFZdJP37nBoOpYC/dQ6Vi', 8, 21, NULL, NULL, '2022-11-01 16:38:04', '2022-11-01 11:51:57', 'active', 3);
+(19, 'asds201', 'Saikat Chandra Himel', 'saikat@gmail.com', '016788555', '$2y$10$jI1DYhws42yCI3tVV9CRzueVZPEATrucVFZdJP37nBoOpYC/dQ6Vi', 8, 21, NULL, NULL, '2022-11-01 16:38:04', '2022-11-01 11:51:57', 'active', 3);
 
 -- --------------------------------------------------------
 
