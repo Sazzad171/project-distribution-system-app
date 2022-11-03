@@ -45,7 +45,7 @@
                         </div>
                         <div class="col-md-4 mb-1">
                             <h6 class="text-primary">Semester</h6>
-                            <p class="text-secondary">Fall - 22</p>
+                            <p class="text-secondary">{{ $timelineActiveData->semester->sem_title }}</p>
                         </div>
 
                         @else

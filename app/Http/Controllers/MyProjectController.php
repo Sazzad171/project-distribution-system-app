@@ -18,4 +18,22 @@ class MyProjectController extends Controller
 
         return view('myProject', compact('projectDetails'));
     }
+
+    // update student info
+    public function update(Request $request) {
+        // validation
+        $formFields = $request->validate([
+            'stdName' => 'required'
+        ]);
+        $formFields['stdPhone'] = $request->stdPhone;
+        $formFields['projectName'] = $request->projectName;
+        dd($formFields);
+
+        // student table
+        $userId = Auth::User()->std_id;
+
+        // project table
+
+        return redirect('my-project');
+    }
 }

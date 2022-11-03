@@ -63,16 +63,30 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-md-12 mb-2">
-                                    <h5 class="border-bottom pb-3">Update Project/Research Data</h5>
+                                    <h5 class="border-bottom pb-3">Update Your Info</h5>
                                 </div>
                                 <div class="col-md-12 mb-2">
-                                    <form action="">
+                                    <form action="{{ route('updateInfo') }}" method="POST">
+                                        @csrf
+                                        <div class="mb-3 row">
+                                            <label class="col-sm-3 col-form-label">My Name</label>
+                                            <div class="col-sm-9">
+                                              <input class="form-control" type="text" value="" name="stdName" placeholder="My name..">
+                                            </div>
+                                        </div>
+                                        <div class="mb-3 row">
+                                            <label class="col-sm-3 col-form-label">My Contact No.</label>
+                                            <div class="col-sm-9">
+                                              <input class="form-control" type="number" value="" name="stdPhone" placeholder="My contact no..">
+                                            </div>
+                                        </div>
                                         <div class="mb-3 row">
                                             <label class="col-sm-3 col-form-label">Project Name</label>
                                             <div class="col-sm-9">
-                                              <input class="form-control" type="text" value="" name="projectName" placeholder="Enter/Update your project name..">
+                                              <input class="form-control" type="text" value="" name="projectName" placeholder="My project name..">
                                             </div>
-                                          </div>
+                                        </div>
+                                        <button class="btn btn-primary">Update</button>
                                     </form>
                                 </div>
                             </div>

@@ -18,6 +18,7 @@ class DashboardController extends Controller
         $timelineActiveData = Timeline::where('tl_status', 'active')
             ->where('tl_start', '<', date('Y-m-d H:i:s'))
             ->where('tl_end', '>', date('Y-m-d H:i:s'))
+            ->with('semester')
             ->first();
 
         $userId = Auth::User()->std_id;

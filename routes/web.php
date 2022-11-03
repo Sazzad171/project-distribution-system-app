@@ -34,7 +34,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/student-registration', [RegisterMyProjectController::class, 'store'])->name('stdRegistration');
 
     // my project
-    Route::get('/my-projct', [MyProjectController::class, 'index'])->name('myProject');
+    Route::get('/my-project', [MyProjectController::class, 'index'])->name('myProject');
+
+    // update student info
+    Route::post('/update-student-info', [MyProjectController::class, 'update'])->name('updateInfo');
 
     Route::get('/settings', function () {
         return view('settings');
