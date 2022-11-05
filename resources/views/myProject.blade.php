@@ -36,6 +36,9 @@
                                     <h5 class="border-bottom pb-3">My Project/Research</h5>
                                 </div>
                                 <div class="col-md-12 mb-2">
+                                    @if (empty($projectDetails))
+                                    <p>Project not assigned</p>
+                                    @else
                                     <p>
                                         <b>Project Name:</b> 
                                         @unless ( $projectDetails->std_proj_name === null )
@@ -53,6 +56,7 @@
                                     <p>
                                         <b>Project Status:</b> {{ $projectDetails->status }}
                                     </p>
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -81,10 +85,14 @@
                                             </div>
                                         </div>
                                         <div class="mb-3 row">
+                                            @if (empty($projectDetails))
+                                            <p></p>
+                                            @else
                                             <label class="col-sm-3 col-form-label">Project Name</label>
                                             <div class="col-sm-9">
                                               <input class="form-control" type="text" value="{{ $projectDetails->std_proj_name }}" name="projectName" placeholder="My project name..">
                                             </div>
+                                            @endif
                                         </div>
                                         <button class="btn btn-primary">Update</button>
                                     </form>

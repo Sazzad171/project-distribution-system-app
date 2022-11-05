@@ -85,7 +85,7 @@
             <li class="profile-nav onhover-dropdown p-0 me-0">
               <div class="media profile-media"><img class="user-img b-r-10" src="{{ asset('public/assets/images/user/user.png') }}" alt="">
                 <div class="media-body"><span>John Doe</span>
-                  <p class="mb-0 font-roboto">Admin <i class="middle fa fa-angle-down"></i></p>
+                  <p class="mb-0 font-roboto">Student <i class="middle fa fa-angle-down"></i></p>
                 </div>
               </div>
               <ul class="profile-dropdown onhover-show-div">

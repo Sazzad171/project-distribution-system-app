@@ -94,7 +94,7 @@ class RegisterMyProjectController extends Controller
         $obj_user->fk_std_registration = $std_registration->std_reg_id;
         $obj_user->save();
 
-        Session::flash('message', 'Project Registration Sucessfully Done!');
+        Session::flash('message', 'Project Registration Successfully Done!');
 
         return redirect('/');
     }

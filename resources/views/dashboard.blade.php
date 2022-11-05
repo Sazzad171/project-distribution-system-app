@@ -60,7 +60,7 @@
 
             <!-- total teacher and student card start -->
             <div class="row">
-                <div class="col-sm-6 col-xl-4 col-lg-6">
+                <div class="col-sm-6 col-xl-6 col-lg-6">
                     <div class="card">
                         <div class="card-body">
                             <div class="row">
@@ -86,7 +86,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-6 col-xl-4 col-lg-6">
+                <div class="col-sm-6 col-xl-6 col-lg-6">
                     <div class="card">
                         <div class="card-body">
                             <div class="row">
@@ -94,8 +94,11 @@
                                     <h5 class="border-bottom pb-3">My Project/Research</h5>
                                 </div>
                                 <div class="col-md-12 mb-2">
+                                    @if (empty($projectDetails))
+                                    <p>Your project not assigned</p>
+                                    @else
                                     <p>
-                                        <b>Project Name:</b> 
+                                        <b>Project Name:</b>
                                         @unless ( $projectDetails->std_proj_name === null )
                                         {{ $projectDetails->std_proj_name }}
                                         @else
@@ -111,6 +114,7 @@
                                     <p>
                                         <b>Project Status:</b> {{ $projectDetails->status }}
                                     </p>
+                                    @endif
                                 </div>
                             </div>
                         </div>

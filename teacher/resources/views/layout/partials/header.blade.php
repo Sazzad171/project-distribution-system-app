@@ -82,13 +82,17 @@
             <li class="profile-nav onhover-dropdown p-0 me-0">
               <div class="media profile-media"><img class="user-img b-r-10" src="{{ asset('public/assets/images/user/user.png') }}" alt="">
                 <div class="media-body"><span>John Doe</span>
-                  <p class="mb-0 font-roboto">Admin <i class="middle fa fa-angle-down"></i></p>
+                  <p class="mb-0 font-roboto">Supervisor <i class="middle fa fa-angle-down"></i></p>
                 </div>
               </div>
               <ul class="profile-dropdown onhover-show-div">
-                <li><a href="#"><i data-feather="user"></i><span>Account </span></a></li>
-                <li><a href="{{ route('settings') }}"><i data-feather="settings"></i><span>Settings</span></a></li>
-                <li><a href="{{ route('logout') }}"><i data-feather="log-in"> </i><span>Log out</span></a></li>
+                <li><a href=""><i data-feather="settings"></i><span>Settings</span></a></li>
+                <li>
+                  <form action="{{route('logout')}}" method="POST">
+                    @csrf
+                    <button href="#" class="btn btn-sm btn-light px-3"><i data-feather="log-in"> </i><span>Log out</span></button>
+                  </form>
+                </li>
               </ul>
             </li>
           </ul>
@@ -134,10 +138,10 @@
                 </li>
                 <li class="sidebar-list">
                   <a class="sidebar-link sidebar-title link-nav" href="{{ route('myStudents') }}"><i
-                      data-feather="edit"> </i><span>My Students</span></a>
+                      data-feather="edit"> </i><span>My Assigned Students</span></a>
                 </li>
                 <li class="sidebar-list">
-                  <a class="sidebar-link sidebar-title link-nav" href="{{ route('settings') }}"><i
+                  <a class="sidebar-link sidebar-title link-nav" href=""><i
                       data-feather="box"> </i><span>Settings</span></a>
                 </li>
                 <!-- <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="#"><i

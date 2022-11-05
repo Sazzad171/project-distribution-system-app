@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\AssignedStudentsController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,14 +16,25 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('dashboard');
-})->name('dashboard');
+// login show
+Route::get('/login', [UserController::class, 'login'])->name('login')->middleware('guest');
 
-Route::get('/my-students', function () {
-    return view('myStudents');
-})->name('myStudents');
+// login attempt
+Route::post('user/authenticate', [UserController::class, 'authenticate'])->name('authenticate')->middleware('guest');
 
-Route::get('/settings', function () {
-    return view('settings');
-})->name('settings');
+// authenticated user
+Route::group(['middleware' => 'auth'], function () {
+    // dashboard
+    Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+
+    // assigned students list
+    Route::get('/my-students', [AssignedStudentsController::class, 'index'])->name('myStudents');
+
+    // settings
+    Route::get('/settings', function () {
+        return view('settings');
+    })->name('settings');
+
+    // logout
+    Route::post('/logout', [UserController::class, 'logout'])->name('logout');
+});

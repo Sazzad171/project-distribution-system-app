@@ -3,6 +3,7 @@
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\MyProjectController;
 use App\Http\Controllers\RegisterMyProjectController;
+use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -39,9 +40,12 @@ Route::group(['middleware' => 'auth'], function () {
     // update student info
     Route::post('/update-student-info', [MyProjectController::class, 'update'])->name('updateInfo');
 
-    Route::get('/settings', function () {
-        return view('settings');
-    })->name('settings');
+    // view settings form
+    Route::get('/settings', [SettingsController::class, 'index'])->name('settings');
 
+    // update settings info
+    Route::post('/update-settings', [SettingsController::class, 'update'])->name('updateSettings');
+
+    // logout
     Route::post('/logout', [UserController::class, 'logout'])->name('logout');
 });

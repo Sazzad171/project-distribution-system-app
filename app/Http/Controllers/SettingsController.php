@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Student;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -15,7 +16,7 @@ class SettingsController extends Controller
     }
 
     // submit password
-    public function store(Request $request) {
+    public function update(Request $request) {
         $request->validate([
             'currentPassword' => 'required',
             'newPassword' => 'required|min:6',
@@ -28,8 +29,8 @@ class SettingsController extends Controller
         // check current password is valid
         if ( Hash::check( $request->currentPassword, $user->password) ) {
 
-            $user_id = Auth::User()->id;                       
-            $obj_user = User::find('id', $user_id)->first();
+            $user_id = Auth::User()->std_id;
+            $obj_user = User::where('std_id', $user_id)->first();
             $obj_user->password = Hash::make($request['confirmNewPassword']);
             $obj_user->save(); 
             
