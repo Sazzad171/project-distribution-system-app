@@ -53,12 +53,10 @@
                   <td>{{ $stItem->std_name }}</td>
                   <td>{{ $stItem->std_varsity_id }}</td>
                   <td class="text-center">
-                    <span class="badge badge-light-success"><i class="me-2" data-feather="check"></i>Done</span>
-                    <span class="badge badge-light-warning"><i class="me-2" data-feather="rotate-cw"></i>Pending</span>
-                    <span class="badge badge-light-info"><i class="me-2" data-feather="clock"></i>In progress</span>
+                    {{ $stItem->studentProject->status }}
                   </td>
                   <td class="text-end">
-                    <a href="{{ $stItem->std_id }}" class="btn btn-success-gradien" type="button"><i class="fa fa-eye"></i></a>
+                    <a href="{{ route('studentDetails', $stItem->std_id) }}" class="btn btn-success-gradien" type="button"><i class="fa fa-eye"></i></a>
                   </td>
                 </tr>
                 @endforeach

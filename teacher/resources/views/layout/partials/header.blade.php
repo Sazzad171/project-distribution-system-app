@@ -37,6 +37,8 @@
   <link rel="stylesheet" type="text/css" href="{{ asset('public/assets/css/responsive.css') }}">
   <link rel="stylesheet" type="text/css" href="{{ asset('public/assets/css/custom.css') }}">
 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
   {{-- dynamic css --}}
     @yield('css')
 
@@ -86,7 +88,7 @@
                 </div>
               </div>
               <ul class="profile-dropdown onhover-show-div">
-                <li><a href=""><i data-feather="settings"></i><span>Settings</span></a></li>
+                <li><a href="{{ route('settings') }}"><i data-feather="settings"></i><span>Settings</span></a></li>
                 <li>
                   <form action="{{route('logout')}}" method="POST">
                     @csrf
@@ -141,7 +143,7 @@
                       data-feather="edit"> </i><span>My Assigned Students</span></a>
                 </li>
                 <li class="sidebar-list">
-                  <a class="sidebar-link sidebar-title link-nav" href=""><i
+                  <a class="sidebar-link sidebar-title link-nav" href="{{ route('settings') }}"><i
                       data-feather="box"> </i><span>Settings</span></a>
                 </li>
                 <!-- <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="#"><i

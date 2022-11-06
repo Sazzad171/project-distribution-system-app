@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AssignedStudentsController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -30,10 +31,17 @@ Route::group(['middleware' => 'auth'], function () {
     // assigned students list
     Route::get('/my-students', [AssignedStudentsController::class, 'index'])->name('myStudents');
 
-    // settings
-    Route::get('/settings', function () {
-        return view('settings');
-    })->name('settings');
+    // any student details
+    Route::get('/student-details/{std_id}', [AssignedStudentsController::class, 'details'])->name('studentDetails');
+
+    // update student details
+    Route::post('/update-student-info/{proj_id}', [AssignedStudentsController::class, 'updateStudentInfo'])->name('updateStudentInfo');
+
+    // view settings form
+    Route::get('/settings', [SettingsController::class, 'index'])->name('settings');
+
+    // update settings info
+    Route::post('/update-settings', [SettingsController::class, 'update'])->name('updateSettings');
 
     // logout
     Route::post('/logout', [UserController::class, 'logout'])->name('logout');

@@ -16,12 +16,12 @@ class Student extends Model
     public $timestamps = false;
 
     // relationship with studentRegistration
-    public function studentRegistration() {
-        return $this->hasOne(StudentRegistration::class, 'std_reg_id', 'fk_std_registration');
-    }
+    // public function studentRegistration() {
+    //     return $this->hasOne(StudentRegistration::class, 'std_reg_id', 'fk_std_registration');
+    // }
 
     // relationship with student_project
     public function studentProject() {
-        return $this->hasOne(StudentProject::class, 'std_proj_id', 'fk_std_project');
+        return $this->hasOne(StudentProjects::class, 'std_proj_id', 'fk_std_project');
     }
 }
