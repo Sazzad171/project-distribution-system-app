@@ -91,9 +91,24 @@
                                             <div class="col-sm-8">
                                               <select name="status" id="" class="form-control">
                                                 <option value="{{ $studentDetail->studentProject->status }}">{{ $studentDetail->studentProject->status }}</option>
-                                                <option value="Started">Started</option>
-                                                <option value="Testing">Testing</option>
-                                                <option value="Done">Done</option>
+                                                @switch( $studentDetail->studentProject->status )
+                                                    @case("Done")
+                                                        <option value="Started">Started</option>
+                                                        <option value="Testing">Testing</option>
+                                                        @break
+                                                    @case("Started")
+                                                        <option value="Testing">Testing</option>
+                                                        <option value="Done">Done</option>
+                                                        @break
+                                                    @case("Testing")
+                                                        <option value="Started">Started</option>
+                                                        <option value="Done">Done</option>
+                                                        @break
+                                                    @default
+                                                        <option value="Started">Started</option>
+                                                        <option value="Testing">Testing</option>
+                                                        <option value="Done">Done</option>
+                                                @endswitch
                                               </select>
                                             </div>
                                         </div>
