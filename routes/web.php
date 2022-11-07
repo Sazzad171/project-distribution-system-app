@@ -4,6 +4,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\MyProjectController;
 use App\Http\Controllers\RegisterMyProjectController;
 use App\Http\Controllers\SettingsController;
+use App\Http\Controllers\SupervisorContactController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -39,6 +40,12 @@ Route::group(['middleware' => 'auth'], function () {
 
     // update student info
     Route::post('/update-student-info', [MyProjectController::class, 'update'])->name('updateInfo');
+
+    // supervisor contact
+    Route::get('/supervisor-contact', [SupervisorContactController::class, 'index'])->name('supervisorContact');
+
+    // message store
+    Route::post('/store-message', [SupervisorContactController::class, 'storeMessage'])->name('storeMessage');
 
     // view settings form
     Route::get('/settings', [SettingsController::class, 'index'])->name('settings');

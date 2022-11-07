@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.0
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 06, 2022 at 03:07 PM
--- Server version: 10.4.18-MariaDB
--- PHP Version: 7.4.16
+-- Generation Time: Nov 07, 2022 at 03:03 PM
+-- Server version: 10.4.24-MariaDB
+-- PHP Version: 7.4.29
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -84,6 +84,15 @@ CREATE TABLE `message` (
   `status` varchar(20) NOT NULL DEFAULT 'active',
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `message`
+--
+
+INSERT INTO `message` (`msg_id`, `msg_text`, `fk_stdnt_id`, `fk_teacher_id`, `status`, `created_at`) VALUES
+(1, 'Text id 1', 5, NULL, 'active', '2022-11-07 13:17:23'),
+(2, 'Test Text 2', NULL, 3, 'active', '2022-11-07 13:18:15'),
+(3, 'Test text 3', 19, NULL, 'active', '2022-11-07 13:29:00');
 
 -- --------------------------------------------------------
 
@@ -176,7 +185,7 @@ INSERT INTO `std_project` (`std_proj_id`, `std_proj_name`, `fk_std_id`, `fk_teac
 (6, NULL, 1, 2, 1, 'no', '2022-10-26 16:16:32', 'Assigned'),
 (7, NULL, 17, 2, 1, 'no', '2022-10-31 19:09:43', 'Assigned'),
 (8, 'License detector', 19, 3, 4, 'no', '2022-11-01 18:41:00', 'Assigned'),
-(9, 'PM System', 5, 3, 4, 'yes', '2022-11-05 15:40:16', 'Started');
+(9, 'PM System', 5, 3, 4, 'yes', '2022-11-05 15:40:16', 'Assigned');
 
 -- --------------------------------------------------------
 
@@ -389,7 +398,7 @@ ALTER TABLE `field`
 -- AUTO_INCREMENT for table `message`
 --
 ALTER TABLE `message`
-  MODIFY `msg_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `msg_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `registered_fields`

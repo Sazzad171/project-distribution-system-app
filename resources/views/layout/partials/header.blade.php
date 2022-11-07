@@ -141,10 +141,10 @@
                 </li>
                 <li class="sidebar-list">
                   <a class="sidebar-link sidebar-title link-nav" href="{{ route('myProject') }}"><i
-                      data-feather="file"> </i><span>My Project</span></a>
+                      data-feather="file"> </i><span>My Project and Info.</span></a>
                 </li>
                 <li class="sidebar-list">
-                  <a class="sidebar-link sidebar-title link-nav" href=""><i
+                  <a class="sidebar-link sidebar-title link-nav" href="{{ route('supervisorContact') }}"><i
                       data-feather="users"> </i><span>Contact Supervisor</span></a>
                 </li>
                 <li class="sidebar-list">
