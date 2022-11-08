@@ -39,6 +39,7 @@
                         </div>
                         <div class="card-body chat-box">
                             <form action="{{ route('storeMessage') }}" method="POST" class="mb-4">
+                              @csrf
                                 <div class="input-group mt-0">
                                     <input class="form-control" type="text" placeholder="Type Your Message..." name="message" required>
                                     <button type="submit" class="send-msg border-0"><i data-feather="send"></i></button>
@@ -77,6 +78,18 @@
 
                                 @else
                                 <p class="text-center">No Conversation Yet!</p>
+                                @endif
+
+                                {{-- pagination --}}
+                                @if ($myMessages->lastPage() > 1 )
+                                <ul class="pagination justify-content-center">
+                                  <li class="page-item  {{ $myMessages->currentPage() == 1 ? ' disabled' : '' }}">
+                                      <a class="page-link" href="{{ $myMessages->url(1) }}">Previous</a>
+                                  </li>
+                                  <li class="page-item {{ $myMessages->currentPage() == $myMessages->lastPage() ? ' disabled' : '' }}">
+                                      <a class="page-link" href="{{ $myMessages->url($myMessages->currentPage() + 1) }}">Next</a>
+                                  </li>
+                                </ul>
                                 @endif
                             </div>
                         </div>

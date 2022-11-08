@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 07, 2022 at 03:03 PM
+-- Generation Time: Nov 08, 2022 at 02:13 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -82,17 +82,25 @@ CREATE TABLE `message` (
   `fk_stdnt_id` int(20) DEFAULT NULL,
   `fk_teacher_id` int(20) DEFAULT NULL,
   `status` varchar(20) NOT NULL DEFAULT 'active',
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `message`
 --
 
-INSERT INTO `message` (`msg_id`, `msg_text`, `fk_stdnt_id`, `fk_teacher_id`, `status`, `created_at`) VALUES
-(1, 'Text id 1', 5, NULL, 'active', '2022-11-07 13:17:23'),
-(2, 'Test Text 2', NULL, 3, 'active', '2022-11-07 13:18:15'),
-(3, 'Test text 3', 19, NULL, 'active', '2022-11-07 13:29:00');
+INSERT INTO `message` (`msg_id`, `msg_text`, `fk_stdnt_id`, `fk_teacher_id`, `status`, `created_at`, `updated_at`) VALUES
+(1, 'Text id 1', 5, NULL, 'active', '2022-11-07 13:17:23', NULL),
+(2, 'Test Text 2', NULL, 3, 'active', '2022-11-07 13:18:15', NULL),
+(3, 'Test text 3', 19, NULL, 'active', '2022-11-07 13:29:00', NULL),
+(4, 'Test message from me', 5, NULL, 'active', '2022-11-08 06:45:39', '2022-11-08 06:45:39'),
+(5, 'another', 5, NULL, 'active', '2022-11-08 07:06:03', '2022-11-08 07:06:03'),
+(6, 'hello', 5, NULL, 'active', '2022-11-08 07:06:26', '2022-11-08 07:06:26'),
+(7, 'test', 5, NULL, 'active', '2022-11-08 07:06:32', '2022-11-08 07:06:32'),
+(8, 'hello', 5, NULL, 'active', '2022-11-08 07:06:50', '2022-11-08 07:06:50'),
+(9, 'Test message from me', 5, NULL, 'active', '2022-11-08 07:06:55', '2022-11-08 07:06:55'),
+(10, 'hello', 5, NULL, 'active', '2022-11-08 07:07:12', '2022-11-08 07:07:12');
 
 -- --------------------------------------------------------
 
@@ -259,7 +267,7 @@ INSERT INTO `student` (`std_id`, `std_varsity_id`, `std_name`, `std_email`, `std
 (5, 'cse200', 'Gausul Asam', 'gausul@mail.com', '016554893433', '$2y$10$1PPnSuBf4eV9fMf25bLP2ebJ9EHGBcNjMBI6xFzWrUPqN15XkxMK.', 9, 22, NULL, NULL, '2022-09-28 08:33:51', '2022-11-05 09:59:02', 'active', 3),
 (16, NULL, 'Tushi', 'fsaf@gs.dd', '0167945453', '$2y$10$k.1Qf1CzvUXxnQzGhy67AepI7GaITFzZJEp74rJXjfcjJ0hU0zGY6', NULL, NULL, NULL, NULL, '2022-09-28 10:04:01', NULL, 'inactive', 1),
 (17, 'cse100', 'Bristy', 'br@mail.com', '01679453331', '$2y$10$k.1Qf1CzvUXxnQzGhy67AepI7GaITFzZJEp74rJXjfcjJ0hU0zGY6', 7, 20, NULL, NULL, '2022-10-24 18:56:12', '2022-10-31 12:51:48', 'active', 1),
-(19, 'asds201', 'Saikat Chandra Himel', 'saikat@gmail.com', '016788555', '$2y$10$jI1DYhws42yCI3tVV9CRzueVZPEATrucVFZdJP37nBoOpYC/dQ6Vi', 8, 21, NULL, NULL, '2022-11-01 16:38:04', '2022-11-01 11:51:57', 'active', 3);
+(19, 'asds201', 'Saikat Chandra', 'saikat@gmail.com', '016788555', '$2y$10$jI1DYhws42yCI3tVV9CRzueVZPEATrucVFZdJP37nBoOpYC/dQ6Vi', 8, 21, NULL, NULL, '2022-11-01 16:38:04', '2022-11-01 11:51:57', 'active', 3);
 
 -- --------------------------------------------------------
 
@@ -398,7 +406,7 @@ ALTER TABLE `field`
 -- AUTO_INCREMENT for table `message`
 --
 ALTER TABLE `message`
-  MODIFY `msg_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `msg_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `registered_fields`
