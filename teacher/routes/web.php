@@ -41,6 +41,9 @@ Route::group(['middleware' => 'auth'], function () {
     // show message page
     Route::get('/student-contact/{std_id}', [StudentContactController::class, 'index'])->name('studentContact');
 
+    // store teacher message
+    Route::post('/update-message', [StudentContactController::class, 'storeMessage'])->name('storeMessage');
+
     // view settings form
     Route::get('/settings', [SettingsController::class, 'index'])->name('settings');
 

@@ -23,4 +23,16 @@ class StudentContactController extends Controller
 
         return view('student-contact', compact('myMessages'));
     }
+
+    // store message
+    public function storeMessage(Request $request) {
+        $userId = Auth::user()->tchr_id;
+        // store msg as student
+        $teachermsg = new Message();
+        $teachermsg->msg_text = $request->message;
+        $teachermsg->fk_teacher_id = $userId;
+        $teachermsg->save();
+
+        return redirect()->back();
+    }
 }
