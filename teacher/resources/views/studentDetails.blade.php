@@ -63,7 +63,7 @@
                                         <b>Public Project:</b> {{ $studentDetail->studentProject->public_project }}
                                     </p>
                                     <p>
-                                        <a href="" class="btn btn-info">Contact with this student</a>
+                                        <a href="{{ route('studentContact', $studentDetail->studentProject->fk_std_id) }}" class="btn btn-info">Contact with this student</a>
                                     </p>
                                 </div>
                             </div>
@@ -117,8 +117,17 @@
                                             <div class="col-sm-8">
                                                 <select name="public_project" id="" class="form-control">
                                                     <option value="{{ $studentDetail->studentProject->public_project }}">{{ $studentDetail->studentProject->public_project }}</option>
-                                                    <option value="yes">Yes</option>
-                                                    <option value="no">No</option>
+                                                    @switch ($studentDetail->studentProject->public_project)
+                                                        @case ("yes")
+                                                            <option value="no">No</option>
+                                                            @break
+                                                        @case ("no")
+                                                            <option value="yes">Yes</option>
+                                                            @break
+                                                        @default
+                                                            <option value="yes">Yes</option>
+                                                            <option value="no">No</option>
+                                                    @endswitch
                                                 </select>
                                             </div>
                                         </div>

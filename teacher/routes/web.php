@@ -3,6 +3,7 @@
 use App\Http\Controllers\AssignedStudentsController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\SettingsController;
+use App\Http\Controllers\StudentContactController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -36,6 +37,9 @@ Route::group(['middleware' => 'auth'], function () {
 
     // update student details
     Route::post('/update-student-info/{proj_id}', [AssignedStudentsController::class, 'updateStudentInfo'])->name('updateStudentInfo');
+
+    // show message page
+    Route::get('/student-contact/{std_id}', [StudentContactController::class, 'index'])->name('studentContact');
 
     // view settings form
     Route::get('/settings', [SettingsController::class, 'index'])->name('settings');
