@@ -108,9 +108,19 @@
                       </div>
                     </div>
                     <div class="card-body chat-box">
-                        <form action="" method="POST" class="mb-4">
+                        <form action="{{ route('storeFile') }}" method="POST" class="mb-4" enctype="multipart/form-data">
                           @csrf
-                            
+                          <div class="row">
+                            <div class="col-8">
+                              <input class="form-control" type="file" name="messageFile" required>
+                              @error ('messageFile')
+                              <p class="text-danger">{{ $message }}</p>
+                              @enderror
+                            </div>
+                            <div class="col-4">
+                              <button class="btn btn-primary w-100" type="submit">Submit</button>
+                            </div>
+                          </div>
                         </form>
                         <div class="chat">
                             {{-- @if ( !empty($myMessages) )

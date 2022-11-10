@@ -44,6 +44,9 @@ Route::group(['middleware' => 'auth'], function () {
     // store teacher message
     Route::post('/update-message', [StudentContactController::class, 'storeMessage'])->name('storeMessage');
 
+    // store message file
+    Route::post('/update-message-file', [StudentContactController::class, 'storeFile'])->name('storeFile');
+
     // view settings form
     Route::get('/settings', [SettingsController::class, 'index'])->name('settings');
 

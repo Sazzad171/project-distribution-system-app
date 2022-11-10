@@ -27,12 +27,33 @@ class StudentContactController extends Controller
     // store message
     public function storeMessage(Request $request) {
         $userId = Auth::user()->tchr_id;
-        // store msg as student
+        // store text msg as teacher
         $teachermsg = new Message();
         $teachermsg->msg_text = $request->message;
         $teachermsg->fk_teacher_id = $userId;
         $teachermsg->save();
 
         return redirect()->back();
+    }
+
+    // store message files
+    public function storeFile(Request $request) {
+        // check the file is zip
+        $request->validate([
+            'messageFile' => 'required|mimes:zip,rar|max:5072',
+        ]);
+
+        $userId = Auth::user()->tchr_id;
+        // store file as teacher
+        $teacherMsg = new Message();
+        $teacherMsg->fk_teacher_id = $userId;
+
+        if ($request->hasFile('messageFile')) {
+            $teacherMsg->msg_file = $request->file('messageFile')->store('message-files', 'public');
+        }
+
+        $teacherMsg->save();
+
+        return redirect()->back()-with("message", "File uploaded successfully!");
     }
 }
