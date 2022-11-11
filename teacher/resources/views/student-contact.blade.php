@@ -123,42 +123,53 @@
                           </div>
                         </form>
                         <div class="chat">
-                            {{-- @if ( !empty($myMessages) )
+                            @if ( !empty($myFiles) )
 
-                            @foreach ( $myMessages as $msItem )
+                            @foreach ( $myFiles as $msItem )
 
-                            @if ( $msItem->fk_teacher_id === null ) --}}
+                            @if ( $msItem->fk_teacher_id === null && $msItem->msg_text === null )
                             {{-- teacher --}}
                             <div class="media left-side-chat my-2">
                                 <div class="media-body d-flex">
                                     <div class="img-profile"> <img class="img-fluid" src="{{ asset('public/assets/images/user/user.png') }}" alt="Profile"></div>
                                     <div class="main-chat">
-                                        <div class="message-main"><span class="mb-0">fsd</span></div>
+                                        <div class="message-main">
+                                          <span class="mb-0">
+                                            <a class="text-white" href="{{ asset('public/images/'. $msItem->msg_file) }}">
+                                              <i class="fa fa-download"></i> Download Zip
+                                            </a>
+                                          </span>
+                                        </div>
                                     </div>
                                 </div>
                                 <p class="f-w-400">1 day</p>
                             </div>
 
-                            {{-- @else --}}
+                            @elseif ( $msItem->fk_teacher_id !== null && $msItem->msg_text === null )
                             {{-- student --}}
                             <div class="media right-side-chat">
                                 <p class="f-w-400">1 day</p>
                                 <div class="media-body text-end">
-                                    <div class="message-main pull-right"><span class="mb-0 text-start">test</span>
+                                    <div class="message-main pull-right">
+                                      <span class="mb-0 text-start">
+                                        <a href="{{ asset('public/images/'. $msItem->msg_file) }}">
+                                          <i class="fa fa-download"></i> Download Zip
+                                        </a>
+                                      </span>
                                         <div class="clearfix"></div>
                                     </div>
                                 </div>
                             </div>
-                            {{-- @endif --}}
+                            @endif
 
-                            {{-- @endforeach --}}
+                            @endforeach
 
-                            {{-- @else --}}
+                            @else
                             <p class="text-center">No Conversation Yet!</p>
-                            {{-- @endif --}}
+                            @endif
 
                             {{-- pagination --}}
-                            @if ($myMessages->lastPage() > 1 )
+                            {{-- @if ($myFiles->lastPage() > 1 )
                             <ul class="pagination justify-content-center">
                               <li class="page-item  {{ $myMessages->currentPage() == 1 ? ' disabled' : '' }}">
                                   <a class="page-link" href="{{ $myMessages->url(1) }}">Previous</a>
@@ -167,11 +178,11 @@
                                   <a class="page-link" href="{{ $myMessages->url($myMessages->currentPage() + 1) }}">Next</a>
                               </li>
                             </ul>
-                            @endif
+                            @endif --}}
                         </div>
                     </div>
                 </div>
-            </div>
+              </div>
             </div>
             <!-- card end -->
 

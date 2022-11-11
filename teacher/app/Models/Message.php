@@ -9,7 +9,7 @@ class Message extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['msg_text', 'fk_stdnt_id', 'fk_teacher_id', 'status'];
+    protected $fillable = ['msg_text', 'msg_file', 'fk_stdnt_id', 'fk_teacher_id', 'status'];
 
     protected $table = 'message';
     protected $primaryKey = 'msg_id';

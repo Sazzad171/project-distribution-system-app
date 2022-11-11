@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ArchiveController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\MyProjectController;
 use App\Http\Controllers\RegisterMyProjectController;
@@ -18,6 +19,9 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+// show archive page
+Route::get('/archives', [ArchiveController::class, 'index'])->name('archives')->middleware('guest');
 
 // login show
 Route::get('/login', [UserController::class, 'login'])->name('login')->middleware('guest');
@@ -46,6 +50,9 @@ Route::group(['middleware' => 'auth'], function () {
 
     // message store
     Route::post('/store-message', [SupervisorContactController::class, 'storeMessage'])->name('storeMessage');
+
+    // store message file
+    Route::post('/update-message-file', [SupervisorContactController::class, 'storeFile'])->name('storeFile');
 
     // view settings form
     Route::get('/settings', [SettingsController::class, 'index'])->name('settings');

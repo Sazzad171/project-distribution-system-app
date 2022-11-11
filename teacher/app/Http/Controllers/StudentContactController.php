@@ -15,13 +15,20 @@ class StudentContactController extends Controller
         $userId = Auth::User()->tchr_id;
         $myIdentity = User::where('tchr_id', $userId)->first();
 
-        // all message of this student
+        // all message of this teacher
         $myMessages = Message::where('fk_stdnt_id', $std_id)
             ->orWhere('fk_teacher_id', $myIdentity->tchr_id)
+            ->where('msg_file', null)
             ->orderBy('created_at', 'desc')
             ->paginate(8);
 
-        return view('student-contact', compact('myMessages'));
+        // all files of this teacher
+        $myFiles = Message::where('fk_stdnt_id', $std_id)
+            ->orWhere('fk_teacher_id', $myIdentity->tchr_id)
+            ->orderBy('created_at', 'desc')
+            ->get();
+
+        return view('student-contact', compact('myMessages', 'myFiles'));
     }
 
     // store message
@@ -54,6 +61,6 @@ class StudentContactController extends Controller
 
         $teacherMsg->save();
 
-        return redirect()->back()-with("message", "File uploaded successfully!");
+        return redirect()->back()->with("message", "File uploaded successfully!");
     }
 }

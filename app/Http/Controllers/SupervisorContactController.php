@@ -21,7 +21,12 @@ class SupervisorContactController extends Controller
             ->orderBy('created_at', 'desc')
             ->paginate(8);
 
-        return view('supervisor-contact', compact('myMessages'));
+        $myFiles = Message::where('fk_stdnt_id', $myIdentity->std_id)
+            ->orWhere('fk_teacher_id', $myIdentity->fk_teacher_id)
+            ->orderBy('created_at', 'desc')
+            ->get();
+
+        return view('supervisor-contact', compact('myMessages', 'myFiles'));
     }
 
     // store message
@@ -36,6 +41,25 @@ class SupervisorContactController extends Controller
         return redirect()->back();
     }
 
-    // store file
+    // store message files
+    public function storeFile(Request $request) {
+        // check the file is zip
+        $request->validate([
+            'messageFile' => 'required|mimes:zip,rar|max:5072',
+        ]);
+
+        $userId = Auth::user()->std_id;
+        // store file as teacher
+        $studentMsg = new Message();
+        $studentMsg->fk_stdnt_id = $userId;
+
+        if ($request->hasFile('messageFile')) {
+            $studentMsg->msg_file = $request->file('messageFile')->store('message-files', 'public');
+        }
+
+        $studentMsg->save();
+
+        return redirect()->back()->with("message", "File uploaded successfully!");
+    }
     
 }

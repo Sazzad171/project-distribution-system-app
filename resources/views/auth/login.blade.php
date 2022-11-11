@@ -83,6 +83,11 @@
                       <a href="teacher">Login as Teacher</a>
                     </p>
                   </div>
+                  <div class="col-md-6">
+                    <p>
+                      <a href="archives">View Archives Projects </a>
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>

@@ -49,3 +49,7 @@ th {
 .chat-default .chat::-webkit-scrollbar-thumb:hover {
     background: #555; 
 }
+
+.chat-default .card-body.chat-box .right-side-chat .media-body .message-main span {
+    background-color: #eee;
+}
