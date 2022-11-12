@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.1.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 08, 2022 at 02:13 PM
--- Server version: 10.4.24-MariaDB
--- PHP Version: 7.4.29
+-- Generation Time: Nov 12, 2022 at 06:06 PM
+-- Server version: 10.4.18-MariaDB
+-- PHP Version: 7.4.16
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -78,6 +78,7 @@ INSERT INTO `field` (`fld_id`, `fld_name`, `fld_status`, `created_at`) VALUES
 
 CREATE TABLE `message` (
   `msg_id` int(11) NOT NULL,
+  `msg_file` varchar(255) DEFAULT NULL,
   `msg_text` varchar(255) DEFAULT NULL,
   `fk_stdnt_id` int(20) DEFAULT NULL,
   `fk_teacher_id` int(20) DEFAULT NULL,
@@ -90,17 +91,27 @@ CREATE TABLE `message` (
 -- Dumping data for table `message`
 --
 
-INSERT INTO `message` (`msg_id`, `msg_text`, `fk_stdnt_id`, `fk_teacher_id`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'Text id 1', 5, NULL, 'active', '2022-11-07 13:17:23', NULL),
-(2, 'Test Text 2', NULL, 3, 'active', '2022-11-07 13:18:15', NULL),
-(3, 'Test text 3', 19, NULL, 'active', '2022-11-07 13:29:00', NULL),
-(4, 'Test message from me', 5, NULL, 'active', '2022-11-08 06:45:39', '2022-11-08 06:45:39'),
-(5, 'another', 5, NULL, 'active', '2022-11-08 07:06:03', '2022-11-08 07:06:03'),
-(6, 'hello', 5, NULL, 'active', '2022-11-08 07:06:26', '2022-11-08 07:06:26'),
-(7, 'test', 5, NULL, 'active', '2022-11-08 07:06:32', '2022-11-08 07:06:32'),
-(8, 'hello', 5, NULL, 'active', '2022-11-08 07:06:50', '2022-11-08 07:06:50'),
-(9, 'Test message from me', 5, NULL, 'active', '2022-11-08 07:06:55', '2022-11-08 07:06:55'),
-(10, 'hello', 5, NULL, 'active', '2022-11-08 07:07:12', '2022-11-08 07:07:12');
+INSERT INTO `message` (`msg_id`, `msg_file`, `msg_text`, `fk_stdnt_id`, `fk_teacher_id`, `status`, `created_at`, `updated_at`) VALUES
+(1, NULL, 'Text id 1', 5, NULL, 'active', '2022-11-07 13:17:23', NULL),
+(2, NULL, 'Test Text 2', NULL, 3, 'active', '2022-11-07 13:18:15', NULL),
+(3, NULL, 'Test text 3', 19, NULL, 'active', '2022-11-07 13:29:00', NULL),
+(4, NULL, 'Test message from me', 5, NULL, 'active', '2022-11-08 06:45:39', '2022-11-08 06:45:39'),
+(5, NULL, 'another', 5, NULL, 'active', '2022-11-08 07:06:03', '2022-11-08 07:06:03'),
+(6, NULL, 'hello', 5, NULL, 'active', '2022-11-08 07:06:26', '2022-11-08 07:06:26'),
+(7, NULL, 'test', 5, NULL, 'active', '2022-11-08 07:06:32', '2022-11-08 07:06:32'),
+(8, NULL, 'hello', 5, NULL, 'active', '2022-11-08 07:06:50', '2022-11-08 07:06:50'),
+(9, NULL, 'Test message from me', 5, NULL, 'active', '2022-11-08 07:06:55', '2022-11-08 07:06:55'),
+(10, NULL, 'hello', 5, NULL, 'active', '2022-11-08 07:07:12', '2022-11-08 07:07:12'),
+(11, NULL, 'dear student', NULL, 3, 'active', '2022-11-09 12:22:07', '2022-11-09 12:22:07'),
+(12, NULL, 'please complete your task by this week. complete your presentation by next week. thank you', NULL, 3, 'active', '2022-11-09 12:22:37', '2022-11-09 12:22:37'),
+(14, 'message-files/TwrfiizWvPlyoq2qN8mj9SUH97JdVncfXqZcE29j.zip', NULL, NULL, 3, 'active', '2022-11-10 12:47:19', '2022-11-10 12:47:19'),
+(15, 'message-files/tIZfvB2p4YyyCu5B60frxgBVgiMVADGUPH8jFEx5.zip', NULL, NULL, 3, 'active', '2022-11-10 12:58:01', '2022-11-10 12:58:01'),
+(16, 'message-files/3NPJdJqxGVa9OIs1wku6DjqV4AlM8GY1AzUgYt2S.zip', NULL, 5, NULL, 'active', '2022-11-11 17:43:03', NULL),
+(17, NULL, 'ok sir', 5, NULL, 'active', '2022-11-11 12:25:09', '2022-11-11 12:25:09'),
+(18, 'message-files/WPyyj0fQm3XTsPmu9X2uC4Ds5XNWnJ5mGTJbe7rg.zip', NULL, 5, NULL, 'active', '2022-11-11 12:39:44', '2022-11-11 12:39:44'),
+(19, 'message-files/noXxS7ceyreZ3dkcQaoqretRBqDjooijSbhe16GW.zip', NULL, 5, NULL, 'active', '2022-11-11 12:47:37', '2022-11-11 12:47:37'),
+(20, 'message-files/6lqtmPyx7SLL0H1dS1a7XryIdhFxGsIw1Pjzh0gC.zip', NULL, 5, NULL, 'active', '2022-11-11 12:50:58', '2022-11-11 12:50:58'),
+(21, 'message-files/CLIAZ4nUFTIcNC5gK1nUmRzTfQuqPHJ3g3iOdi5I.zip', NULL, 5, NULL, 'active', '2022-11-11 12:51:10', '2022-11-11 12:51:10');
 
 -- --------------------------------------------------------
 
@@ -406,7 +417,7 @@ ALTER TABLE `field`
 -- AUTO_INCREMENT for table `message`
 --
 ALTER TABLE `message`
-  MODIFY `msg_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `msg_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `registered_fields`
