@@ -16,15 +16,26 @@ class SupervisorContactController extends Controller
         $myIdentity = Student::where('std_id', $userId)->first();
 
         // all message of this student
-        $myMessages = Message::where('fk_stdnt_id', $myIdentity->std_id)
-            ->orWhere('fk_teacher_id', $myIdentity->fk_teacher_id)
+        $myMessages = Message::where('msg_file', null)
+            ->where(
+                function ($query) use ($myIdentity) {
+                    $query->where('fk_stdnt_id', $myIdentity->std_id)
+                        ->orWhere('fk_teacher_id', $myIdentity->fk_teacher_id);
+                }
+            )
             ->orderBy('created_at', 'desc')
             ->paginate(8);
 
-        $myFiles = Message::where('fk_stdnt_id', $myIdentity->std_id)
-            ->orWhere('fk_teacher_id', $myIdentity->fk_teacher_id)
+        // all files of this student
+        $myFiles = Message::where('msg_file', '!=', null)
+            ->where(
+                function ($query) use ($myIdentity) {
+                    $query->where('fk_stdnt_id', $myIdentity->std_id)
+                        ->orWhere('fk_teacher_id', $myIdentity->fk_teacher_id);
+                }
+            )
             ->orderBy('created_at', 'desc')
-            ->get();
+            ->paginate(8, ['*'], 'file_page');
 
         return view('supervisor-contact', compact('myMessages', 'myFiles'));
     }

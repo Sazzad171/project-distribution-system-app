@@ -133,7 +133,7 @@
                                     <div class="main-chat">
                                         <div class="message-main">
                                           <span class="mb-0">
-                                            <a class="text-white" href="{{ asset('public/images/'. $msItem->msg_file) }}">
+                                            <a class="text-white" href="{{ asset('teacher/public/images/'. $msItem->msg_file) }}">
                                               <i class="fa fa-download"></i> Download Zip
                                             </a>
                                           </span>
@@ -150,7 +150,7 @@
                                 <div class="media-body text-end">
                                     <div class="message-main pull-right">
                                       <span class="mb-0 text-start">
-                                        <a href="{{ asset('public/images/'. $msItem->msg_file) }}">
+                                        <a href="{{ asset('teacher/public/images/'. $msItem->msg_file) }}">
                                           <i class="fa fa-download"></i> Download Zip
                                         </a>
                                       </span>
