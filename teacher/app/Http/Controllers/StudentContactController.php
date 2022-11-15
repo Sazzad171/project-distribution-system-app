@@ -16,17 +16,36 @@ class StudentContactController extends Controller
         $myIdentity = User::where('tchr_id', $userId)->first();
 
         // all message of this teacher
-        $myMessages = Message::where('fk_stdnt_id', $std_id)
-            ->orWhere('fk_teacher_id', $myIdentity->tchr_id)
-            ->where('msg_file', null)
+        // $myMessages = Message::where('fk_stdnt_id', $std_id)
+        //     ->orWhere('fk_teacher_id', $myIdentity->tchr_id)
+        //     ->where('msg_file', null)
+        //     ->orderBy('created_at', 'desc')
+        //     ->paginate(8);
+        $myMessages = Message::where('msg_file', null)
+            ->where(
+                function ($query) use ($myIdentity, $std_id) {
+                    $query->where('fk_stdnt_id', $std_id)
+                        ->orWhere('fk_teacher_id', $myIdentity->tchr_id);
+                }
+            )
             ->orderBy('created_at', 'desc')
             ->paginate(8);
 
         // all files of this teacher
-        $myFiles = Message::where('fk_stdnt_id', $std_id)
-            ->orWhere('fk_teacher_id', $myIdentity->tchr_id)
+        // $myFiles = Message::where('fk_stdnt_id', $std_id)
+        //     ->orWhere('fk_teacher_id', $myIdentity->tchr_id)
+        //     ->orderBy('created_at', 'desc')
+        //     ->get();
+
+        $myFiles = Message::where('msg_file', '!=', null)
+            ->where(
+                function ($query) use ($myIdentity, $std_id) {
+                    $query->where('fk_stdnt_id', $std_id)
+                        ->orWhere('fk_teacher_id', $myIdentity->tchr_id);
+                }
+            )
             ->orderBy('created_at', 'desc')
-            ->get();
+            ->paginate(8, ['*'], 'file_page');
 
         return view('student-contact', compact('myMessages', 'myFiles'));
     }

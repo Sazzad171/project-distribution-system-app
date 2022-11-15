@@ -150,7 +150,7 @@
                                 <div class="media-body text-end">
                                     <div class="message-main pull-right">
                                       <span class="mb-0 text-start">
-                                        <a href="{{ asset('teacher/public/images/'. $msItem->msg_file) }}">
+                                        <a href="{{ asset('public/images/'. $msItem->msg_file) }}">
                                           <i class="fa fa-download"></i> Download Zip
                                         </a>
                                       </span>
@@ -167,16 +167,16 @@
                             @endif
 
                             {{-- pagination --}}
-                            {{-- @if ($myFiles->lastPage() > 1 )
+                            @if ($myFiles->lastPage() > 1 )
                             <ul class="pagination justify-content-center">
-                              <li class="page-item  {{ $myMessages->currentPage() == 1 ? ' disabled' : '' }}">
-                                  <a class="page-link" href="{{ $myMessages->url(1) }}">Previous</a>
+                              <li class="page-item  {{ $myFiles->currentPage() == 1 ? ' disabled' : '' }}">
+                                  <a class="page-link" href="{{ $myFiles->url(1) }}">Previous</a>
                               </li>
-                              <li class="page-item {{ $myMessages->currentPage() == $myMessages->lastPage() ? ' disabled' : '' }}">
-                                  <a class="page-link" href="{{ $myMessages->url($myMessages->currentPage() + 1) }}">Next</a>
+                              <li class="page-item {{ $myFiles->currentPage() == $myFiles->lastPage() ? ' disabled' : '' }}">
+                                  <a class="page-link" href="{{ $myFiles->url($myFiles->currentPage() + 1) }}">Next</a>
                               </li>
                             </ul>
-                            @endif --}}
+                            @endif
                         </div>
                     </div>
                 </div>

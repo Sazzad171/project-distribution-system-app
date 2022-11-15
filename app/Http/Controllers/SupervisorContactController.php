@@ -56,11 +56,11 @@ class SupervisorContactController extends Controller
     public function storeFile(Request $request) {
         // check the file is zip
         $request->validate([
-            'messageFile' => 'required|mimes:zip,rar|max:5072',
+            'messageFile' => 'required|mimes:zip,rar|max:8072',
         ]);
 
         $userId = Auth::user()->std_id;
-        // store file as teacher
+        // store file as student
         $studentMsg = new Message();
         $studentMsg->fk_stdnt_id = $userId;
 
