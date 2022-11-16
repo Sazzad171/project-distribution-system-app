@@ -73,8 +73,8 @@
             <div class="mb-3 row">
               <label class="col-sm-3 col-form-label">Teacher new password</label>
               <div class="col-sm-9">
-                <input class="form-control" type="password" name="tchr_password" value="{{ old('tchr_password') }}" placeholder="Enter new password..">
-                @error('tchr_password')
+                <input class="form-control" type="password" name="password" value="{{ old('password') }}" placeholder="Enter new password..">
+                @error('password')
                     <p class="text-danger">{{ $message }}</p>
                 @enderror
               </div>

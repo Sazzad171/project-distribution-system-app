@@ -29,11 +29,11 @@ class TeacherController extends Controller
             'tchr_name' => 'required',
             'tchr_email' => ['required', 'email', Rule::unique('student', 'std_email')],
             'tchr_phone' => ['required', Rule::unique('teacher', 'tchr_phone')],
-            'tchr_password' => 'required|min:6'
+            'password' => 'required|min:6'
         ]);
 
         // hash password
-        $formFields['tchr_password'] = bcrypt($formFields['tchr_password']);
+        $formFields['password'] = bcrypt($formFields['password']);
 
         // store at DB
         Teacher::create($formFields);

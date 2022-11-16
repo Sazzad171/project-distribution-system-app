@@ -9,7 +9,7 @@ class Teacher extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['tchr_name', 'tchr_email', 'tchr_phone', 'tchr_password', 'status'];
+    protected $fillable = ['tchr_name', 'tchr_email', 'tchr_phone', 'password', 'status'];
 
     protected $table = 'teacher';
     protected $primaryKey = 'tchr_id';
