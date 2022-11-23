@@ -66,20 +66,27 @@ class StudentContactController extends Controller
     public function storeFile(Request $request) {
         // check the file is zip
         $request->validate([
-            'messageFile' => 'required|mimes:zip,rar|max:5072',
+            'messageFile' => 'required|max:5072',
         ]);
 
-        $userId = Auth::user()->tchr_id;
-        // store file as teacher
-        $teacherMsg = new Message();
-        $teacherMsg->fk_teacher_id = $userId;
-
-        if ($request->hasFile('messageFile')) {
-            $teacherMsg->msg_file = $request->file('messageFile')->store('message-files', 'public');
+        // check it is zip file
+        if ( $request->file('messageFile')->extension() === "zip" || $request->file('messageFile')->extension() === "rar" ) {
+            $userId = Auth::user()->tchr_id;
+            // store file as teacher
+            $teacherMsg = new Message();
+            $teacherMsg->fk_teacher_id = $userId;
+    
+            if ($request->hasFile('messageFile')) {
+                $teacherMsg->msg_file = $request->file('messageFile')->store('message-files', 'public');
+            }
+    
+            $teacherMsg->save();
+    
+            return redirect()->back()->with("message", "File uploaded successfully!");
         }
-
-        $teacherMsg->save();
-
-        return redirect()->back()->with("message", "File uploaded successfully!");
+        else {
+            return redirect()->back()->with("message", "Only zip/rar files is available for send!");
+        }
+        
     }
 }

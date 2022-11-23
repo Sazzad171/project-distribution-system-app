@@ -56,21 +56,27 @@ class SupervisorContactController extends Controller
     public function storeFile(Request $request) {
         // check the file is zip
         $request->validate([
-            'messageFile' => 'required|mimes:zip,rar|max:8072',
+            'messageFile' => 'required|max:8072',
         ]);
 
-        $userId = Auth::user()->std_id;
-        // store file as student
-        $studentMsg = new Message();
-        $studentMsg->fk_stdnt_id = $userId;
-
-        if ($request->hasFile('messageFile')) {
-            $studentMsg->msg_file = $request->file('messageFile')->store('message-files', 'public');
+        // check it is zip file
+        if ( $request->file('messageFile')->extension() === "zip" || $request->file('messageFile')->extension() === "rar" ) {
+            $userId = Auth::user()->std_id;
+            // store file as student
+            $studentMsg = new Message();
+            $studentMsg->fk_stdnt_id = $userId;
+    
+            if ($request->hasFile('messageFile')) {
+                $studentMsg->msg_file = $request->file('messageFile')->store('message-files', 'public');
+            }
+    
+            $studentMsg->save();
+    
+            return redirect()->back()->with("message", "File uploaded successfully!");
         }
-
-        $studentMsg->save();
-
-        return redirect()->back()->with("message", "File uploaded successfully!");
+        else {
+            return redirect()->back()->with("message", "Only zip/rar files is available for send!");
+        }
     }
     
 }

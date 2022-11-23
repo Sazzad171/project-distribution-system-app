@@ -142,13 +142,13 @@
                                         </div>
                                     </div>
                                 </div>
-                                <p class="f-w-400">1 day</p>
+                                <p class="f-w-400">{{ $msItem->created_at->diffForHumans() }}</p>
                             </div>
 
                             @elseif ( $msItem->fk_teacher_id !== null && $msItem->msg_text === null )
                             {{-- student --}}
                             <div class="media right-side-chat">
-                                <p class="f-w-400">1 day</p>
+                                <p class="f-w-400">{{ $msItem->created_at->diffForHumans() }}</p>
                                 <div class="media-body text-end">
                                     <div class="message-main pull-right">
                                       <span class="mb-0 text-start">
