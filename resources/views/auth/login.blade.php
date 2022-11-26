@@ -85,7 +85,7 @@
                   </div>
                   <div class="col-md-6">
                     <p>
-                      <a href="archives">View Archives Projects </a>
+                      <a href="archives">View Archived Projects </a>
                     </p>
                   </div>
                 </div>

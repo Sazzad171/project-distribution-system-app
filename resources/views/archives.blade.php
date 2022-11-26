@@ -54,15 +54,18 @@
       <div class="container">
         @if ( !empty($projects) )
         <div class="row">
-          @foreach ( $projects as $item )
+          @foreach ( $projects as $key => $item )
           {{-- item --}}
           <div class="col-md-4 col-lg-3 mb-3 mb-md-0">
             <div class="card" style="width: 18rem;">
               <img src="{{ asset('public/assets/images/image-not-found.jpg') }}" class="card-img-top" alt="">
               <div class="card-body p-4">
                 <h5 class="card-title text-primary">{{ $item->std_proj_name }}</h5>
-                <p class="card-text mb-2">Project by: {{ $item->fk_std_id }}</p>
-                <p class="card-text">Supervised by: {{ $item->fk_teacher_id }}</p>
+                <p class="card-text mb-2">Project by: {{ $item->student->std_name }}</p>
+                <p class="card-text mb-2">Supervised by: {{ $item->teacher->tchr_name }}</p>
+                <p class="card-text">
+                  <a href="public/images/{{ $projectLInks[$key]->msg_file }}">Download this project</a>
+                </p>
               </div>
             </div>
           </div>

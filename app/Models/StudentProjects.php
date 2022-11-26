@@ -25,4 +25,9 @@ class StudentProjects extends Model
     public function semester() {
         return $this->hasOne(Semester::class, 'sem_id', 'fk_sem_id');
     }
+
+    // student relation 
+    public function student() {
+        return $this->hasOne(Student::class, 'std_id', 'fk_std_id');
+    }
 }
